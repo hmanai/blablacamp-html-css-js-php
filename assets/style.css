@@ -1,0 +1,447 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body{
+    font-family: 'Bungee', cursive;;
+}
+
+#accueil{
+
+    display: none;
+}
+
+header{
+
+display: none;
+
+}
+
+#login{
+
+    display: none;
+}
+
+#register{
+
+    display: none;
+}
+
+
+
+
+@media only screen and (max-width: 600px) {
+
+    /* page index */
+
+    #accueil{
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        height: 100vh;
+    }
+    
+    .logo{
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 30%;
+    
+    }
+    
+    .logo img{
+    
+        width: 90px;
+        height: 90px;
+        left: 62px;
+        top: 272px;
+        margin-right: 10px;
+    }
+    
+    .blabla{
+    
+        left: 158px;
+        top: 272px;    
+        font-family: 'Bungee';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 2rem;
+        line-height: 43px;  
+        color: #334747;
+        line-height: 7px;
+    }
+    
+    .compus{
+    
+        left: 158px;
+        top: 304px;
+        color: #D41E45;
+        font-family: 'Bungee';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 2rem;
+        line-height: 43px;
+    }
+
+    .start{
+
+        width: 236px;
+        height: 55px;
+        left: 62px;
+        top: 423px;
+        background: #D41E45;
+        border-radius: 10px;
+        border-style: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .carIcon{
+
+        font-size: 30px;
+        left: 109px;
+        top: 440px;
+        color: white;
+        margin-right: 15px;
+
+    }
+
+    .commencer{
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100px;
+        width: 300px;
+    }
+
+    .commencer span{
+
+        width: 125px;
+        height: 15px;
+        left: 140px;
+        top: 443px;
+        font-family: 'Work Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 15px;
+        text-align: center;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+
+    }
+
+    a {
+
+        text-decoration: none;
+    }
+
+    .seConnecter{
+
+        width: 160px;
+        height: 12px;
+        left: calc(50% - 133px/2);
+        top: calc(50% - 12px/2 + 114px);
+        font-family: 'Work Sans';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 12px;
+        /* identical to box height */
+        text-align: center;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: #D41E45;
+        text-decoration: none;
+        margin-top: 40px;
+    }
+
+    /* page connexion */
+
+    header{
+
+        height: 20%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+    }
+
+    #login{
+
+        display: flex;
+        height: 80vh;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .logoHeader{
+
+        width: 60px;
+        height: 60px;
+        margin-left: 7%;
+        margin-top: 12%;
+    }
+
+    .headConnexion{
+
+        margin-right: 7%;
+        margin-top: 64px;
+        font-family: 'Work Sans';
+        font-weight: 500;
+        font-size: 0.8rem;
+        line-height: 15px;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: #D41E45;
+    }
+
+    .informations{
+
+        width: 257px;
+        height: 28px;
+        font-family: 'Bungee';
+        font-weight: 400;
+        font-size: 17px;
+        line-height: 28px;
+        color: #333333;
+        margin-left: 7%;
+        margin-bottom: 7%;
+       
+       
+
+    }
+
+    #containerForm{
+
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #connexionForm{
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+    
+    }
+
+    .loginInput{
+
+        width: 90%;
+        height: 56.62px;
+        border-radius: 8px;
+        padding-left: 20px;
+        gap: 12px;
+        margin-top: 3%;
+        background-color: #eeeeee;
+        border-style: none;
+        font-size: 1em;
+
+    }
+
+    .loginButton{
+
+        width: 70%;
+        height: 55px;
+        left: 64px;
+        top: 395px;
+        background: #D41E45;
+        border-radius: 10px;
+        border-style: none;
+        font-family: 'Work Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 0.75em;
+        line-height: 15px;
+        text-align: center;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        margin-top: 10%;
+        color: #FFFFFF;
+        
+    }
+
+    .canceLogin{
+
+        width: 160px;
+        height: 12px;
+        left: calc(50% - 133px/2);
+        top: calc(50% - 12px/2 + 114px);
+        font-family: 'Work Sans';
+        font-style: normal;
+        font-weight: 500;
+        line-height: 12px;
+        /* identical to box height */
+        text-align: center;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: #D41E45;
+        text-decoration: none;
+        margin-top: 40px;
+        font-size: 0.75em;
+
+    }
+
+    /* Page register */
+
+    #register{
+
+        display: flex;
+        width: 100%;
+        min-height: 100vh ;
+        flex-direction: column;
+    }
+
+    .enregistrementForm{
+
+        min-height: 80vh;
+        width: 100%;
+
+    }
+
+    .registerForm{
+
+        display: flex;
+        margin-top: 15%;
+        flex-direction: column;
+
+    }
+
+    .labelRegister{
+
+        margin-left: 5%;
+        margin-top: 5%;
+
+
+    }
+
+    .inputRegister{
+
+        margin-left: 5%;
+        width: 90%;
+        height: 56.62px;
+        border-radius: 8px;
+        padding-left: 20px;
+        gap: 12px;
+        margin-top: 3%;
+        background-color: #eeeeee;
+        border-style: none;
+        font-size: 1em;
+
+    }
+
+    .textareaRegister{
+
+        margin-left: 5%;
+        width: 90%;
+        height: 155px;
+        border-radius: 8px;
+        padding-left: 20px;
+        padding-top: 20px;
+        gap: 12px;
+        margin-top: 3%;
+        background-color: #eeeeee;
+        border-style: none;
+        font-size: 1em;
+        font-family: 'Epilogue';
+
+
+    }
+
+    .enregistrementForm p{
+
+        font-family: 'Epilogue';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 20px;
+        /* or 154% */
+        /* GrayScale/Placehoder */
+        color: #888888;
+        text-align: left;
+        margin-left: 10%;
+        margin-top: 5px;
+        width: 84.5%;
+
+    }
+
+    .registerButton{
+   
+    width: 70%;
+    height: 55px;
+    left: 64px;
+    top: 395px;
+    background: #D41E45;
+    border-radius: 10px;
+    border-style: none;
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.75em;
+    line-height: 15px;
+    text-align: center;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-top: 10%;
+    color: #FFFFFF;
+
+}
+
+.centerButton{
+    
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+
+}
+
+.cancelRegister{
+
+    width: 160px;
+    height: 12px;
+    left: calc(50% - 133px/2);
+    top: calc(50% - 12px/2 + 114px);
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 500;
+    line-height: 12px;
+    text-align: center;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #D41E45;
+    text-decoration: none;
+    margin-top: 40px;
+    font-size: 0.75em;
+    margin-bottom: 20px;
+}
+
+
+}
+
+
+
+
+
+

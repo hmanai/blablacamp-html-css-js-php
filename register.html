@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creer un compte</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Epilogue:wght@500&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script> <!-- link for car icon -->
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="assets/style.js" async ></script>
+</head>
+<body>
+    <section id="register">
+        <header>
+            <img class="logoHeader" src="assets/img/logo.png" alt="logo">  
+            <p class="headConnexion"> Creer un compte</p>     
+        </header>
+        <div class="enregistrementForm">
+            <form class="registerForm" action="" method="post">
+                <label class="labelRegister"> Entrez vos coordonnées</label>
+                <input class="inputRegister" type="text" placeholder="Nom">
+                <input class="inputRegister" type="text" placeholder="Nom d'utilisateur">
+                <label class="labelRegister"> Entrez votre mot de passe</label>
+                <input class="inputRegister" type="text" placeholder="Mot de passe">
+                <label class="labelRegister"> Entrez votre email</label>
+                <input class="inputRegister" type="text" placeholder="Email">
+                    <p>Ajoutez votre adresse e-mail pour recevoir des notifications sur votre activité sur Foundation. Cela ne sera pas affiché sur votre profil.</p>
+                <label class="labelRegister"> Entrez votre biographie</label>
+                <textarea class="textareaRegister" type="text" placeholder="Entrez votre bio ici" aria-placeholder=""></textarea>  
+                <label class="labelRegister">Téléchargez une image de profil </label>
+                <textarea class="textareaRegister" ondrop="dropHandler(event);" ondragover="event.preventDefault();"></textarea>
+                <div class="centerButton">
+                    <input class= "registerButton" type="submit" id='submit' value='Créer mon compte' >
+                    <a class="cancelRegister" href="connexion.html">Annuler</a>
+                </div>
+
+
+
+            </form>
+        </div>
+    </section>
+    
+</body>
+</html>
