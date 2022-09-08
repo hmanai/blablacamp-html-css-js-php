@@ -22,7 +22,7 @@
 <body>
     <section id="register">
         <header>
-            <img class="logoHeader" src="assets/img/logo.png" alt="logo">  
+           <a class="logoHeader" href="index.html"><img  class="logoHeader" src="assets/img/logo.png" alt="logo"></a> 
             <p class="headConnexion"> Creer un compte</p>     
         </header>
         <div class="enregistrementForm">
@@ -38,7 +38,12 @@
                 <label class="labelRegister"> Entrez votre biographie</label>
                 <textarea class="textareaRegister" type="text" placeholder="Entrez votre bio ici" aria-placeholder=""></textarea>  
                 <label class="labelRegister">Téléchargez une image de profil </label>
-                <textarea class="textareaRegister" ondrop="dropHandler(event);" ondragover="event.preventDefault();"></textarea>
+                <label class="fileRegister"> 
+                    <img src="assets/img/icon-file.png" alt="icone de telechargement">
+                    <h2 class="registerTitle" > Glisser-déposer ou parcourir un fichier</h2>
+                    <p> Taille recommandée JPG, PNG, GIF (150x150px. Max 10mb) </p>
+                    <input type="file" class="uploadRegister">
+                </label>
                 <div class="centerButton">
                     <input class= "registerButton" type="submit" id='submit' value='Créer mon compte' >
                     <a class="cancelRegister" href="connexion.html">Annuler</a>

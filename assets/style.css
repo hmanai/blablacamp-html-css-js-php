@@ -29,6 +29,15 @@ display: none;
 
     display: none;
 }
+#felicitation{
+
+    display: none;
+}
+
+#searchTrajet{
+
+    display: none;
+}
 
 
 
@@ -122,7 +131,7 @@ display: none;
         align-items: center;
         flex-direction: column;
         height: 100px;
-        width: 300px;
+        width: 100%;
     }
 
     .commencer span{
@@ -184,6 +193,7 @@ display: none;
 
         display: flex;
         height: 80vh;
+        width: 100%;
         flex-direction: column;
         justify-content: center;
     }
@@ -215,7 +225,7 @@ display: none;
         height: 28px;
         font-family: 'Bungee';
         font-weight: 400;
-        font-size: 17px;
+        font-size: 1rem;
         line-height: 28px;
         color: #333333;
         margin-left: 7%;
@@ -258,7 +268,7 @@ display: none;
 
     }
 
-    .loginButton{
+    .loginButton, .searchButton{
 
         width: 70%;
         height: 55px;
@@ -437,9 +447,253 @@ display: none;
     margin-bottom: 20px;
 }
 
+.fileRegister{
+
+    margin-left: 5%;
+    width: 90%;
+    height: 200px;
+    border-radius: 8px;
+    gap: 12px;
+    margin-top: 3%;
+    background-color: #eeeeee;
+    border-style: none;
+    font-size: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.fileRegister img {
+
+    height: 40px;
+    width: 40px;
+}
+
+.fileRegister .registerTitle{
+
+    font-family: 'Epilogue';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #333333;
+}
+
+.fileRegister P{
+
+    width: 55%;
+    text-align: center;
+    margin: 0;
+}
+
+.uploadRegister{
+
+    display: none;
+}
+
+/* Page Félicitation */
+
+#felicitation{
+
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+    margin-left: 10px;
+}
+
+#felicitation p{
+
+    font-family: 'Epilogue';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 20px;
+    color: #888888;
+    margin-left: 15px;
+    margin-top: 13px;
 
 }
 
+#felicitation h2{
+
+    font-size: 1.2rem;
+
+}
+
+/* Page Rechercher */
+
+.logoProfil{
+
+    margin-right: 7%;
+    margin-top: 10%;
+    height: 55px;
+    width: 55px;
+    padding: 0;
+
+}
+
+#searchTrajet{
+
+    display: flex;
+    justify-content: center;
+    min-height: 80vh;
+    width: 100%;
+}
+
+.searchForm{
+
+    width: 100%;
+    margin-top: 20%;
+ 
+    
+}
+
+.startPoint{
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
+}
+
+.startInput{
+    
+    position: relative;
+    z-index: -1;
+    padding-left: 30px;
+    width: 90%;
+    height: 56.62px;
+    border-radius: 8px;
+    padding-left: 40px;
+    gap: 12px;
+    margin-top: 3%;
+    margin-left: 5%;
+    margin-bottom: 10px;
+    background-color: #eeeeee;
+    color: #555555;
+    border-style: none;
+    font-size: 1em;
+    
+}
+
+.destinationSelection{
+
+
+    padding-left: 30px;
+    width: 90%;
+    height: 56.62px;
+    border-radius: 8px;
+    padding-left: 40px;
+    margin-top: 3%;
+    margin-left: 5%;
+    margin-bottom: 10px;
+    background-color: #eeeeee;
+    color: #555555;
+    border-style: none;
+    font-size: 1em;
+
+}
+
+.positionIcon{
+
+    position: absolute;
+    padding-left: 30px;
+    font-size: 1.5rem;
+    color: #333333;
+}
+
+
+
+.destinationIcon, .calenIcon{
+
+    position: absolute;
+    padding-left: 30px;
+    padding-top: 30px;
+    font-size: 1.5rem;
+    color: #333333;
+
+}
+
+.dateTrajet{
+
+    width: 100%;
+
+}
+
+.dateLabel{
+
+    position: absolute;
+    z-index: -1;
+    padding-left: 30px;
+    width: 90%;
+    height: 56.62px;
+    border-radius: 8px;
+    padding-left: 40px;
+    padding-top: 15px;
+    margin-top: 3%;
+    margin-left: 5%;
+    margin-bottom: 10px;
+    background-color: #eeeeee;
+    color: #555555;
+    border-style: none;
+    font-size: 1.2em;
+    font-family: 'Epilogue';
+}
+
+.dateInput {
+
+    padding-left: 30px;
+    width: 90%;
+    height: 56.62px;
+    border-radius: 8px;
+    padding-left: 40px;
+    margin-top: 3%;
+    margin-left: 5%;
+    margin-bottom: 10px;
+    background-color: #eeeeee;
+    color: #555555;
+    border-style: none;
+    font-size: 1em;
+    font-family: 'Epilogue';
+
+}
+
+.bouttonrechercher{
+    
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+}
+
+.searchButton{
+
+    width: 60%;
+    height: 55px;
+
+    background: #D41E45;
+    border-radius: 10px;
+    border-style: none;
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.75em;
+    line-height: 15px;
+    text-align: center;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-top: 10%;
+    color: #FFFFFF;
+    align-items: center;
+    
+}
+
+}
 
 
 
