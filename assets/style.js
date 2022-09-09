@@ -231,12 +231,6 @@ addressAutocomplete(document.getElementById("startPoint"), (data) => {
 
 /*****************add event listener to show the calender in search page******************** */
 
-let dateLabel = document.querySelector('.dateTrajet')
-  dateLabel.addEventListener('click', function(){
-  document.querySelector('.datetrip').style.visibility = "visible"
-  
-})
-  /*document.querySelector('.projectDescrip').style.transform = "translateY(-70%)"*/
 
 
 /************************************* */
