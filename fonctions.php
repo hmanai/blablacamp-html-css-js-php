@@ -60,27 +60,29 @@ function login(){
             $erreur=1;
         } else {
             // utilisateur n'existe pas
-        // $ret        = false;
-        // $img_blob   = '';
-        // $img_taille = 0;
-        // $img_type   = '';
-        // $img_nom    = '';
-        // $taille_max = 250000;
-        // $ret        = is_uploaded_file($_FILES['photo']['tmp_name']); 
-        //     if (!$ret) {
-        //         echo "<p style='color:red'>Problème de transfert de la photo! Veuillez choisir une autre!</p>";
-        //         return false;
-        //     } else {
-                // Le fichier a bien été reçu
-                $img_taille = $_FILES['photo']['size'];   
-                $taille_max = 250000;
-                if ($img_taille > $taille_max) {
-                    echo "Trop gros !";
-                    return false;
-                }
-            $img_type = $_FILES['photo']['type'];
-            $img_nom  = $_FILES['photo']['name'];
-            $img_blob = file_get_contents ($_FILES['photo']['tmp_name']);
+        
+            //     $img_taille = $_FILES['photo']['size'];   
+            //     $taille_max = 10000000;
+            //     if ($img_taille > $taille_max) {
+            //         echo "Trop gros !";
+            //         return false;
+            //     }
+            // $img_type = $_FILES['photo']['type'];
+            // $img_nom  = $_FILES['photo']['name'];
+            // $img_blob = file_get_contents ($_FILES['photo']['tmp_name']);
+
+            ///////////////////////////////////////////////////////////////////////////////////////
+
+            if(isset($_FILES['photo']) AND !empty($_FILES['photo']['name'])) {
+                $tailleMax = 10000000;
+                $extensionsValides = array('jpg', 'gif', 'png');
+                if($_FILES['photo']['size'] <= $tailleMax) {
+                   $extensionUpload = strtolower(substr(strrchr($_FILES['photo']['name'], '.'), 1));
+                   if(in_array($extensionUpload, $extensionsValides)) {
+                      $chemin = "assets/img/avatar/".$_SESSION['username'].".".$extensionUpload;
+                      $resultat = move_uploaded_file($_FILES['photo']['tmp_name'], $chemin);
+                      if($resultat) {
+            //////////////////////////////////////////////////////////////////////////////////////////
             $nom=$_POST['nom'];
             $login=$_POST['username'];
             $pass=password_hash($_POST['password'],  PASSWORD_DEFAULT);
@@ -89,7 +91,7 @@ function login(){
             $_SESSION['username']=$login;
             $img_blob = file_get_contents ($_FILES['photo']['tmp_name']);
                 $req = connect()->prepare("insert into utilisateur(nom,username,password,email,bio,photo) values (?,?,?,?,?,?)");
-                $req->execute(array($nom,$login,$pass,$email,$bio,file_get_contents($_FILES["photo"]["tmp_name"])));
+                $req->execute(array($nom,$login,$pass,$email,$bio,$_SESSION['username'].".".$extensionUpload));
               if($req){
                 ?>
                 <!-- script for redirection after 1 second to research page -->
@@ -108,7 +110,7 @@ function login(){
               }   
              else {
                      echo 'Error during registration';
-                 }}}
+                 }}}}}}}
                 //}
  
 
@@ -137,19 +139,6 @@ function displayInfo(){
         }
 
 }}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ?>
 

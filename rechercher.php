@@ -45,7 +45,7 @@ $photo = $res->photo;
                 <iconify-icon class="close" icon="clarity:close-line"></iconify-icon>
                 <div class="accounthead">
                     <div class="headerPhotoAccount"> 
-                        <img class="headerPhotoProfil" src="<?php  ?>" alt="">
+                        <img class="headerPhotoProfil" src="assets/img/avatar/<?php echo $photo ?>" alt="photo de profil">
                     </div>
                     <div class="bioHeader">
                         <div class="user-name"><?php echo $nom; ?></div>

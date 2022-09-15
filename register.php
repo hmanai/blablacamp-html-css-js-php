@@ -80,7 +80,7 @@ require_once 'fonctions.php';
                         if((!empty($_POST['nom'])) && (!empty($_POST['username'])) && (!empty($_POST['password'])) && (!empty($_POST['email'])) && (!empty($_POST['bio'])) && (!empty($_FILES['photo']))
                         ){
                             $_SESSION['username'] = $_POST['username'];
-                            var_dump($_SESSION['username']);
+                            
                         register();
                         }
                         else{
