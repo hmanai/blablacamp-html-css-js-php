@@ -1,3 +1,8 @@
+
+<?php
+require_once 'fonctions.php';
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -24,12 +29,34 @@
     </header>
     <section id="login">
         <p class="informations"> entrez vos informations</p>
+        
+        <?php
+        //gestion d'erreur de saisie de login et mot de passe
+
+            if(isset($_GET['erreur'])){
+                $err = $_GET['erreur'];
+                if($err==1 )
+                    echo "<p style='color:red; text-align:center; font-size:12px'>Utilisateur ou mot de passe incorrect</p>";
+                 else{
+                    echo "<p style='color:red; text-align:center; font-size:12px'>Entrer votre login et mot de passe</p>";
+                 }
+            }
+            
+        ?>
+
         <div id="containerForm">
             <form id="connexionForm" action="" method="POST">
-                <input class="loginInput" type="text" placeholder="Nom d’utilisateur" name="username" required>
-                <input class="loginInput" type="password" placeholder=" Mot de passe" name="password" required>
-                <input class= "loginButton" type="submit" id='submit' value='se connecter' >
+                <input class="loginInput" type="text" placeholder="Nom d’utilisateur" name="username" >
+                <input class="loginInput" type="password" placeholder=" Mot de passe" name="password" >
+                <input class= "loginButton" type="submit" id='submit' value='se connecter' name="login" >
                 <a class="canceLogin" href="#"> mot de passe oublier</a>
+                <?php
+if(ISSET($_POST['login'])){
+    login();
+
+}
+    ?>
+
 
                 
 
@@ -37,7 +64,7 @@
         </div>
     </section>
 
-    
+
 
 </body>
 </html>

@@ -1,3 +1,19 @@
+
+<?php
+require_once 'fonctions.php';
+
+$nom_utilisateur = $_SESSION['username'];
+
+$req =  "SELECT * FROM utilisateur WHERE username = '$nom_utilisateur' ";
+$rep = connect()->prepare($req);
+$rep->execute();
+$res = $rep->fetch(PDO::FETCH_OBJ);  
+$nom = $res->nom;
+$bio = $res->bio;
+$photo = $res->photo;
+
+// var_dump($photo)
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -22,6 +38,37 @@
         <a class="logoProfil" href="#"> <img class="logoProfil" src="assets/img/logoProfil.png" alt="logo">  </a>
      </header>
 
+         <div class="compteInfor">
+      
+            <div class="compteInfo">
+
+                <iconify-icon class="close" icon="clarity:close-line"></iconify-icon>
+                <div class="accounthead">
+                    <div class="headerPhotoAccount"> 
+                        <img class="headerPhotoProfil" src="<?php  ?>" alt="">
+                    </div>
+                    <div class="bioHeader">
+                        <div class="user-name"><?php echo $nom; ?></div>
+                        <p class="biographie-user"><?php echo $bio; ?></p>
+                    </div>
+                </div>
+                <div class="bouttonrechercherTrajet">
+                    <button class= "searchTrajetButton" type="submit" id='submit' value='proposer un trajet' > 
+                        <img class="iconplus" src="assets/img/searchtrajet.png" alt="icone de recherche trajet">
+                        <span> PROPOSER UN TRAJET</span>
+                    </button>
+                </div> 
+                <div class="navbar">
+                    <a class="accountInformation" href="#"><img class="iconnavbar" src="assets/img/metrajet.png" alt="icone profile"> Mes trajets</a>
+                    <a class="accountInformation" href="#"><img class="iconnavbar" src="assets/img/iconreservation.png" alt="icone réservation"> Mes réservations</a>
+                    <a class="accountInformation" href="#"><img class="iconnavbar" src="assets/img/metrajet.png" alt="icone profile"> Modifier mes informations</a>
+                    <a class="accountInformation" href="#"><img class="iconnavbar" src="assets/img/iconmessagerie.png" alt="icone Messagerie"> Messagerie</a>
+                    <a class="accountInformation" href="logout.php"><iconify-icon class="iconnavbarflech" icon="bx:arrow-back"></iconify-icon>Se déconnecter</a>
+                  </div>
+             </div>
+
+
+         </div>
      <section id="searchTrajet">
          <form class="searchForm" method="" id="searchelement" action="">
             <label class="labelRegister">Rechercher un trajet</label>

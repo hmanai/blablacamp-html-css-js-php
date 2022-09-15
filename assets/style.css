@@ -20,6 +20,11 @@ display: none;
 
 }
 
+.navbar{
+
+    display: none;
+}
+
 #login{
 
     display: none;
@@ -34,7 +39,7 @@ display: none;
     display: none;
 }
 
-#searchTrajet{
+#searchTrajet, #editCompte{
 
     display: none;
 }
@@ -43,6 +48,22 @@ display: none;
 
     display: none;
 }
+
+.compteInfo{
+
+    display: none;
+}
+
+.close {
+
+    display: none;
+}
+
+.fermer{
+
+    display: none;
+}
+
 
 
 
@@ -520,9 +541,27 @@ display: none;
 
 /* Page Félicitation */
 
+.enregistrementForm .erreur{
+
+    color: red;
+    visibility: hidden;
+    text-align: center;
+    font-family: 'Epilogue';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    animation: clignote 2s linear infinite;
+}
+
+
+
+@keyframes clignote {  
+  50% { opacity: 0; }
+}
+
 #felicitation{
 
-    display: flex;
+    display: none;
     flex-direction: column;
     margin-top: 60px;
     margin-left: 10px;
@@ -562,7 +601,17 @@ display: none;
 #searchTrajet{
 
     display: flex;
+    position: relative;
     justify-content: center;
+    min-height: 80vh;
+    width: 100%;
+}
+#editCompte{
+
+    display: flex;
+    position: relative;
+    justify-content: center;
+    flex-direction: column;
     min-height: 80vh;
     width: 100%;
 }
@@ -1183,6 +1232,260 @@ display: none;
     text-align: left;
 }
 /***********************/
+/*********** fenetre des info compte *************/
+.compteInfo{
+    
+
+    width: 90%;
+    height: 455px;
+    display: none;
+    padding-left: 30px;
+    flex-direction: column;
+    top: 105px;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    position: absolute;
+    z-index: 999;
+    left: 5%;
+
+}
+
+
+
+.compteInfo::before{
+
+        content: "";
+        top: 0;
+        right: 20px;
+        position: absolute;
+        width: 0px;
+        height: 0px;
+        transform: translateY(-30px);
+        border-style: solid;
+        border-width: 15px;
+        border-color: transparent transparent #FFFF transparent;
+        filter: drop-shadow(0px 8px 24px rgba(0, 0, 0, 0.25));
+      
+}
+
+.close { 
+
+    top: 10px;
+    right: 10px;
+    position: absolute;
+    z-index: 99999;
+    font-size: 20px;
+    color: #D41E45;
+    display: flex;
+}
+
+.fermer{ 
+
+    top: 10px;
+    right: 10px;
+    position: absolute;
+    z-index: 99999;
+    font-size: 20px;
+    color: #D41E45;
+    display: flex;
+}
+
+.accounthead{
+
+    height: 20%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.headerPhotoAccount{
+
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 4px solid #D41E45;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.headerPhotoProfil{
+  
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+
+}
+
+.bioHeader{
+
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    padding-left: 30px;
+}
+
+.biographie-user{
+
+    left: 31.73%;
+    right: 8%;
+    top: 20.94%;
+    bottom: 76.97%;
+    font-family: 'Epilogue';
+    font-style: italic;
+    font-weight: 300;
+    font-size: 10px;
+    line-height: 20px;
+    color: #333333;
+
+
+}
+
+.user-name{
+
+    left: 31.73%;
+    right: 39.73%;
+    top: 18.84%;
+    bottom: 79.06%;
+    font-family: 'Bungee';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 20px;
+    color: #D41E45;
+}
+
+.bouttonrechercherTrajet{
+
+    width: 90%;
+    height: 55px;
+    left: 38px;
+    top: 237px;
+    background: #D41E45;
+    border-radius: 10px;
+    border: none;
+    margin-top: 30px;
+}
+
+.searchTrajetButton{
+
+    width: 100%;
+    height: 55px;
+    background: #D41E45;
+    border-radius: 10px;
+    border: none;
+    text-transform: uppercase;
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 0.7rem;
+    line-height: 15px;
+    text-align: center;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+.iconplus{
+
+    height: 23px;
+}
+
+.navbar{
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    font-family: 'Epilogue';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    margin-top: 40px;
+
+}
+
+.accountInformation{
+
+    text-decoration: none !important;
+    color: #555555;
+    padding-bottom: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+}
+
+.iconnavbar{
+
+    padding-right: 10px;
+}
+
+.iconnavbarflech{
+
+    padding-right: 14px;
+    font-size: 20px;
+}
+
+
+/***************************/
+
+/***************Page proposeTrajet.html******************/
+ .propositionTraj{
+
+        margin-left: 5%;
+        margin-top: 5%;
+        margin-bottom: 25px;
+        
+    }
+
+.propTraj{
+
+    font-family: 'Epilogue';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    color: #888888;
+    margin-left: 5%;
+    
+
+}
+
+.typeTrio{
+    
+    width: 90%;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    margin-left: 5%;
+    font-family: 'Epilogue';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.01em;
+    color: #555555;
+}
+
+.checkBoxTypeTraj{
+
+    margin-right: 80px;
+}
+
+/***********************************/
+
 
 }
 

@@ -31,6 +31,7 @@ function addressAutocomplete(containerElement, callback, options) {
   var inputElement = document.createElement("input");
   inputElement.setAttribute("type", "text");
   inputElement.setAttribute("class", "inputdepartpoint");
+  inputElement.setAttribute("name", "departPointValue");
 
   inputElement.setAttribute("placeholder", options.placeholder);
   containerElement.appendChild(inputElement);
