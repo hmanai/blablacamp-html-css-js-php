@@ -34,6 +34,7 @@ function login(){
             $fetch = $query->fetch();
             if (($row > 0) && ((password_verify($password, $fetch['password'])))) {
                 $_SESSION['username'] = $fetch['username'];
+                $_SESSION['password'] = $password;
                 header("location: rechercher.php");
                 echo "Bienvenue ".$_SESSION['username'];
                     } else{
@@ -127,6 +128,35 @@ function displayInfo(){
 
 
         }
+
+}}
+
+
+//////////////////////////////function modifier informations du compte/////////////////////////////////////
+
+
+function editCompte(){
+
+$user = $_GET["user-name"];
+
+$req =  "SELECT * FROM utilisateur WHERE username = '$user' ";
+$rep = connect()->prepare($req);
+$rep->execute();
+$res = $rep->fetchAll(PDO::FETCH_ASSOC);     
+$number_of_rows = $rep->fetchColumn(); 
+print_r($number_of_rows) ;
+for ($i=0; $i < 1 ; $i++) { 
+    foreach($res as $key => $value )
+    
+    { 
+        $nom = $value['nom'];
+        $user = $value['username'];
+        $email = $value['email'];
+        $biog = $value['bio'];
+        $photo = $value['photo'];
+
+
+    }
 
 }}
 
