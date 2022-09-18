@@ -59,19 +59,9 @@ function login(){
         if ($user) {
             $erreur=1;
         } else {
-            // utilisateur n'existe pas
-        
-            //     $img_taille = $_FILES['photo']['size'];   
-            //     $taille_max = 10000000;
-            //     if ($img_taille > $taille_max) {
-            //         echo "Trop gros !";
-            //         return false;
-            //     }
-            // $img_type = $_FILES['photo']['type'];
-            // $img_nom  = $_FILES['photo']['name'];
-            // $img_blob = file_get_contents ($_FILES['photo']['tmp_name']);
+       
 
-            ///////////////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////upload photo de profil////////////////////////////////////////////////
 
             if(isset($_FILES['photo']) AND !empty($_FILES['photo']['name'])) {
                 $tailleMax = 10000000;
