@@ -105,13 +105,18 @@
 // trajetContainer.addEventListener('click', function(){
 // document.querySelector('.action').style.display ="flex" 
 // })
- const trajetContainers = document.querySelectorAll('.trajetContainer')
- trajetContainers.forEach(trajetContainer => {
-    trajetContainer.addEventListener('click', function(){
-    document.querySelector('.action').style.display ="flex" 
-    })
-});
+//  const trajetContainers = document.querySelectorAll('.trajetContainer')
+//  trajetContainers.forEach(trajetContainer => {
+//     trajetContainer.addEventListener('click', function(){
+//     document.querySelector('.action').style.display ="flex" 
+//     })
+// });
 
+// window.addEventListener("keydown", function (event) {
+//   if (event.key == "Escape") {
+//     document.querySelector('.action').style.display ="none" 
+
+// }})
 
 </script>
 <script src="assets/trajet.js"> </script>

@@ -1613,7 +1613,7 @@ display: none;
 .trajetDetail{
 
     position: absolute;
-    z-index: 1;
+    /* z-index: 1; */
     width: 90%;
     height: 100px;
     background: #F0F0F0;
@@ -1628,7 +1628,7 @@ display: none;
     width: 90%;
     height: 100px;
     position: absolute;
-    z-index: 2;
+    /* z-index: 2; */
     border-radius: 8px;
     display: none;
     background: #334747;
