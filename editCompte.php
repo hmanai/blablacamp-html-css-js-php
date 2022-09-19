@@ -110,6 +110,8 @@ $photo = $res->photo;
                
                   if (ISSET($_POST['confirm'])){         
                           editCompte();   
+ 
+
               }
      ?>
 

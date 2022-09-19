@@ -167,6 +167,7 @@ $user = $_GET["user-name"];
      //header("location: index.php");
      if ($rep){
      //echo "<p style='color:green; text-ali'>" . "Modification effectuée avec succè" . "</p> ";
+     
      ?>
              <script>
               document.querySelector('.confirm').style.display="flex"
