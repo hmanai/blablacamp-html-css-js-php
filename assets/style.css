@@ -620,6 +620,47 @@ display: none;
     width: 100%;
 }
 
+#searchTrajet .confirm{
+
+    display: none;
+    width: 100%;
+    font-size: 1.2rem;
+    font-family: 'Epilogue';
+    font-style: normal;
+    font-weight: 500;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: #5bcd5b;
+    margin: 0;
+
+}
+
+#searchTrajet .backtoSearch{
+    
+    display: none;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 500;
+    line-height: 12px;
+    text-align: center;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #D41E45;
+    text-decoration: none;
+    margin-top: 20px;
+    font-size: 0.75em;
+    margin-bottom: 20px;
+    animation: clignote 2s linear infinite;
+}
+
+@keyframes clignote {  
+    50% { opacity: 0; }
+  
+}
+
 .searchForm{
 
     width: 100%;

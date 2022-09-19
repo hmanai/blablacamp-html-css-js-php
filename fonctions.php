@@ -102,9 +102,7 @@ function login(){
              else {
                      echo 'Error during registration';
                  }}}}}}}
-                //}
- 
-
+            
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////function to display account informations in header///////////////////////
 
@@ -125,40 +123,60 @@ function displayInfo(){
             $user = $value['username'];
             $biog = $value['bio'];
             $photo = $value['photo'];
-
-
         }
-
 }}
 
 
 //////////////////////////////function modifier informations du compte/////////////////////////////////////
 
-
 function editCompte(){
 
 $user = $_GET["user-name"];
+//var_dump($user);
+       $nom=$_POST['nom'];
+       $username=$_POST['username'];
+       $password=password_hash($_POST['password'],  PASSWORD_DEFAULT);
+       $email=$_POST['email'];
+       $bio=$_POST['bio'];
+      // $img_blob = file_get_contents ($_FILES['photo']['tmp_name']);
 
-$req =  "SELECT * FROM utilisateur WHERE username = '$user' ";
-$rep = connect()->prepare($req);
-$rep->execute();
-$res = $rep->fetchAll(PDO::FETCH_ASSOC);     
-$number_of_rows = $rep->fetchColumn(); 
-print_r($number_of_rows) ;
-for ($i=0; $i < 1 ; $i++) { 
-    foreach($res as $key => $value )
-    
-    { 
-        $nom = $value['nom'];
-        $user = $value['username'];
-        $email = $value['email'];
-        $biog = $value['bio'];
-        $photo = $value['photo'];
+       //////////////modifier la photo////////////////
+       if(isset($_FILES['photo']) && !empty($_FILES['photo']['name'])) {
 
+       $tailleMax = 10000000;
+       $extensionsValides = array('jpg', 'gif', 'png');
+       if($_FILES['photo']['size'] <= $tailleMax) {
+          $extensionUpload = strtolower(substr(strrchr($_FILES['photo']['name'], '.'), 1));
+          if(in_array($extensionUpload, $extensionsValides)) {
+             $chemin = "assets/img/avatar/".$_SESSION['username'].".".$extensionUpload;
+             $resultat = move_uploaded_file($_FILES['photo']['tmp_name'], $chemin);
+            //  var_dump($resultat);
+             if($resultat) {
 
-    }
+       //////////////////////////////
 
-}}
+     $req =  "UPDATE utilisateur SET nom = :nom, username = :username, password = :password, email = :email, bio = :bio, photo = :photo WHERE username = :login";
+     $rep = connect()->prepare($req);
+     $rep->execute(array(':nom' => $nom, 
+    ':username' => $username, 
+    ':password' => $password, 
+    ':email' => $email,
+    ':bio' => $bio, 
+    ':photo' => $_SESSION['username'].".".$extensionUpload,
+    ':login' => $user ));
+     //header("location: index.php");
+     if ($rep){
+     //echo "<p style='color:green; text-ali'>" . "Modification effectuée avec succè" . "</p> ";
+     ?>
+             <script>
+              document.querySelector('.confirm').style.display="flex"
+              document.querySelector('.backtoSearch').style.display="flex"
 
+              </script>
+     <?php
+   }}}
+else{
+          echo "<p style='color:red;'>" . "Modification echouée" . "</p> ";
+         }}}}
 ?>
 

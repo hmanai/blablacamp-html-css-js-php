@@ -28,7 +28,7 @@ $photo = $res->photo;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chercher un trajet</title>
-    <link rel="stylesheet" href="assets/style.css">
+   
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
@@ -38,6 +38,7 @@ $photo = $res->photo;
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script> <!-- link for car icon -->   
+    <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
     <header>
@@ -76,14 +77,9 @@ $photo = $res->photo;
          </div>
      <section id="searchTrajet">
         <div class="enregistrementForm">
-            <form class="registerForm" action="" method="post">
-            <p class="erreur"> Veuillez remplir tous les champs !</p>
-                <?php 
-                if (($erreur=1) && (ISSET($_POST['register'])) && (!empty($_POST['username']))){
-                    echo "<p style='color:red'>le Nom d'utilisateur existe déjà, veuillez choisir un autre!</p>";
-
-                }
-                ?>
+            <form class="registerForm" action="" method="post" enctype="multipart/form-data">
+                <p class="confirm" >Modification effectuée avec succè</p> 
+                <a class="backtoSearch" href="rechercher.php"> Retour </a>
                 <label class="labelRegister"> Modifier vos coordonnées</label>
                 <input class="inputRegister" type="text" placeholder="Nom" name="nom"value="<?php echo $nom ?>">
                 <input class="inputRegister" type="text" placeholder="Nom d'utilisateur" name="username" value="<?php echo $user ?>">
@@ -103,7 +99,7 @@ $photo = $res->photo;
                 </label>
                 <div class="centerButton">
                     <input class= "registerButton" type="submit" id='submit' value='mettre à jour' name="confirm" >
-                    <a class="cancelRegister" href="connexion.html">Annuler</a>
+                    <a class="cancelRegister" href="rechercher.php">Annuler</a>
                 </div>
 
             </form>
@@ -112,22 +108,10 @@ $photo = $res->photo;
 
      <?php
                
-                  if (ISSET($_POST['confirm'])){
-                      if((!empty($_POST['nom'])) && (!empty($_POST['username'])) && (!empty($_POST['password'])) && (!empty($_POST['email'])) && (!empty($_POST['bio'])) && (!empty($_FILES['photo']))
-                      ){
-                          $_SESSION['username'] = $_POST['username'];
-                          
-                      register();
-                      }
-                      else{
-               ?>
-                          <script>
-                              document.querySelector('.erreur').style.visibility="visible";
-                          </script>
-               <?php
-                } 
+                  if (ISSET($_POST['confirm'])){         
+                          editCompte();   
               }
-                ?>
+     ?>
 
 
      <script>

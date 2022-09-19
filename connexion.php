@@ -52,7 +52,6 @@ require_once 'fonctions.php';
                 <a class="canceLogin" href="#"> mot de passe oublier</a>
                 <?php
 if(ISSET($_POST['login'])){
-    $password = $_POST['password'];
     login();
 
 
