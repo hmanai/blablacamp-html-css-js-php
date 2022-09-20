@@ -1,3 +1,25 @@
+<?php
+ 
+require_once 'fonctions.php';
+
+$nom_utilisateur = $_SESSION['username'];
+
+$req =  "SELECT * FROM utilisateur WHERE username = '$nom_utilisateur' ";
+$rep = connect()->prepare($req);
+$rep->execute();
+$res = $rep->fetch(PDO::FETCH_OBJ);  
+$nom = $res->nom;
+$user = $res->username;
+$pass = $res->password;
+$email = $res->email;
+$bio = $res->bio;
+$photo = $res->photo;
+
+// var_dump($photo)
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,35 +46,40 @@
         <a class="logoHeader" href="index.html"> <img class="logoHeader" src="assets/img/logo.png" alt="logo">  </a>
         <a class="logoProfil" href="#"> <img class="logoProfil" src="assets/img/logoProfil.png" alt="logo">  </a>
      </header>
-     <div class="compteInfo">
-        <iconify-icon class="close" icon="clarity:close-line"></iconify-icon>
-        <div class="accounthead">
-            <div class="headerPhotoAccount"> 
-                <img class="headerPhotoProfil" src="assets/img/me3.png" alt="">
-            </div>
-            <div class="bioHeader">
-                <div class="user-name">Hamza</div>
-                <p class="biographie-user">Avec moi ça passe ou ça casse</p>
-            </div>
-        </div>
-        <div class="bouttonrechercherTrajet">
-            <button class= "searchTrajetButton" type="submit" id='submit' value='proposer un trajet' > 
-                <img class="iconplus" src="assets/img/searchtrajet.png" alt="icone de recherche trajet">
-                <span> PROPOSER UN TRAJET</span>
-            </button>
-        </div> 
-        <div class="navbar">
-            <a class="accountInformation" href="#"><img class="iconnavbar" src="assets/img/metrajet.png" alt="icone profile"> Mes trajets</a>
-            <a class="accountInformation" href="#"><img class="iconnavbar" src="assets/img/iconreservation.png" alt="icone réservation"> Mes réservations</a>
-            <a class="accountInformation" href="editCompte.php?user-name=<?php echo $_SESSION['username']; ?>"><img class="iconnavbar" src="assets/img/metrajet.png" alt="icone profile"> Modifier mes informations</a>
-            <a class="accountInformation" href="#"><img class="iconnavbar" src="assets/img/iconmessagerie.png" alt="icone Messagerie"> Messagerie</a>
-            <a class="accountInformation" href="logout.php"><iconify-icon class="iconnavbarflech" icon="bx:arrow-back"></iconify-icon>Se déconnecter</a>
+     <div class="compteInfor">
+      
+      <div class="compteInfo">
+          <iconify-icon class="close" icon="clarity:close-line"></iconify-icon>
+          <div class="accounthead">
+          <div class="headerPhotoAccount"> 
+                  <img class="headerPhotoProfil" src="assets/img/avatar/<?php echo $photo ?>" alt="photo de profil">
+              </div>
+              <div class="bioHeader">
+                  <div class="user-name"><?php echo $nom; ?></div>
+                  <p class="biographie-user"><?php echo $bio; ?></p>
+              </div>
           </div>
-     </div>
+          <div class="bouttonrechercherTrajet">
+              <button class= "searchTrajetButton" type="submit" id='submit' value='proposer un trajet' > 
+                  <img class="iconplus" src="assets/img/searchtrajet.png" alt="icone de recherche trajet">
+                  <span> PROPOSER UN TRAJET</span>
+              </button>
+          </div> 
+          <div class="navbar">
+              <a class="accountInformation" href="#"><img class="iconnavbar" src="assets/img/metrajet.png" alt="icone profile"> Mes trajets</a>
+              <a class="accountInformation" href="#"><img class="iconnavbar" src="assets/img/iconreservation.png" alt="icone réservation"> Mes réservations</a>
+              <a class="accountInformation" href="editCompte.php?user-name=<?php echo $_SESSION['username']; ?>"><img class="iconnavbar" src="assets/img/metrajet.png" alt="icone profile"> Modifier mes informations</a>
+              <a class="accountInformation" href="#"><img class="iconnavbar" src="assets/img/iconmessagerie.png" alt="icone Messagerie"> Messagerie</a>
+              <a class="accountInformation" href="logout.php"><iconify-icon class="iconnavbarflech" icon="bx:arrow-back"></iconify-icon>Se déconnecter</a>
+            </div>
+       </div>
+
+
+   </div>
 
      <section id="mesTrajets">
         <label class="titre"> mes trajet</label>
-
+    <?php for ( $i = 0; $i < 2; $i++) {?>
         <div class="trajetContainer">
             <div class="action">
                 <div class="editer">
@@ -76,7 +103,7 @@
                 </div>
             </div>
         </div>
-
+<?php } ?>
      </section>
 
 
