@@ -8,13 +8,7 @@ click=document.addEventListener('click', function(){
     // var trajetbox = document.createElement('div');
     // trajetbox.classList.add('trajetDetail');
     // document.body.appendChild(trajetbox)
-
-
-
 console.log("hello");
-
-
-
 // for (let i = 0; i < 2; i++) {
 
     var trajetDetail = document.querySelector('.trajetContainer')
@@ -33,18 +27,16 @@ console.log("hello");
   trajetContainers.forEach(trajetDetail => {
 
     trajetDetail.addEventListener("mouseenter", (event) => {
-  document.querySelector('.action').style.display ="flex" 
-  // reset the display after a short delay
-  setTimeout(() => {
+    document.querySelector('.action').style.display ="flex" 
+    // reset the display after a short delay
+    setTimeout(() => {
     document.querySelector('.action').style.display ="none" 
-}, 5000);
-}, false);
+    }, 5000);
+    }, false);
 
 })
-
-
     // console.log(param);
-//}
+
 })
 
 

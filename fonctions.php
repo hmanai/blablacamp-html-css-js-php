@@ -150,11 +150,11 @@ $user = $_GET["user-name"];
           if(in_array($extensionUpload, $extensionsValides)) {
              $chemin = "assets/img/avatar/".$_SESSION['username'].".".$extensionUpload;
              $resultat = move_uploaded_file($_FILES['photo']['tmp_name'], $chemin);
-            //  var_dump($resultat);
+
              if($resultat) {
 
        //////////////////////////////
-
+       if ((!empty($_POST['nom'])) || (!empty($_POST['username'])) || (!empty($_POST['password'])) || (!empty($_POST['email'])) || (!empty($_POST['bio'])) || (!empty($_POST['photo']))){
      $req =  "UPDATE utilisateur SET nom = :nom, username = :username, password = :password, email = :email, bio = :bio, photo = :photo WHERE username = :login";
      $rep = connect()->prepare($req);
      $rep->execute(array(':nom' => $nom, 
@@ -175,9 +175,34 @@ $user = $_GET["user-name"];
 
               </script>
      <?php
-   }}}
-else{
-          echo "<p style='color:red;'>" . "Modification echouée" . "</p> ";
-         }}}}
+   }
+        else{
+                echo "<p style='color:red;'>" . "Modification echouée" . "</p> ";
+                }}}}
+                }}
+     else{ 
+        $req =  "UPDATE utilisateur SET nom = :nom, username = :username, password = :password, email = :email, bio = :bio WHERE username = :login";
+        $rep = connect()->prepare($req);
+        $rep->execute(array(':nom' => $nom, 
+       ':username' => $username, 
+       ':password' => $password, 
+       ':email' => $email,
+       ':bio' => $bio, 
+       ':login' => $user ));
+        //header("location: index.php");
+        if ($rep){
+        //echo "<p style='color:green; text-ali'>" . "Modification effectuée avec succè" . "</p> ";
+        
+        ?>
+                <script>
+                 document.querySelector('.confirm').style.display="flex"
+                 document.querySelector('.backtoSearch').style.display="flex"
+   
+                 </script>
+        <?php
+
+    }}
+    }
+
 ?>
 

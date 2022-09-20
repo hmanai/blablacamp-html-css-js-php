@@ -92,10 +92,13 @@ $photo = $res->photo;
                 <textarea class="textareaRegister" type="text" placeholder="<?php echo $bio?>" aria-placeholder="" name="bio" ></textarea>  
                 <label class="labelRegister">Modifier votre image de profil </label>
                 <label class="fileRegister" > 
-                    <img src="assets/img/icon-file.png" alt="icone de telechargement">
-                    <h2 class="registerTitle" > Glisser-déposer ou parcourir un fichier</h2>
-                    <p> Taille recommandée JPG, PNG, GIF (150x150px. Max 10mb) </p>
-                    <input type="file" class="uploadRegister" name="photo">
+                    <label class="inputFile" name="inputFile" value=""> <img class="PhotoProfil" src="assets/img/avatar/<?php echo $photo ?>"></label>
+                    <div class= "infoImageCompte">
+                        <img  src="assets/img/icon-file.png" alt="icone de telechargement">
+                        <h2 class="registerTitle" > Glisser-déposer ou parcourir un fichier</h2>
+                        <p> Taille recommandée JPG, PNG, GIF (150x150px. Max 10mb) </p>
+                        <input type="file" class="uploadRegister" name="photo" value="<?php echo $photo?>">
+                    </div>
                 </label>
                 <div class="centerButton">
                     <input class= "registerButton" type="submit" id='submit' value='mettre à jour' name="confirm" >
@@ -108,7 +111,7 @@ $photo = $res->photo;
 
      <?php
                
-                  if (ISSET($_POST['confirm'])){         
+                  if ((ISSET($_POST['confirm']))) {         
                           editCompte();   
  
 
@@ -130,6 +133,14 @@ $photo = $res->photo;
         document.querySelector('#searchTrajet').style.display ="flex" 
         document.querySelector('.compteInfo').style.display="none"
         })
+
+        let fileRegister = document.querySelector('.fileRegister')  
+        fileRegister.addEventListener('click', function(){
+        document.querySelector('.infoImageCompte').style.display ="flex" 
+        document.querySelector('.inputFile').style.display="none"
+        })                                                           
+
+
 
      </script>
 </body>
