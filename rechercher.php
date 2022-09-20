@@ -2,6 +2,7 @@
 <?php
 require_once 'fonctions.php';
 
+
 $nom_utilisateur = $_SESSION['username'];
 
 $req =  "SELECT * FROM utilisateur WHERE username = '$nom_utilisateur' ";
@@ -53,10 +54,12 @@ $photo = $res->photo;
                     </div>
                 </div>
                 <div class="bouttonrechercherTrajet">
-                    <button class= "searchTrajetButton" type="submit" id='submit' value='proposer un trajet' > 
+                    <a href="proposerTrajet">
+                        <button class= "searchTrajetButton" type="submit" id='submit' value='proposer un trajet' > 
                         <img class="iconplus" src="assets/img/searchtrajet.png" alt="icone de recherche trajet">
                         <span> PROPOSER UN TRAJET</span>
-                    </button>
+                        </button>
+                    </a>
                 </div> 
                 <div class="navbar">
                     <a class="accountInformation" href="mesTrajets.php"><img class="iconnavbar" src="assets/img/metrajet.png" alt="icone profile"> Mes trajets</a>

@@ -230,6 +230,16 @@ addressAutocomplete(document.getElementById("startPoint"), (data) => {
 	placeholder: "Départ"
 });
 
+
+addressAutocomplete(document.getElementById("etapes"), (data) => {
+  console.log("Selected option: ");
+  console.log(data);
+}, {
+	placeholder: "Etapes"
+});
+
+
+
 /*****************add event listener to show the calender in search page******************** */
 
 

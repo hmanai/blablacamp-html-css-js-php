@@ -60,21 +60,20 @@ $photo = $res->photo;
               </div>
           </div>
           <div class="bouttonrechercherTrajet">
-              <button class= "searchTrajetButton" type="submit" id='submit' value='proposer un trajet' > 
+              <a href="proposerTrajet.php"><button class= "searchTrajetButton" type="submit" id='submit' value='proposer un trajet' > 
                   <img class="iconplus" src="assets/img/searchtrajet.png" alt="icone de recherche trajet">
                   <span> PROPOSER UN TRAJET</span>
-              </button>
+                  </button>
+              </a>
           </div> 
           <div class="navbar">
-              <a class="accountInformation" href="#"><img class="iconnavbar" src="assets/img/metrajet.png" alt="icone profile"> Mes trajets</a>
+              <a class="accountInformation" href="mesTrajets.php"><img class="iconnavbar" src="assets/img/metrajet.png" alt="icone profile"> Mes trajets</a>
               <a class="accountInformation" href="#"><img class="iconnavbar" src="assets/img/iconreservation.png" alt="icone réservation"> Mes réservations</a>
               <a class="accountInformation" href="editCompte.php?user-name=<?php echo $_SESSION['username']; ?>"><img class="iconnavbar" src="assets/img/metrajet.png" alt="icone profile"> Modifier mes informations</a>
               <a class="accountInformation" href="#"><img class="iconnavbar" src="assets/img/iconmessagerie.png" alt="icone Messagerie"> Messagerie</a>
               <a class="accountInformation" href="logout.php"><iconify-icon class="iconnavbarflech" icon="bx:arrow-back"></iconify-icon>Se déconnecter</a>
             </div>
        </div>
-
-
    </div>
 
      <section id="mesTrajets">
@@ -125,6 +124,7 @@ $photo = $res->photo;
     document.querySelector('#mesTrajets').style.display ="flex" 
     document.querySelector('.compteInfo').style.display="none"
 })
+
 
 //////////////affichage de editer et supprimer trajet //////////
 
