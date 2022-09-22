@@ -204,5 +204,46 @@ $user = $_GET["user-name"];
     }}
     }
 
+    //////////////////////////////function Ajout d'un trajet /////////////////////////////////////
+
+///////////////////////////
+// ajouter dans table trajet et table faire trajet //// selectionner les les id des utilisateur where username = $_session["username"]
+//////////////////////////
+    function addTrajet(){
+
+
+        $depart=$_POST['departPointValue'];
+        $arrivee=$_POST['destinationAdress'];
+        $date=$_POST['date'];
+        $heure=$_POST['heure'];
+        $typeTrajet = implode(' ', $_POST["typeTrajet"]);
+        //echo  $typeTrajet;
+        $nbPlace=$_POST['nbPlace'];
+        $etape1 = $_POST['etape1'];
+        $etape2 = $_POST['etape2'];
+        $etape3 = $_POST['etape3'];
+        $etape4 = $_POST['etape4'];
+        $etape5 = $_POST['etape5'];
+
+////////////récuperer la valeur du checkbox bour aller simple ou aller/retour//////////////
+        $sql = "INSERT INTO `trajet` (id_trajet, pt_depart, pt_arrive, date_trajet, heure_trajet, type_trajet, nb_places, etapes )
+                VALUES (NULL, :pt_depart, :pt_arrive, :date_trajet, :heure_trajet, :type_trajet, :nb_places, :etapes )";
+        connect()->prepare($sql)->execute([
+            ":pt_depart" => $depart,
+            ":pt_arrive" => $arrivee,
+            ":date_trajet" => $date, 
+            ":heure_trajet" => $heure,
+            ":type_trajet" => $typeTrajet,
+            ":nb_places" => $nbPlace,
+            ":etapes" => $etape1."/".$etape2."/".$etape3."/".$etape4."/".$etape5
+
+        ]);
+
+
+
+
+       
+    }
+
 ?>
 

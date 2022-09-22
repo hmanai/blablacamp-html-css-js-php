@@ -86,33 +86,32 @@ $photo = $res->photo;
                 <iconify-icon icon="akar-icons:location" class="destinationIcon"></iconify-icon>
                 <select name="destinationAdress" class="destinationSelection">
                     <option> Arrivée</option>
-                    <option value="stade">Avenue du Stade</option>
-                    <option value="montaigu">Route Montaigu</option>
+                    <option value="Avenue du Stade">Avenue du Stade</option>
+                    <option value="Route Montaigu">Route Montaigu</option>
                 </select>
             </div>
             <p class="propTraj"> Quand partez vous?  </p>
                  <div class="dateTrajet">
                     <iconify-icon icon="uil:calender" class="calenIcon"></iconify-icon>
-                    <input class="dateLabel" type="date" >
+                    <input class="dateLabel" type="date" name="date">
                     <label class="dateLabelToday" type="text" value="">Aujourd'hui</label>
                 </div> 
                 <p class="propTraj" type="text" value="">Heure Du Trajet</label>
 
                 <div class="heureTraj">
                     <iconify-icon icon="tabler:clock-hour-10" class="heureTrajet"></iconify-icon>
-                    <input type="time" class="inputHour" name="nbPl" min="0" max="8" placeholder="Heure">
+                    <input type="time" class="inputHour" name="heure" min="0" max="8" placeholder="Heure">
                 </div> 
 
                 <p class="propTraj"> Type de trajet:  </p>
                 <div class="typeTrio">
                     <div class="checkBoxTypeTraj">
-                        <input type="checkbox" id="allez-simple" name="allez-simple"
-                               checked>
+                        <input type="checkbox" id="allez-simple" clas="typeTrajet" name="typeTrajet[]" value="allez-simple" checked>
                         <label for="scales">Allez simple</label>
                       </div>
                   
                       <div class="checkBoxTypeTraj">
-                        <input type="checkbox" id="allez-retour" name="allez-retour">
+                        <input type="checkbox" id="allez-retour" clas="typeTrajet" name="typeTrajet[]" value="Allez/Retour">
                         <label for="allez-retour">Allez/Retour</label>
                       </div>
                 </div>
@@ -120,7 +119,7 @@ $photo = $res->photo;
 
                 <div class="placesDispo">
                     <img class="iconPlaces" src="assets/img/nbplaces.png" alt="icone plusieurs personnes">
-                    <input type="number" class="inputnbPlace" name="nbPl" min="0" max="8" placeholder="Places disponibles">
+                    <input type="number" class="inputnbPlace" name="nbPlace" min="0" max="8" placeholder="Places disponibles">
                 </div> 
                     <p class="propTraj" type="text" value="">Etapes éventuelles:</label>
                 
@@ -152,10 +151,8 @@ $photo = $res->photo;
                 <?Php 
                     if (ISSET($_POST['propTrajButton'])){
 
-                        $departPointValue = $_POST['departPointValue']."/".$_POST['etape1']."/".$_POST['etape2']."/".$_POST['etape3']."/".$_POST['etape4'];
-                     
 
-                        var_dump($departPointValue);
+                       addTrajet();
 
                     }
                 ?>

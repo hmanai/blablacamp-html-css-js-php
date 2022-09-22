@@ -300,7 +300,7 @@ display: none;
 
     }
 
-    .inputdepartpoint
+    .inputdepartpoint, .inputdepartpoint2
     {
 
         width: 90%;
@@ -733,7 +733,7 @@ display: none;
 .searchForm{
 
     width: 100%;
-    margin-top: 15%;
+    margin-top: 20%;
  
     
 }
