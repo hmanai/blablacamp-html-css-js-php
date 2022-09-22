@@ -71,7 +71,7 @@ $photo = $res->photo;
 
          </div>
          <section id="searchTrajet">
-         <form class="searchForm" method="" id="searchelement" action="">
+         <form class="searchForm" method="POST" id="searchelement" action="">
             <div class="propositionTraj" ><label >proposer un trajet</label></div>
 
             <p class="propTraj"> D'où partez-vous?</p>
@@ -96,6 +96,12 @@ $photo = $res->photo;
                     <input class="dateLabel" type="date" >
                     <label class="dateLabelToday" type="text" value="">Aujourd'hui</label>
                 </div> 
+                <p class="propTraj" type="text" value="">Heure Du Trajet</label>
+
+                <div class="heureTraj">
+                    <iconify-icon icon="tabler:clock-hour-10" class="heureTrajet"></iconify-icon>
+                    <input type="time" class="inputHour" name="nbPl" min="0" max="8" placeholder="Heure">
+                </div> 
 
                 <p class="propTraj"> Type de trajet:  </p>
                 <div class="typeTrio">
@@ -116,9 +122,8 @@ $photo = $res->photo;
                     <img class="iconPlaces" src="assets/img/nbplaces.png" alt="icone plusieurs personnes">
                     <input type="number" class="inputnbPlace" name="nbPl" min="0" max="8" placeholder="Places disponibles">
                 </div> 
-                <div class="etape">
                     <p class="propTraj" type="text" value="">Etapes éventuelles:</label>
-                </div>
+                
                 <div class="etapesTrajet">
                        <div class="displayEtapes">
                             <div id="etapes" class="etapeTraj">
@@ -128,15 +133,36 @@ $photo = $res->photo;
                        <img class="iconPlus" src="assets/img/etapePlus.png" alt="icone Plus">
                   <!-- <input type="text" class="inputEtape" name="nbPl" min="0" max="8" placeholder="Etape"> -->   
                 </div>
+                <div class="etapList">
+                        <p class="msgErreur"> Veuillez entrez au moin une étape </p>
+                        <input class="etape1" type="text" name="etape1" id="etape1" >
+                        <input class="etape2" type="text" name="etape2" id="etape2" >
+                        <input class="etape3" type="text" name="etape3" id="etape3" >
+                        <input class="etape4" type="text" name="etape4" id="etape4" >
+                        <input class="etape5" type="text" name="etape5" id="etape5" >
+                </div>
                
-
-
                 <div class="bouttonrechercher">
-                    <input class= "searchButton" type="submit" id='submit' value='proposer un trajet' > 
+                    <input class= "searchButton" type="submit" id='submit' value='proposer un trajet' name="propTrajButton"> 
                 </div> 
+                <div id="displayEtape"></div>
+ 
+
+
+                <?Php 
+                    if (ISSET($_POST['propTrajButton'])){
+
+                        $departPointValue = $_POST['departPointValue']."/".$_POST['etape1']."/".$_POST['etape2']."/".$_POST['etape3']."/".$_POST['etape4'];
+                     
+
+                        var_dump($departPointValue);
+
+                    }
+                ?>
          </form>
      </section>
 
+     <script src="assets/AjouEtape.js"></script>
 
      <script src="assets/style.js"></script>
      <script src="assets/visibility.js"></script>
@@ -146,9 +172,7 @@ $photo = $res->photo;
     <!-- -------------------------------------------------------------- -->
 
 
-
      <script>
-
         let logooProfil = document.querySelector('.logoProfil')
         logooProfil.addEventListener('click', function(){
         document.querySelector('#searchTrajet').style.display ="none" 
@@ -161,20 +185,8 @@ $photo = $res->photo;
         document.querySelector('#searchTrajet').style.display ="flex" 
         document.querySelector('.compteInfo').style.display="none"
         })
-            
-        
-let click = document.querySelector('.iconPlus')
-            click.addEventListener('click', function(){
-            console.log('hi')
-            var etapesTrajet = document.getElementById('etapes')
-            var etapesClon = etapesTrajet.cloneNode(true)
-            etapesTrajet.parentNode.appendChild(etapesClon)
+  
 
-
-})
-
-
-        ///////////////////////////// ajouter etape en cliquant sur icon plus /////////////////////////////
  
      </script>
 </body>

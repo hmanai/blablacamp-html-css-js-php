@@ -9,10 +9,6 @@ fetch("https://api.geoapify.com/v2/places?categories=commercial.supermarket&filt
   .then(response => response.json())
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
-
-
-
-
 /* 
 	The addressAutocomplete takes as parameters:
   - a container element (div)
@@ -31,6 +27,8 @@ function addressAutocomplete(containerElement, callback, options) {
   var inputElement = document.createElement("input");
   inputElement.setAttribute("type", "text");
   inputElement.setAttribute("class", "inputdepartpoint");
+  inputElement.setAttribute("id", "inputId");
+
   inputElement.setAttribute("name", "departPointValue");
 
   inputElement.setAttribute("placeholder", options.placeholder);
@@ -121,11 +119,35 @@ function addressAutocomplete(containerElement, callback, options) {
         itemElement.addEventListener("click", function(e) {
           inputElement.value = currentItems[index].properties.city;
           console.log(inputElement.value);
+         ///////////////////////////////
+         ////////////////////////////////
+         ///////////////////////////// 
 
+                         
+         
+         
+
+
+          
+          ///////////////////////////////////////
+          /////////////////////////////////
+          /////////////////////////////////
+          //////////////////////////////
           callback(currentItems[index]);
 
           /* Close the list of autocompleted values: */
           closeDropDownList();
+
+////////////////////////
+/////////////////////
+//////////////////////
+
+
+///////////////////////
+///////////////////
+
+
+
         });
 
         autocompleteItemsElement.appendChild(itemElement);
@@ -220,6 +242,76 @@ function addressAutocomplete(containerElement, callback, options) {
       inputElement.dispatchEvent(event);
     }
   });
+ /////////////////////////////////////
+ /////////////////////////////////////////
+
+ 
+ let click = document.querySelector('.iconPlus')
+ var count = 0;
+ 
+     click.addEventListener('click', function(){
+                 count++;
+                 console.log('hi')
+                 console.log(inputElement.value);
+                 var disp = document.getElementById("displayEtape");
+                     disp.innerHTML = count;
+                    var etape1 = document.getElementById('etape1').value 
+                    var etape2 = document.getElementById('etape2').value
+                    var etape3 = document.getElementById('etape3').value  
+                    var etape4 = document.getElementById('etape4').value 
+                    if (inputElement.value =="") {document.querySelector('.msgErreur').style.display="flex"}
+                      else{
+                        document.querySelector('.msgErreur').style.display="none"
+                        if ((etape1  == "" ))
+                        {
+                              document.querySelector('.etape1').value = inputElement.value
+                              document.querySelector('.etape1').style.display="flex"
+                              count++;
+                              }
+                              else if ((etape1 !== "")&& (etape2 == ""))
+                              {
+                                    document.querySelector('.etape2').value = inputElement.value
+                                    document.querySelector('.etape1').style.display="flex"
+                                    document.querySelector('.etape2').style.display="flex"
+
+                                    count++;
+                                    }
+                                    else if ((etape1 !== "") && (etape2 !== "") && (etape3 == ""))
+                                    {
+                                    document.querySelector('.etape3').value = inputElement.value
+                                    document.querySelector('.etape1').style.display="flex"
+                                    document.querySelector('.etape2').style.display="flex"
+                                    document.querySelector('.etape3').style.display="flex"
+                                    count++;
+                                    }
+                                          else if ((etape1 !== "") && (etape2 !== "") && (etape3 !== "") && (etape4 == "") )
+                                          {
+                                          document.querySelector('.etape4').value = inputElement.value
+                                          document.querySelector('.etape1').style.display="flex"
+                                          document.querySelector('.etape2').style.display="flex"
+                                          document.querySelector('.etape3').style.display="flex"
+                                          document.querySelector('.etape4').style.display="flex"
+
+                                          count++;
+                                          }
+                                                  else 
+                                                  {
+                                                  document.querySelector('.etape5').value = inputElement.value
+                                                  document.querySelector('.etape1').style.display="flex"
+                                                  document.querySelector('.etape2').style.display="flex"
+                                                  document.querySelector('.etape3').style.display="flex"
+                                                  document.querySelector('.etape4').style.display="flex"
+                                                  document.querySelector('.etape5').style.display="flex"
+
+                                                  count++;
+                                                  }
+                                                }
+      
+ 
+                     })
+         
+ ///////////////////////////////////////////////
+ ////////////////////////////////////////////
 
 }
 
@@ -230,6 +322,7 @@ addressAutocomplete(document.getElementById("startPoint"), (data) => {
 	placeholder: "Départ"
 });
 
+///////////////////////////////////////// 
 
 addressAutocomplete(document.getElementById("etapes"), (data) => {
   console.log("Selected option: ");
@@ -240,8 +333,35 @@ addressAutocomplete(document.getElementById("etapes"), (data) => {
 
 
 
+
+
+
 /*****************add event listener to show the calender in search page******************** */
 
 
+// let click = document.querySelector('.iconPlus')
+// for (let i = 1 ; i<10; i++){
+// click.addEventListener('click', function(){
+
+  
+
+
+//     var inputetape = document.createElement('div');
+    
+//     inputetape.name = 'etape'+i  
+//     inputetape.className = 'etapeTraj';  
+//     inputetape.id = "inputId"
+
+//     var etapList = document.querySelector('.etapList');
+//     etapList.appendChild(inputetape);
+   
+  
+//   console.log('hi')
+  
+
+
+// })
+// }
 
 /************************************* */
+
