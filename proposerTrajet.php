@@ -98,12 +98,18 @@ $photo = $res->photo;
                     <input class="dateLabel" type="date" name="date">
                     <label class="dateLabelToday" type="text" value="">Aujourd'hui</label>
                 </div> 
-                <p class="propTraj" type="text" value="">Heure Du Trajet</label>
+                <p class="propTraj" type="text" value="">Heure Du Départ</label>
 
                 <div class="heureTraj">
                     <iconify-icon icon="tabler:clock-hour-10" class="heureTrajet"></iconify-icon>
-                    <input type="time" class="inputHour" name="heure" min="0" max="8" placeholder="Heure">
+                    <input type="time" class="inputHour" name="heureDepart" min="0" max="8" placeholder="Heure">
                 </div> 
+                <p class="propTraj" type="text" value="">Heure D'arrivée</label>
+
+                <div class="heureTraj">
+                    <iconify-icon icon="tabler:clock-hour-10" class="heureTrajet"></iconify-icon>
+                    <input type="time" class="inputHour" name="heureArrive" min="0" max="8" placeholder="Heure">
+                </div>
 
                 <p class="propTraj"> Type de trajet:  </p>
                 <div class="typeTrio">
@@ -152,8 +158,6 @@ $photo = $res->photo;
 
                 <?Php 
                     if (ISSET($_POST['propTrajButton'])){
-
-
                        addTrajet();
 
                     }

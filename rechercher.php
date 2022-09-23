@@ -75,26 +75,27 @@ $photo = $res->photo;
      <section id="searchTrajet">
          <form class="searchForm" method="" id="searchelement" action="">
             <label class="labelRegister">Rechercher un trajet</label>
-            <div id="startPoint">
-                <iconify-icon icon="akar-icons:location" class="positionIcon"></iconify-icon>
-            </div>
-            <div class="destination">
-                <iconify-icon icon="akar-icons:location" class="destinationIcon"></iconify-icon>
-                <select name="destinationAdress" class="destinationSelection">
-                    <option> Destination</option>
-                    <option value="stade">Avenue du Stade</option>
-                    <option value="montaigu">Route Montaigu</option>
-                </select>
-            </div>
-                 <div class="dateTrajet">
-
-                    <iconify-icon icon="uil:calender" class="calenIcon"></iconify-icon>
-                    <input class="dateLabel" type="date" >
-                    <label class="dateLabelToday" type="text" value="">Aujourd'hui</label>
-                </div> 
-                <div class="bouttonrechercher">
-                    <input class= "searchButton" type="submit" id='submit' value='Rechercher' > 
-                </div> 
+                <div class="alignerInput">
+                    <div id="startPoint">
+                        <iconify-icon icon="akar-icons:location" class="positionIcon"></iconify-icon>
+                    </div>
+                    <div class="destination">
+                        <iconify-icon icon="akar-icons:location" class="destinationIcon"></iconify-icon>
+                        <select name="destinationAdress" class="destinationSelection">
+                            <option> Destination</option>
+                            <option value="stade">Avenue du Stade</option>
+                            <option value="montaigu">Route Montaigu</option>
+                        </select>
+                    </div>
+                        <div class="dateTrajet">
+                            <iconify-icon icon="uil:calender" class="calenIcon"></iconify-icon>
+                            <input class="dateLabel" type="date" name="date">
+                            <label class="dateLabelToday" type="text" value="">Aujourd'hui</label>
+                        </div> 
+                        <div class="bouttonrechercher">
+                            <input class= "searchButton" type="submit" id='submit' value='Rechercher' name="search" > 
+                        </div>
+                 </div>
          </form>
      </section>
      <script src="assets/style.js"></script>

@@ -118,34 +118,11 @@ var requestOptions = {
           itemElement.addEventListener("click", function(e) {
             inputElement2.value = currentItems[index].properties.city;
             console.log(inputElement2.value);
-           ///////////////////////////////
-           ////////////////////////////////
-           ///////////////////////////// 
-  
-                           
-           
-           
-  
-  
-            
-            ///////////////////////////////////////
-            /////////////////////////////////
-            /////////////////////////////////
-            //////////////////////////////
+
             callback(currentItems[index]);
   
             /* Close the list of autocompleted values: */
             closeDropDownList();
-  
-  ////////////////////////
-  /////////////////////
-  //////////////////////
-  
-  
-  ///////////////////////
-  ///////////////////
-  
-  
   
           });
   
@@ -325,15 +302,5 @@ var requestOptions = {
   });
   
   
-  
-  
-  
-  
-  /*****************add event listener to show the calender in search page******************** */
-  
-  
-  
-  
-  /************************************* */
   
   

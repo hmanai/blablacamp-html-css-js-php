@@ -10,7 +10,7 @@ function connect(){
     
     try {
     
-    $db = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $db = new PDO("mysql:host=$host;dbname=$dbname", $username, $password,  array(\PDO::MYSQL_ATTR_INIT_COMMAND =>  'SET NAMES utf8')); // pour prendre l'accent dans la base de donnée
     
     // echo "Connecté à $dbname sur $host avec succès.";
     
@@ -212,7 +212,8 @@ $user = $_GET["user-name"];
         $depart=$_POST['departPointValue'];
         $arrivee=$_POST['destinationAdress'];
         $date=$_POST['date'];
-        $heure=$_POST['heure'];
+        $heure=$_POST['heureDepart'];
+        $heureArrive=$_POST['heureArrive'];
         $typeTrajet = implode(' ', $_POST["typeTrajet"]); // récuperer la valeur du checkbox (allez simple ou allez-retour)
         //echo  $typeTrajet;
         $nbPlace=$_POST['nbPlace'];
@@ -221,13 +222,14 @@ $user = $_GET["user-name"];
         $etape3 = $_POST['etape3'];
         $etape4 = $_POST['etape4'];
         $etape5 = $_POST['etape5'];
-        $sql = "INSERT INTO `trajet` (id_trajet, pt_depart, pt_arrive, date_trajet, heure_trajet, type_trajet, nb_places, etapes, chauffeur )
-                VALUES (NULL, :pt_depart, :pt_arrive, :date_trajet, :heure_trajet, :type_trajet, :nb_places, :etapes, :chauffeur )";
+        $sql = "INSERT INTO `trajet` (id_trajet, pt_depart, pt_arrive, date_trajet, heure_trajet, heure_Arrive, type_trajet, nb_places, etapes, chauffeur )
+                VALUES (NULL, :pt_depart, :pt_arrive, :date_trajet, :heure_trajet, :heure_Arrive, :type_trajet, :nb_places, :etapes, :chauffeur )";
         connect()->prepare($sql)->execute([
             ":pt_depart" => $depart,
             ":pt_arrive" => $arrivee,
             ":date_trajet" => $date, 
             ":heure_trajet" => $heure,
+            ":heure_Arrive" => $heureArrive,
             ":type_trajet" => $typeTrajet,
             ":nb_places" => $nbPlace,
             ":etapes" => $etape1."/".$etape2."/".$etape3."/".$etape4."/".$etape5,
@@ -246,5 +248,27 @@ $user = $_GET["user-name"];
         }
        
     }
+
+////////////////////////////////////////Function recherch Trajet/////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ?>
 

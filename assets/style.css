@@ -707,6 +707,14 @@ display: none;
     width: 100%;
 }
 
+.alignerInput{
+
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
 #searchTrajet .confirm{
 
     display: none;
@@ -761,6 +769,7 @@ display: none;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    margin-left: 1.7%;
     
 }
 #etapes{
@@ -800,7 +809,6 @@ display: none;
     border-radius: 8px;
     padding-left: 40px;
     margin-top: 3%;
-    margin-left: 5%;
     margin-bottom: 10px;
     background-color: #eeeeee;
     color: #555555;
@@ -843,7 +851,6 @@ display: none;
     border-radius: 8px;
     padding-left: 40px;
     margin-top: 3%;
-    margin-left: 5%;
     margin-bottom: 10px;
     background-color: #eeeeee;
     color: #555555;
@@ -1595,8 +1602,8 @@ display: none;
     color: #888888;
     margin-left: 5%;
     
-
 }
+
 
 .heureTrajet{
 position: absolute;
@@ -1632,6 +1639,7 @@ color: #333333;
     display: flex;
     align-items: center;
     margin-top: 30px;
+    margin-bottom: 51px;
 }
 
 .typeTrio{
@@ -1644,7 +1652,7 @@ color: #333333;
     padding-left: 5%;
     font-family: 'Epilogue';
     font-size: 18px;
-    margin-top: 10%;
+    margin-top: 5%;
     margin-bottom: 5%;
     letter-spacing: 0.01em;
     color: #555555;
