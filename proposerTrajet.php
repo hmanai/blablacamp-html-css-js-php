@@ -159,6 +159,7 @@ $photo = $res->photo;
                 <?Php 
                     if (ISSET($_POST['propTrajButton'])){
                        addTrajet();
+                       
 
                     }
                 ?>

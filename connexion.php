@@ -27,6 +27,7 @@ require_once 'fonctions.php';
        <a class="logoHeader" href="index.html"> <img class="logoHeader" src="assets/img/logo.png" alt="logo">  </a>
         <p class="headConnexion"> se connecter</p>     
     </header>
+   
     <section id="login">
         <p class="informations"> entrez vos informations</p>
         
