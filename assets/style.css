@@ -331,6 +331,23 @@ display: none;
         text-transform: uppercase;
         display: none;
     }
+
+    .confAjoutTrajet{
+
+        color: rgb(39, 156, 39);
+        font-size: 1.25rem;
+        font-family: 'Work Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 0.75em;
+        line-height: 15px;
+        text-align: center;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        display: none; 
+        justify-content: center;
+        align-items: center;
+    }
 .etape1, .etape2, .etape3, .etape4, .etape5{
 
     width: 70%;
@@ -365,6 +382,7 @@ display: none;
         letter-spacing: 5px;
         text-transform: uppercase;
         margin-top: 10%;
+        margin-bottom: 5%;
         color: #FFFFFF;
         
     }

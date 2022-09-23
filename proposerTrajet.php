@@ -72,6 +72,8 @@ $photo = $res->photo;
          </div>
          <section id="searchTrajet">
          <form class="searchForm" method="POST" id="searchelement" action="">
+            <p class="confAjoutTrajet" >Trajet bien ajouté</p>
+            <a class="backtoSearch" href="rechercher.php"> Retour </a>
             <div class="propositionTraj" ><label >proposer un trajet</label></div>
 
             <p class="propTraj"> D'où partez-vous?</p>

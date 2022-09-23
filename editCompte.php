@@ -4,6 +4,7 @@
 require_once 'fonctions.php';
 
 $nom_utilisateur = $_SESSION['username'];
+$password = $_SESSION['username'];
 
 $req =  "SELECT * FROM utilisateur WHERE username = '$nom_utilisateur' ";
 $rep = connect()->prepare($req);
@@ -11,7 +12,7 @@ $rep->execute();
 $res = $rep->fetch(PDO::FETCH_OBJ);  
 $nom = $res->nom;
 $user = $res->username;
-$pass = $res->password;
+$pass = $password;
 $email = $res->email;
 $bio = $res->bio;
 $photo = $res->photo;

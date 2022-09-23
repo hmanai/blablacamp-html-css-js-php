@@ -234,6 +234,17 @@ $user = $_GET["user-name"];
             ":chauffeur" => $user
 
         ]);
+        if ($sql){
+         ?>
+         
+            <script>
+                document.querySelector('.confAjoutTrajet').style.display='flex'
+                document.querySelector('.backtoSearch').style.display='flex'
+
+            </script>
+        <?php        
+        }
+       
     }
 ?>
 

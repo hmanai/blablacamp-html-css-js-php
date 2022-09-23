@@ -57,7 +57,7 @@ require_once 'fonctions.php';
                 <input class="inputRegister" type="text" placeholder="Nom" name="nom">
                 <input class="inputRegister" type="text" placeholder="Nom d'utilisateur" name="username">
                 <label class="labelRegister"> Entrez votre mot de passe</label>
-                <input class="inputRegister" type="text" placeholder="Mot de passe" name="password">
+                <input class="inputRegister" type="password" placeholder="Mot de passe" name="password">
                 <label class="labelRegister"> Entrez votre email</label>
                 <input class="inputRegister" type="text" placeholder="Email" name="email">
                     <p>Ajoutez votre adresse e-mail pour recevoir des notifications sur votre activité sur Foundation. Cela ne sera pas affiché sur votre profil.</p>
