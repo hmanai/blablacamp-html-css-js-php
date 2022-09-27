@@ -67,7 +67,9 @@ $photo = $res->photo;
              </div>
          </div>
      <section id="searchTrajet">
-         <form class="searchForm" method="" id="searchelement" action="resultRecherch.php">
+         <form class="searchForm" method="GET" id="searchelement" action="resultRecherch.php">
+            
+            <p class="erreurRecherch">Veuillez remplir tous les champs !</p>
             <label class="labelRegister">Rechercher un trajet</label>
                 <div class="alignerInput">
                     <div id="startPoint">
@@ -84,11 +86,26 @@ $photo = $res->photo;
                         <div class="dateTrajet">
                             <iconify-icon icon="uil:calender" class="calenIcon"></iconify-icon>
                             <input class="dateLabel" type="date" name="date">
-                        </div> 
+                        </div>
+                        <div class="typeTrio">
+                    <div class="checkBoxTypeTraj">
+                        <input type="checkbox" id="allez-simple" clas="typeTrajet" name="typeTrajet[]" value="allez-simple" checked>
+                        <label for="scales">Allez simple</label>
+                      </div>
+                  
+                      <div class="checkBoxTypeTraj">
+                        <input type="checkbox" id="allez-retour" clas="typeTrajet" name="typeTrajet[]" value="Allez-Retour">
+                        <label for="Allez-Retour">Allez/Retour</label>
+                      </div>
+                </div> 
                         <div class="bouttonrechercher">
                        
                            <a href="" target="_blank"><input class= "searchButton" type="submit" id='submit' value='Rechercher' name='search' > </a>
                         </div>
+                        <?php
+
+
+                        ?>
 
          </form>
      </section>

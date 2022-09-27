@@ -1,10 +1,18 @@
 <?php
 require_once 'fonctions.php';
 
+if ((ISSET($_GET['search'])) && ((empty($_GET['departPointValue'])) || (empty($_GET['destinationAdress'])) || (empty($_GET['date']))  )) {
 
-
+       header('Location: ./rechercher.php'); 
+       ?>
+    <script>
+  document.querySelector('.erreurRecherch').style.display ="flex" 
+    </script>
+     <?php
+} 
+else{
+//////////////////////////////////// récuperer nom, bio et photo du chauffeur //////////////////////////////////////
 $nom_utilisateur = $_SESSION['username'];
-
 $req =  "SELECT * FROM utilisateur WHERE username = '$nom_utilisateur' ";
 $rep = connect()->prepare($req);
 $rep->execute();
@@ -12,33 +20,36 @@ $res = $rep->fetch(PDO::FETCH_OBJ);
 $nom = $res->nom;
 $bio = $res->bio;
 $photo = $res->photo;
-//////////////////////////////////// nom, bio et photo du chauffeur //////////////////////////////////////
+
 
 //////////////////////////searchTraj();/////////////////////////////////// 
 
 $departure = $_GET['departPointValue'];
 $destination = $_GET['destinationAdress'];
 $date_Trajet = $_GET['date'];
+$type_traj = implode(' ', $_GET["typeTrajet"]);
+$srcImg = "";
+///////////////////////gerer type de trajet pour afficher le logo qui correspond //////
+
+
 
 $date_explosee = explode("-", $date_Trajet);
-
 $jour = $date_explosee[2];
 $mois = $date_explosee[1];
 // var_dump($destination);
 // var_dump($date_Trajet);
-$req =  "SELECT * FROM trajet WHERE pt_depart = :departure AND pt_arrive = :pt_arrive AND date_trajet = :date_Trajet";
+$req =  "SELECT * FROM trajet WHERE pt_depart = :departure AND pt_arrive = :pt_arrive AND date_trajet = :date_Trajet AND type_trajet = :type_trajet";
 $rep = connect()->prepare($req);
 $rep->execute([':departure' => $departure,
                ':pt_arrive' => $destination,
-               ':date_Trajet' => $date_Trajet 
+               ':date_Trajet' => $date_Trajet,
+               'type_trajet' => $type_traj
                 ]);
 // $rep->execute();
 $res = $rep->fetchAll(PDO::FETCH_OBJ);  
 $count = $rep->rowCount();
-
 //var_dump($count);
 // var_dump($res);
-
 ////////////////////////////////////////////////////////////////////////////
 
 // resultRecherchTrajet();
@@ -113,7 +124,8 @@ $count = $rep->rowCount();
                 <div class="finishLocation"><?php echo $destination ?></div> 
             </div>
             <div class="iconflech">
-                <img class="fleche" src="assets/img/flechhautbas.png" alt="image de deux fleches haut et bas">
+                <img class="fleche" src="assets/img/<?php echo $type_traj ?>" alt="image de deux fleches haut et bas">
+           
             </div>
         </div>
 
@@ -184,7 +196,7 @@ $count = $rep->rowCount();
             
         </div>
         <?php
-          }
+          }}
         
           ?>
      </section>

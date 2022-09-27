@@ -96,7 +96,6 @@ $photo = $res->photo;
                  <div class="dateTrajet">
                     <iconify-icon icon="uil:calender" class="calenIcon"></iconify-icon>
                     <input class="dateLabel" type="date" name="date">
-                    <label class="dateLabelToday" type="text" value="">Aujourd'hui</label>
                 </div> 
                 <p class="propTraj" type="text" value="">Heure Du Départ</label>
 

@@ -333,6 +333,26 @@ display: none;
         display: none;
     }
 
+    .erreurRecherch{
+
+        color: #D41E45;
+        text-align: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        width: 100%;
+        font-size: 1.25rem;
+        font-family: 'Work Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 0.75em;
+        line-height: 15px;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        display: none;
+    }
+
+    
+
     .confAjoutTrajet{
 
         color: rgb(39, 156, 39);
@@ -453,7 +473,7 @@ display: none;
 
     .labelRegister{
 
-        margin-left: 5%;
+        margin-left: 6%;
         margin-top: 5%;
 
 
@@ -714,6 +734,7 @@ display: none;
     text-align: center;
     justify-content: center;
     flex-direction: column;
+    align-items: stretch;
 }
 
 #searchTrajet .confirm{
@@ -896,7 +917,7 @@ display: none;
 
 .searchButton{
 
-    width: 200px;
+    width: 241px;
     height: 55px;
     background: #D41E45;
     border-radius: 10px;
