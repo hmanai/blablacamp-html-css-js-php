@@ -2,11 +2,11 @@
    
    
    
-   let dateLabel = document.querySelector('.dateLabelToday')
-   dateLabel.addEventListener('click', function(){
-   document.querySelector('.dateLabelToday').style.display ="none" 
+//    let dateLabel = document.querySelector('.dateLabelToday')
+//    dateLabel.addEventListener('click', function(){
+//    document.querySelector('.dateLabelToday').style.display ="none" 
 
- })
+//  })
 
   let logoProfil = document.querySelector('.logoProfil')
   logoProfil.addEventListener('click', function(){

@@ -20,15 +20,28 @@ require_once 'fonctions.php';
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> <!-- CDN jquery -->
+
+
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
+<div id="felicitationLogin">
+        <header class="felicitationheader">
+            <a class="logoHeader" href="index.html"><img  class="logoHeader" src="assets/img/logo.png" alt="logo"></a> 
+            <span class="headConnexion"> confirmation</span>     
+        </header>
+        <div class=" felicitationcorps">
+            <h2> Félicitation <span class="styleusername"></span></h2>
+            <p>Vous êtes bien connecté!!</p>
+        </div>
+
+</div> 
+    <section id="login">
     <header>
        <a class="logoHeader" href="index.html"> <img class="logoHeader" src="assets/img/logo.png" alt="logo">  </a>
         <p class="headConnexion"> se connecter</p>     
     </header>
-   
-    <section id="login">
         <p class="informations"> entrez vos informations</p>
         
         <?php
@@ -65,7 +78,6 @@ if(ISSET($_POST['login'])){
             </form>
         </div>
     </section>
-
 
 
 </body>

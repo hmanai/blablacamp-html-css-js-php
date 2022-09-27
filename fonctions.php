@@ -33,9 +33,23 @@ function login(){
             $row = $query->rowCount();
             $fetch = $query->fetch();
             if (($row > 0) && ((password_verify($password, $fetch['password'])))) {
+
                 $_SESSION['username'] = $fetch['username'];
                 $_SESSION['password'] = $password;
-                header("location: rechercher.php");
+                ?>
+                <!-- script for redirection after 1 second to research page -->
+                <script>
+                document.getElementById("felicitationLogin").style.display = "flex";
+                setTimeout(function() { $("#felicitationLogin").hide(); }, 1000);
+                document.getElementById("login").style.display = "none";
+
+                function redirectionLogin() {
+                    location.href="rechercher.php"               
+                        }
+                        setTimeout("redirectionLogin()", 1000); 
+                </script>             
+                <?php
+                // header("location: rechercher.php");
                 echo "Bienvenue ".$_SESSION['username'];
                     } else{
                         header("location: connexion.php?erreur=1");  
@@ -47,6 +61,7 @@ function login(){
              header("location: connexion.php?erreur=2");  
     
          }}
+         
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     function register(){   
@@ -244,15 +259,61 @@ $user = $_GET["user-name"];
                 document.querySelector('.backtoSearch').style.display='flex'
 
             </script>
-        <?php        
+<?php        
         }
        
     }
 
-////////////////////////////////////////Function recherch Trajet/////////////////////////////////////////////
+    /////////////////////////////////Fonction de redirection//////////////////////////////////////////////
 
 
+    /////////////////////////////////////////////////////////////////////////////
 
+////////////////////////////////////////Function changer date ////////////////////////////////////////////
+
+function changeDate($month){
+
+    switch ($month) {
+    case 01:
+        echo "JAN";
+        break;
+    case 02:
+        echo "FEV";
+        break;
+    case 03:
+        echo "MAR";
+        break;
+    case 04:
+        echo "AVR";
+        break;
+    case 05:
+         echo "MAI";
+         break;
+    case 06:
+        echo "JUIN";
+        break;
+    case 07:
+        echo "JUILL";
+        break;
+    case 8:
+        echo "AOUT";
+        break;
+    case 9:
+        echo "SEP";
+        break;
+    case 10:
+        echo "OCT";
+        break;
+    case 11:
+        echo "NOV";
+        break;
+     case 12:
+        echo "DEC";
+        break;
+    }
+}
+
+////////////////////////////////////////function result/////////////////////////////////////////////////////////
 
 
 
