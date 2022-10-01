@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>test</title>
-    <link rel="stylesheet" href="assets/style.css">
+ 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
@@ -15,11 +15,95 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script> <!-- link for car icon -->
-    <script src="assets/style.js"></script>
+    <link rel="stylesheet" href="style.css">
+   
 </head>
 <body>
-    <div class="autocomplete-container" id="autocomplete-container"></div>
-    <div class="autocomplete-container" id="autocomplete-container-country"></div>
-    <div class="autocomplete-container" id="autocomplete-container-city"></div>
+    <div class="detailsTrajet">
+        <div class="nbrslttrj">
+            <p class="nbplace">places disponibles:<span class="nomnrePlace">5</span></p>
+        </div>
+        <div class="details">
+
+            <div class="hourTrip">
+                <span class="startHour">14h20</span>
+                <span class="finishHour">15h53</span>
+            </div>
+            <div class="liaison">
+                <!-- <img class="cercleLiaison" src="assets/img/deuxCercles.png" alt="deux cercles liés par un trait"> -->
+            
+                <span class="cercleHaut" > </span>
+                <span class="cercleBas"></span>
+               
+            </div>
+            <div class="citiestrip">
+                <div class="cityStart"> lons</div>
+               
+
+                <div class="cityFinish">bourg en bresse</div>
+            </div>
+
+        </div>
+        <div class="accountdetails">
+        
+           
+            <div class="photoAccount"> 
+                <img class="photoProfil" src="assets/img/avatar/<?php echo $photoChauf ?>" alt="">
+            </div>
+            <div class="bio">
+                <div class="nomUtilisateur"></div>
+                <p class="biographie"></p>
+            </div>
+
+        </div>
+        
+    </div>
+
+
+    <style>
+.cityStart, .cityFinish {
+
+height: 50%;
+width: 100%;
+font-family: 'Epilogue';
+font-style: normal;
+font-weight: 900;
+font-size: 13px;
+line-height: 20px;
+color: #333333;
+display: flex;
+
+}
+
+.cercleHaut, .cercleBas {
+
+content: "";
+display: flex;
+height: 20px;
+width: 20px;
+border-radius: 20px;
+border:solid;
+color: #000;
+margin-left:50px ;
+}
+
+
+
+.cercleHaut::after{
+
+content: "";
+display: flex;
+width: 4px;
+height: 19px;
+background-color: #000;
+transform: translate(4px,14px);
+
+}
+      
+    </style>
 </body>
 </html>
+
+
+
+

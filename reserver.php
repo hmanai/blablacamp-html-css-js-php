@@ -1,38 +1,45 @@
+
 <?php
  
-require_once 'fonctions.php';
+ require_once 'fonctions.php';
+ 
+ $nom_utilisateur = $_SESSION['username'];
+  $idTrajet = $_GET['id'];
+ 
 
-$nom_utilisateur = $_SESSION['username'];
+ 
+ $req =  "SELECT * FROM utilisateur WHERE username = '$nom_utilisateur' ";
+ $rep = connect()->prepare($req);
+ $rep->execute();
+ $res = $rep->fetch(PDO::FETCH_OBJ);  
+ $nom = $res->nom;
+ $user = $res->username;
+ $pass = $res->password;
+ $email = $res->email;
+ $bio = $res->bio;
+ $photo = $res->photo;
+ 
+ 
+ ////////////////////////////////////////// récuperer mes trajet ////////////////////////////////////
+ 
 
-$req =  "SELECT * FROM utilisateur WHERE username = '$nom_utilisateur' ";
-$rep = connect()->prepare($req);
-$rep->execute();
-$res = $rep->fetch(PDO::FETCH_OBJ);  
-$nom = $res->nom;
-$user = $res->username;
-$pass = $res->password;
-$email = $res->email;
-$bio = $res->bio;
-$photo = $res->photo;
+ $req =  "SELECT * FROM trajet WHERE id_trajet = :id";
+ $rep = connect()->prepare($req);
+ $rep->execute([':id' => $idTrajet ]);
+ $res = $rep->fetch(PDO::FETCH_OBJ);  
+ $count = $rep->rowCount();
+ $id_traj = $res-> id_trajet;
+ $pt_depart = $res-> pt_depart ;
+ $pt_arrive = $res-> pt_arrive ;
+ $date_Trajet = $res-> date_trajet ;
+ $type_Trajet = $res-> type_trajet ;
+ $date_explosee = explode("-", $date_Trajet);
+ $jour = $date_explosee[2];
+ $mois = $date_explosee[1];
+ $chauff = $res -> chauffeur
+ ?>
 
-// var_dump($photo)
 
-////////////////////////////////////////// récuperer mes trajet ////////////////////////////////////
-
-
-
-$req =  "SELECT * FROM trajet WHERE chauffeur = :chauffeur";
-$rep = connect()->prepare($req);
-$rep->execute([':chauffeur' => $nom_utilisateur ]);
-// $rep->execute();
-$res = $rep->fetchAll(PDO::FETCH_OBJ);  
-$count = $rep->rowCount();
-//var_dump($count);
-// var_dump($res);
-////////////////////////////////////////////////////////////////////////////
-
-// resultRecherchTrajet();
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,14 +56,13 @@ $count = $rep->rowCount();
     <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
-    <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script> <!-- link for car icon -->   
+    <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script> <!-- link for car icon -->  
     <link rel="stylesheet" href="assets/style.css">
-
-    <title>Mes trajets</title>
+    <title>Réserver une Place</title>
  
 </head>
 <body>
-    <header>
+<header>
         <a class="logoHeader" href="index.html"> <img class="logoHeader" src="assets/img/logo.png" alt="logo">  </a>
         <a class="logoProfil" href="#"> <img class="logoProfil" src="assets/img/logoProfil.png" alt="logo">  </a>
      </header>
@@ -91,32 +97,11 @@ $count = $rep->rowCount();
    </div>
 
      <section id="mesTrajets">
-        <label class="titre"> mes trajet</label>
-        <?php
-         foreach($res as $key => $value )
-    
-         {  $id_traj = $value-> id_trajet;
-            $pt_depart = $value-> pt_depart ;
-            $pt_arrive = $value-> pt_arrive ;
-            $date_Trajet = $value-> date_trajet ;
-            $type_Trajet = $value-> type_trajet ;
-            $date_explosee = explode("-", $date_Trajet);
-            $jour = $date_explosee[2];
-            $mois = $date_explosee[1];
-     
-     
-        
-        ?>
-   
+
+        <label class="titre"> réserver une Place</label>
+
         <div class="trajetContainer">
-            <div class="action">
-                <div class="editer">
-                    <label class="titrePage"><a class="editLink" href="editTrajet.php?id=<?php echo $id_traj ?>"> editer</a></label> 
-                </div>
-                <div class="supprimer">
-                    <label class="titrePage"><a class="editLink" href="deleteTrajet.php?id=<?php echo $id_traj ?>"> supprimer</a></label>
-                </div>
-            </div>
+
             <div class="trajetDetail">
                 <div class="dateTraj">
                     <div class="dayTrajet"><?php echo $jour ?> </div>
@@ -131,7 +116,15 @@ $count = $rep->rowCount();
                 </div>
             </div>
         </div>
-<?php }?>
+        <div class="corpsParagraph">
+            <p class="bonjour"> Bonjour <span class="bjrUser"><?php echo $chauff ?></span></p></br>
+            <p class="paragrafReserv">Je souhaiterai réserver une place dans ta voiture pour le trajet <span class="ptdep_ptarr"><?php echo $pt_depart ?> - <?php echo $pt_arrive ?></span>.</br></br></br>
+            En te remerciant. </p>
+        </div>
+        <div class="bouttonEnvoy"><input class= "registerButton" type="submit" id='send' value='envoyer ma demande' name="register" ></div>
+
+
+
      </section>
 
 
@@ -154,9 +147,9 @@ $count = $rep->rowCount();
     document.querySelector('.compteInfo').style.display="none"
 })
 
-
+//////////////affichage de editer et supprimer trajet //////////
 
 </script>
-<script src="assets/trajet.js"> </script>
+
 </body>
 </html>

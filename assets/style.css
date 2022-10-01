@@ -69,7 +69,15 @@ display: none;
     display: none;
 }
 
+#deleteTraj{
 
+    display: none;
+}
+
+.felicitationcorpsdelete{
+
+    display: none;
+}
 
 
 
@@ -186,6 +194,7 @@ display: none;
     a {
 
         text-decoration: none;
+        color: #F0F0F0;
     }
 
     .seConnecter{
@@ -385,6 +394,33 @@ display: none;
     text-align: center;
 
 }
+
+.alignicon6, .alignicon7, .alignicon8, .alignicon9, .alignicon10{
+
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+
+}
+
+
+.etape6, .etape7, .etape8, .etape9, .etape10{
+    width: 70%;
+    height: 56.62px;
+    border-radius: 8px;
+    margin-left: 20px;
+    margin-bottom: 12px;
+    gap: 12px;
+    margin-top: 3%;
+    background-color: #eeeeee;
+    border-style: none;
+    font-size: 1em;
+    display: flex;
+    text-align: center;
+
+
+}
     .loginButton, .searchButton{
 
         width: 70%;
@@ -541,7 +577,9 @@ display: none;
     font-family: 'Work Sans';
     font-style: normal;
     font-weight: 400;
-    font-size: 0.75em;
+    /* font-size: 0.65em; */
+    font-size: calc(0.5vw + 0.7vh + 0.7vmin);
+ 
     line-height: 15px;
     text-align: center;
     letter-spacing: 5px;
@@ -783,10 +821,15 @@ display: none;
     width: 100%;
     margin-top: 20%;
  
-    
 }
 
-#startPoint{
+.editForm{
+
+    width: 100%;
+
+}
+
+#startPoint, #startPointEdit{
     position: relative;
     display: flex;
     justify-content: flex-start;
@@ -1084,6 +1127,12 @@ display: none;
     align-items: center;
 }
 
+.fleche {
+
+    height: 23px;
+    width: 22px;
+}
+
 .dayTrajet{
     
     height: 50%;
@@ -1214,7 +1263,7 @@ display: none;
 .detailsTrajet{
 
     width: 90%;
-    height: 209px;
+   height: 209px;
     left: 18px;
     top: 414px;
     margin-top: 30px;
@@ -1301,6 +1350,8 @@ display: none;
     margin-left:50px ;
 }
 
+
+
 .cercleHaut::after{
 
     content: "";
@@ -1339,7 +1390,7 @@ display: none;
     padding-left: 30px;
 }
 
-.cityStart, .cityFinish{
+.cityStart, .cityFinish {
 
     height: 50%;
     width: 100%;
@@ -1349,8 +1400,52 @@ display: none;
     font-size: 13px;
     line-height: 20px;
     color: #333333;
+    display: flex;
 
 }
+
+.linkreservePlace{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* .etapeTraj1, .etapeTraj2, .etapeTraj3, .etapeTraj4, .etapeTraj5{
+
+    height: 50%;
+    width: 100%;
+    font-family: 'Epilogue';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 13px;
+    line-height: 20px;
+    color: #333333;
+    display: flex;
+} */
+/* .cityStart::before{
+
+    content: "";
+    display: flex;
+    height: 20px;
+    width: 20px;
+    border-radius: 20px;
+    border:solid;
+    color: #000;
+    margin-right: 20px;
+    
+}
+
+.cityFinish::before{
+
+    content: "";
+    display: flex;
+    height: 20px;
+    width: 20px;
+    border-radius: 20px;
+    border:solid;
+    color: #000;
+    margin-right: 20px; 
+} */
 
 .accountdetails{
 
@@ -1740,11 +1835,10 @@ color: #333333;
 
 .inputnbPlace{
 
-    padding-left: 30px;
     width: 90%;
     height: 56.62px;
     border-radius: 8px;
-    padding-left: 40px;
+    padding-left: 50px;
     margin-top: 10px;
     margin-left: 5%;
     margin-bottom: 10px;
@@ -1869,6 +1963,8 @@ color: #333333;
     
 }
 
+
+
 .titrePage{
 
     width: 100%;
@@ -1957,6 +2053,164 @@ color: #333333;
     border-style: none;
     font-size: 1em;
 }
+
+/**************delete trajet page*****************/
+#deleteTraj{
+
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    margin-top: 70px;
+}
+
+#corpsDelete{
+
+    height: 10vh;
+    padding-left: 7%;
+}
+
+.deleteTitle{
+
+    color:#333333
+}
+
+.deleteParag{
+
+    font-family: 'Epilogue';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #888888;
+}
+
+.deleteBloc{
+
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.felicitationcorpsdelete{
+
+    display: none;
+    margin-top: 50px;
+    margin-left: 7%;
+    flex-direction: column;
+}
+
+.felicitationcorpsdelete h2 {
+
+    color: #333333;
+}
+
+.felicitationcorpsdelete p {
+
+    font-family: 'Epilogue';
+    font-style: normal;
+    margin-top: 20px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #888888;
+}
+
+/* ************************cancel reservation***************************** */
+
+
+/* .trajetDetail{
+
+    position: absolute;
+     z-index: 1; 
+    width: 90%;
+    height: 100px;
+    background: #F0F0F0;
+    border-radius: 8px;
+    display: flex;
+    margin-bottom: 10px;
+
+}
+ */
+ .trajetContainerdelete{
+
+    position: relative;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    margin-top: 4%;
+
+}
+ .actionCancel{
+
+    width: 90%;
+    height: 100px;
+    position: absolute;
+     z-index: 2; 
+    border-radius: 8px;
+    display: none;
+    background: #D41E45;
+    
+}
+
+.annulerReservation{
+
+    width: 100%;
+    font-size: 1.5rem;
+}
+
+
+
+.inputdiv{
+
+    width: 90%;
+}
+
+.errormsgnores{
+
+    color: #D41E45;
+    text-align: center;
+    font-family: 'Epilogue';
+    text-transform: uppercase;
+    font-style: normal;
+    margin-top: 20px;
+    font-weight: 200;
+    font-size: 16px;
+}
+
+/* *********************************page reserver.php********************************** */
+.corpsParagraph{
+
+    margin-top: 50px;
+    padding-left: 7%;
+    width: 95%;
+}
+.bonjour, .paragrafReserv{
+
+    font-family: 'Epilogue';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #888888;
+}
+
+.bjrUser, .ptdep_ptarr{
+
+    color: #D41E45;
+}
+
+.bouttonEnvoy{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 
 
 

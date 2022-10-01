@@ -118,8 +118,8 @@ $photo = $res->photo;
                       </div>
                   
                       <div class="checkBoxTypeTraj">
-                        <input type="checkbox" id="allez-retour" clas="typeTrajet" name="typeTrajet[]" value="Allez/Retour">
-                        <label for="allez-retour">Allez/Retour</label>
+                        <input type="checkbox" id="allez-retour" clas="typeTrajet" name="typeTrajet[]" value="Allez-Retour">
+                        <label for="allez-retour">Allez-Retour</label>
                       </div>
                 </div>
                 <p class="propTraj" type="text" value="">Nombre de place disponibles:</label>
@@ -166,7 +166,6 @@ $photo = $res->photo;
      </section>
 
      <script src="assets/AjouEtape.js"></script>
-
      <script src="assets/style.js"></script>
      <script src="assets/visibility.js"></script>
      <!-- <script src="assets/trajet.js"></script> -->

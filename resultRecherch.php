@@ -110,12 +110,8 @@ $count = $rep->rowCount();
 
      <section id="searchResult">
         <div class="titretraj"><h2 class="resultTitle"> Trajets Disponibles</h2></div>
-        <div class="trajetDetails">
+       <div class="trajetDetails">
             <div class="dateTraj">
-                <?php ////////////////////////récuperer seulement le jour et le mois//////////////////////////
-
-
-                ?>
                 <div class="dayTrajet"><?php  echo $jour ?> </div>
                 <div class="monthTrajet"> <?php echo changeDate($mois) ?></div>
             </div>
@@ -138,7 +134,7 @@ $count = $rep->rowCount();
         <?php
          foreach($res as $key => $value )
     
-         { 
+         {  $id = $value -> id_trajet;
             $pt_depart = $value-> pt_depart ;
             $pt_arrive = $value-> pt_arrive ;
             $date_Trajet = $value-> date_trajet ;
@@ -148,25 +144,28 @@ $count = $rep->rowCount();
             $nb_places = $value-> nb_places ;
             $etapes = $value-> etapes ;
             $chauffeur = $value-> chauffeur ;
-     
+            $tabType=explode("/", $etapes);
+            //var_dump($tabType);
      
         
         ?>
      
-        <div class="detailsTrajet">
+        <a href="reserver.php?id=<?php echo $id ?>" class="linkreservePlace"><div class="detailsTrajet">
             <div class="nbrslttrj">
                 <p class="nbplace">places disponibles:<span class="nomnrePlace"><?php echo $nb_places  ?></span></p>
             </div>
             <div class="details">
-
+    
                 <div class="hourTrip">
                     <span class="startHour"><?php echo $heure_trajet ?></span>
                     <span class="finishHour"><?php echo $heure_Arrive ?></span>
                 </div>
                 <div class="liaison">
                     <!-- <img class="cercleLiaison" src="assets/img/deuxCercles.png" alt="deux cercles liés par un trait"> -->
+                
                     <span class="cercleHaut" > </span>
                     <span class="cercleBas"></span>
+                   
                 </div>
                 <div class="citiestrip">
                     <div class="cityStart"><?php echo $pt_depart ?> </div>
@@ -194,7 +193,7 @@ $count = $rep->rowCount();
 
             </div>
             
-        </div>
+        </div></a>
         <?php
           }}
         

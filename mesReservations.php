@@ -1,6 +1,8 @@
+
 <?php
- 
 require_once 'fonctions.php';
+
+/////////////////////////////////////////////////////////afficher information utilisateur dans l'entete ///////////////////////////////////////////////////////////////////////////////////
 
 $nom_utilisateur = $_SESSION['username'];
 
@@ -9,29 +11,17 @@ $rep = connect()->prepare($req);
 $rep->execute();
 $res = $rep->fetch(PDO::FETCH_OBJ);  
 $nom = $res->nom;
-$user = $res->username;
-$pass = $res->password;
-$email = $res->email;
 $bio = $res->bio;
 $photo = $res->photo;
 
-// var_dump($photo)
+////////////////////////////////INFO RESERVATION requette avec jointure entre table trajet et table reserbation//////////////////////////////// 
 
-////////////////////////////////////////// récuperer mes trajet ////////////////////////////////////
+$req2 =  "SELECT * FROM trajet, reservation WHERE trajet.id_trajet = reservation.id_trajet AND reservation.utilisateur = '$nom_utilisateur' ";
+$rep2= connect()->prepare($req2);
+$rep2->execute();
+$res2 = $rep2->fetchAll(PDO::FETCH_OBJ); 
 
-
-
-$req =  "SELECT * FROM trajet WHERE chauffeur = :chauffeur";
-$rep = connect()->prepare($req);
-$rep->execute([':chauffeur' => $nom_utilisateur ]);
-// $rep->execute();
-$res = $rep->fetchAll(PDO::FETCH_OBJ);  
-$count = $rep->rowCount();
-//var_dump($count);
-// var_dump($res);
-////////////////////////////////////////////////////////////////////////////
-
-// resultRecherchTrajet();
+   
 ?>
 
 <!DOCTYPE html>
@@ -49,20 +39,19 @@ $count = $rep->rowCount();
     <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
-    <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script> <!-- link for car icon -->   
+    <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script> <!-- link for car icon -->  
     <link rel="stylesheet" href="assets/style.css">
-
-    <title>Mes trajets</title>
+    <title>Mes Réservations</title>
  
 </head>
 <body>
-    <header>
+<header>
         <a class="logoHeader" href="index.html"> <img class="logoHeader" src="assets/img/logo.png" alt="logo">  </a>
         <a class="logoProfil" href="#"> <img class="logoProfil" src="assets/img/logoProfil.png" alt="logo">  </a>
      </header>
-     <div class="compteInfor">
+         <div class="compteInfor">
       
-      <div class="compteInfo">
+         <div class="compteInfo">
           <iconify-icon class="close" icon="clarity:close-line"></iconify-icon>
           <div class="accounthead">
           <div class="headerPhotoAccount"> 
@@ -74,70 +63,64 @@ $count = $rep->rowCount();
               </div>
           </div>
           <div class="bouttonrechercherTrajet">
-              <a href="proposerTrajet.php"><button class= "searchTrajetButton" type="submit" id='submit' value='proposer un trajet' > 
+             <a href="proposerTrajet.php"> <button class= "searchTrajetButton" type="submit" id='submit' value='proposer un trajet' > 
                   <img class="iconplus" src="assets/img/searchtrajet.png" alt="icone de recherche trajet">
                   <span> PROPOSER UN TRAJET</span>
-                  </button>
-              </a>
+              </button></a>
           </div> 
           <div class="navbar">
               <a class="accountInformation" href="mesTrajets.php"><img class="iconnavbar" src="assets/img/metrajet.png" alt="icone profile"> Mes trajets</a>
-              <a class="accountInformation" href="mesReservations.php"><img class="iconnavbar" src="assets/img/iconreservation.png" alt="icone réservation"> Mes réservations</a>
+              <a class="accountInformation" href="#"><img class="iconnavbar" src="assets/img/iconreservation.png" alt="icone réservation"> Mes réservations</a>
               <a class="accountInformation" href="editCompte.php?user-name=<?php echo $_SESSION['username']; ?>"><img class="iconnavbar" src="assets/img/metrajet.png" alt="icone profile"> Modifier mes informations</a>
               <a class="accountInformation" href="#"><img class="iconnavbar" src="assets/img/iconmessagerie.png" alt="icone Messagerie"> Messagerie</a>
               <a class="accountInformation" href="logout.php"><iconify-icon class="iconnavbarflech" icon="bx:arrow-back"></iconify-icon>Se déconnecter</a>
             </div>
        </div>
-   </div>
+         </div>
 
      <section id="mesTrajets">
-        <label class="titre"> mes trajet</label>
+        <label class="titre"> mes réservations</label>
+
         <?php
-         foreach($res as $key => $value )
-    
-         {  $id_traj = $value-> id_trajet;
-            $pt_depart = $value-> pt_depart ;
-            $pt_arrive = $value-> pt_arrive ;
-            $date_Trajet = $value-> date_trajet ;
-            $type_Trajet = $value-> type_trajet ;
-            $date_explosee = explode("-", $date_Trajet);
-            $jour = $date_explosee[2];
-            $mois = $date_explosee[1];
-     
-     
-        
-        ?>
-   
-        <div class="trajetContainer">
-            <div class="action">
-                <div class="editer">
-                    <label class="titrePage"><a class="editLink" href="editTrajet.php?id=<?php echo $id_traj ?>"> editer</a></label> 
+        if (empty($res2)) 
+         { echo "<p class='errormsgnores'>Pas de réservation encours!</p>";
+          
+         }
+        else
+        foreach($res2 as $key2 => $value2 )
+        { 
+        $date = $value2-> date_trajet;
+        $idReserv = $value2-> id_reservation;
+        $ptDepart = $value2-> pt_depart;
+        $ptAriive = $value2 -> pt_arrive;
+        $typeTrajet = $value2 -> type_trajet;
+        $date_explosee = explode("-", $date);
+        $jour = $date_explosee[2];
+        $mois = $date_explosee[1];
+ 
+?>
+        <div class="trajetContainerdelete">
+                <div class="actionCancel">
+                        <div class="annulerReservation">
+                            <label class="titrePage"><a class="editLink" href="cancelReservation.php?id=<?php echo $idReserv ?>"> annuler</a></label> 
+                        </div>
                 </div>
-                <div class="supprimer">
-                    <label class="titrePage"><a class="editLink" href="deleteTrajet.php?id=<?php echo $id_traj ?>"> supprimer</a></label>
-                </div>
-            </div>
-            <div class="trajetDetail">
+                <div class="trajetDetail">
                 <div class="dateTraj">
-                    <div class="dayTrajet"><?php echo $jour ?> </div>
-                    <div class="monthTrajet"><?php echo changeDate($mois) ?></div>
+                    <div class="dayTrajet"><?php echo $jour; ?></div>
+                    <div class="monthTrajet"><?php echo changeDate($mois); ?></div>
                 </div>
                 <div class="places">
-                    <div class="startLocation"><?php echo $pt_depart ?></div>
-                    <div class="finishLocation"><?php echo  $pt_arrive ?></div> 
+                    <div class="startLocation"><?php echo $ptDepart; ?></div>
+                    <div class="finishLocation"><?php echo $ptAriive ;?></div> 
                 </div>
                 <div class="iconflech">
-                    <img class="fleche" src="assets/img/<?php echo $type_Trajet ?>" alt="image de deux fleches haut et bas">
+                    <img class="fleche" src="assets/img/Allez-Retour.png" alt="image de deux fleches haut et bas">
                 </div>
             </div>
         </div>
 <?php }?>
      </section>
-
-
-
-
-
 <script>
 
 /////////////affichage de boite des information d'un compte/////////
@@ -154,9 +137,10 @@ $count = $rep->rowCount();
     document.querySelector('.compteInfo').style.display="none"
 })
 
-
+//////////////affichage de editer et supprimer trajet //////////
 
 </script>
 <script src="assets/trajet.js"> </script>
+
 </body>
 </html>

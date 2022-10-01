@@ -222,10 +222,10 @@ var requestOptions = {
    ////////////////////// script ajouter etape en cliquant sur l'icone plus///////////////////
   
    
-   let click = document.querySelector('.iconPlus')
+   let click = document.querySelectorAll('.iconPlus')
    var count = 0;
-   
-       click.addEventListener('click', function(){
+   for (let i = 0; i < click.length; i++) {
+       click[i].addEventListener('click', function(){
                    count++;
                    console.log('hi')
                    console.log(inputElement2.value);
@@ -242,6 +242,8 @@ var requestOptions = {
                           {
                                 document.querySelector('.etape1').value = inputElement2.value
                                 document.querySelector('.etape1').style.display="flex"
+                                document.querySelector('.alignicon6').style.display='flex' 
+
                                 count++;
                                 }
                                 else if ((etape1 !== "")&& (etape2 == ""))
@@ -249,6 +251,9 @@ var requestOptions = {
                                       document.querySelector('.etape2').value = inputElement2.value
                                       document.querySelector('.etape1').style.display="flex"
                                       document.querySelector('.etape2').style.display="flex"
+                                      document.querySelector('.alignicon6').style.display='flex' 
+                                      document.querySelector('.alignicon7').style.display='flex' 
+
   
                                       count++;
                                       }
@@ -258,6 +263,10 @@ var requestOptions = {
                                       document.querySelector('.etape1').style.display="flex"
                                       document.querySelector('.etape2').style.display="flex"
                                       document.querySelector('.etape3').style.display="flex"
+                                      document.querySelector('.alignicon6').style.display='flex' 
+                                      document.querySelector('.alignicon7').style.display='flex' 
+                                      document.querySelector('.alignicon8').style.display='flex' 
+
                                       count++;
                                       }
                                             else if ((etape1 !== "") && (etape2 !== "") && (etape3 !== "") && (etape4 == "") )
@@ -266,7 +275,13 @@ var requestOptions = {
                                             document.querySelector('.etape1').style.display="flex"
                                             document.querySelector('.etape2').style.display="flex"
                                             document.querySelector('.etape3').style.display="flex"
-                                            document.querySelector('.etape4').style.display="flex"
+                                            document.querySelector('.etape4').style.display="flex"      
+                                            document.querySelector('.alignicon6').style.display='flex' 
+
+                                            document.querySelector('.alignicon7').style.display='flex' 
+                                            document.querySelector('.alignicon8').style.display='flex' 
+                                            document.querySelector('.alignicon9').style.display='flex' 
+
   
                                             count++;
                                             }
@@ -278,6 +293,12 @@ var requestOptions = {
                                                     document.querySelector('.etape3').style.display="flex"
                                                     document.querySelector('.etape4').style.display="flex"
                                                     document.querySelector('.etape5').style.display="flex"
+                                                    document.querySelector('.alignicon6').style.display='flex' 
+                                                    document.querySelector('.alignicon7').style.display='flex' 
+                                                    document.querySelector('.alignicon8').style.display='flex' 
+                                                    document.querySelector('.alignicon9').style.display='flex' 
+                                                    document.querySelector('.alignicon10').style.display='flex' 
+
   
                                                     count++;
                                                     }
@@ -290,9 +311,9 @@ var requestOptions = {
    ////////////////////////////////////////////
   
   }
+}
   
-  
-  ///////////////////////////////////////// 
+  //////////////////display input to write the "etape"/////////////////////// 
   
   addressAutocomplete2(document.getElementById("etapes"), (data) => {
     console.log("Selected option: ");
@@ -302,5 +323,39 @@ var requestOptions = {
   });
   
   
-  
-  
+  ///////////////////////////////////////Supprimer les étapes qui ont été affiché automatiquement depuis la base de donnée////////////////////////////////////////////
+
+ 
+  let clicktoDelete6 = document.querySelector('.iconeMoin6')
+  let clicktoDelete7 = document.querySelector('.iconeMoin7')
+  let clicktoDelete8 = document.querySelector('.iconeMoin8')
+  let clicktoDelete9 = document.querySelector('.iconeMoin9')
+  let clicktoDelete10 = document.querySelector('.iconeMoin10')
+
+    clicktoDelete6.addEventListener('click', function(){
+         console.log("heeeeey");
+        document.querySelector('.alignicon6').style.display="none"
+        document.querySelector('.etape1').value=""
+
+       })
+
+       clicktoDelete7.addEventListener('click', function(){
+        console.log("heeeeey");
+       document.querySelector('.alignicon7').style.display="none"
+       document.querySelector('.etape2').value=""
+      })
+      clicktoDelete8.addEventListener('click', function(){
+        console.log("heeeeey");
+       document.querySelector('.alignicon8').style.display="none"
+       document.querySelector('.etape3').value=""
+      })
+      clicktoDelete9.addEventListener('click', function(){
+        console.log("heeeeey");
+       document.querySelector('.alignicon9').style.display="none"
+       document.querySelector('.etape4').value=""
+      })
+      clicktoDelete10.addEventListener('click', function(){
+        console.log("heeeeey");
+       document.querySelector('.alignicon10').style.display="none"
+       document.querySelector('.etape5').value=""
+      })

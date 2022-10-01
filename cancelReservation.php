@@ -1,9 +1,6 @@
 <?php
+ 
 require_once 'fonctions.php';
-
-
-
-////////////////////////////// afficher les info des utilisateur ///////////////////////////
 $nom_utilisateur = $_SESSION['username'];
 
 $req =  "SELECT * FROM utilisateur WHERE username = '$nom_utilisateur' ";
@@ -11,16 +8,22 @@ $rep = connect()->prepare($req);
 $rep->execute();
 $res = $rep->fetch(PDO::FETCH_OBJ);  
 $nom = $res->nom;
+$user = $res->username;
+$pass = $res->password;
+$email = $res->email;
 $bio = $res->bio;
 $photo = $res->photo;
+
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chercher un trajet</title>
+    <title>BlaBla Compus</title>
+    <link rel="stylesheet" href="assets/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
@@ -30,13 +33,17 @@ $photo = $res->photo;
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script> <!-- link for car icon -->   
-    <link rel="stylesheet" href="assets/style.css">
+
 </head>
 <body>
-    <header>
+<header>
         <a class="logoHeader" href="index.html"> <img class="logoHeader" src="assets/img/logo.png" alt="logo">  </a>
         <a class="logoProfil" href="#"> <img class="logoProfil" src="assets/img/logoProfil.png" alt="logo">  </a>
      </header>
+     <div class=" felicitationcorpsdelete">
+            <h2> Félicitation! <span class="styleusername"></span></h2>
+            <p>Votre réservation à bien été annulée!</p>
+     </div>
          <div class="compteInfor">
             <div class="compteInfo">
                 <iconify-icon class="close" icon="clarity:close-line"></iconify-icon>
@@ -66,50 +73,45 @@ $photo = $res->photo;
                   </div>
              </div>
          </div>
-     <section id="searchTrajet">
-         <form class="searchForm" method="GET" id="searchelement" action="resultRecherch.php">
-            
-            <p class="erreurRecherch">Veuillez remplir tous les champs !</p>
-            <label class="labelRegister">Rechercher un trajet</label>
-                <div class="alignerInput">
-                    <div id="startPoint">
-                        <iconify-icon icon="akar-icons:location" class="positionIcon"></iconify-icon>
-                    </div>
-                    <div class="destination">
-                        <iconify-icon icon="akar-icons:location" class="destinationIcon"></iconify-icon>
-                        <select name="destinationAdress" class="destinationSelection">
-                            <option> Destination</option>
-                            <option value="Avenue du Stade">Avenue du Stade</option>
-                            <option value="Route Montaigu">Route Montaigu</option>
-                        </select>
-                    </div>
-                        <div class="dateTrajet">
-                            <iconify-icon icon="uil:calender" class="calenIcon"></iconify-icon>
-                            <input class="dateLabel" type="date" name="date">
-                        </div>
-                        <div class="typeTrio">
-                    <div class="checkBoxTypeTraj">
-                        <input type="checkbox" id="allez-simple" clas="typeTrajet" name="typeTrajet[]" value="allez-simple" checked>
-                        <label for="scales">Allez simple</label>
-                      </div>
-                  
-                      <div class="checkBoxTypeTraj">
-                        <input type="checkbox" id="allez-retour" clas="typeTrajet" name="typeTrajet[]" value="Allez-Retour">
-                        <label for="Allez-Retour">Allez/Retour</label>
-                      </div>
-                </div> 
-                        <div class="bouttonrechercher">
-                       
-                           <a href="" target="_blank"><input class= "searchButton" type="submit" id='submit' value='Rechercher' name='search' > </a>
-                        </div>
-                        <?php
+    <section id= "deleteTraj">
+    <div id="corpsDelete">
+            <h2 class="deleteTitle"> Anulation</h2>
+            <p class="deleteParag">Etes vous sure de vouloir annuler cette réservation?</p>
+    </div> 
+    <form class="deleteForm" method="POST" id="supTraj" action="">
+
+        <div class="deleteBloc">
+             <input class="registerButton" type="submit" name="cancel" value="annuler ma réservation">
+            <a class="seConnecter" href="mesReservations.php"> Retour</a>
+        </div>
+    </form>
+    </section>
+<?php 
+    if (ISSET($_POST['cancel'])){
+
+        cancelReservation();
+    }
+?>
 
 
-                        ?>
+    <script>
 
-         </form>
-     </section>
-     <script src="assets/style.js"></script>
-     <script src="assets/visibility.js"></script>
+/////////////affichage de boite des information d'un compte/////////
+
+    let logoProfil = document.querySelector('.logoProfil')
+    logoProfil.addEventListener('click', function(){
+    document.querySelector('.compteInfo').style.display="flex"
+    document.querySelector('#deleteTraj').style.display ="none"  
+ 
+})
+    let close = document.querySelector('.close')
+    close.addEventListener('click', function(){
+    document.querySelector('#deleteTraj').style.display ="flex" 
+    document.querySelector('.compteInfo').style.display="none"
+})
+
+
+
+</script>
 </body>
 </html>

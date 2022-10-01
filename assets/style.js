@@ -28,9 +28,9 @@ function addressAutocomplete(containerElement, callback, options) {
   inputElement.setAttribute("type", "text");
   inputElement.setAttribute("class", "inputdepartpoint");
   inputElement.setAttribute("id", "inputId");
+  inputElement.setAttribute("value", "");
 
   inputElement.setAttribute("name", "departPointValue");
-
   inputElement.setAttribute("placeholder", options.placeholder);
   containerElement.appendChild(inputElement);
 
@@ -226,9 +226,15 @@ function addressAutocomplete(containerElement, callback, options) {
 addressAutocomplete(document.getElementById("startPoint"), (data) => {
   console.log("Selected option: ");
   console.log(data);
+  // var att = data.geometry.coordinates[0]
+  // var long = data.geometry.coordinates[1]
+  // console.log(att);
+  // console.log(long);
+
 }, {
 	placeholder: "Départ"
 });
+
 
 
 

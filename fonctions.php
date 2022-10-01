@@ -222,7 +222,6 @@ $user = $_GET["user-name"];
     //////////////////////////////function Ajout d'un trajet /////////////////////////////////////
 
     function addTrajet(){
-
         $user=$_SESSION["username"];
         $depart=$_POST['departPointValue'];
         $arrivee=$_POST['destinationAdress'];
@@ -264,12 +263,7 @@ $user = $_GET["user-name"];
        
     }
 
-    /////////////////////////////////Fonction de redirection//////////////////////////////////////////////
-
-
-    /////////////////////////////////////////////////////////////////////////////
-
-////////////////////////////////////////Function changer date ////////////////////////////////////////////
+////////////////////////////////////////Function change date ////////////////////////////////////////////
 
 function changeDate($month){
 
@@ -313,16 +307,104 @@ function changeDate($month){
     }
 }
 
-////////////////////////////////////////function check type trajet/////////////////////////////////////////////////////////
+////////////////////////////////////////function edit Trajet/////////////////////////////////////////////////////////
 
 
+function editTrajet(){
 
+    $idTrajet = $_GET['id'];
+    $user=$_SESSION["username"];
+    $depart=$_POST['departPointValue'];
+    $arrivee=$_POST['destinationAdress'];
+    $date=$_POST['date'];
+    $heure=$_POST['heureDepart'];
+    $heureArrive=$_POST['heureArrive'];
+    $typeTrajet = implode(' ', $_POST["typeTrajet"]); // récuperer la valeur du checkbox (allez simple ou allez-retour)
+    //echo  $typeTrajet;
+    $nbPlace=$_POST['nbPlace'];
+    $etape1 = $_POST['etape1'];
+    $etape2 = $_POST['etape2'];
+    $etape3 = $_POST['etape3'];
+    $etape4 = $_POST['etape4'];
+    $etape5 = $_POST['etape5'];   
+    $sql = "UPDATE trajet SET pt_depart = :pt_depart, pt_arrive = :pt_arrive, date_trajet = :date_trajet , heure_trajet = :heure_trajet, heure_Arrive = :heure_Arrive, type_trajet = :type_trajet, nb_places = :nb_places, etapes = :etapes, chauffeur = :chauffeur WHERE id_Trajet = $idTrajet ";
+    connect()->prepare($sql)->execute(array(":pt_depart" => $depart,
+                                            ":pt_arrive" => $arrivee,
+                                            ":date_trajet" => $date, 
+                                            ":heure_trajet" => $heure,
+                                            ":heure_Arrive" => $heureArrive,
+                                            ":type_trajet" => $typeTrajet,
+                                            ":nb_places" => $nbPlace,
+                                            ":etapes" => $etape1."/".$etape2."/".$etape3."/".$etape4."/".$etape5,
+                                            ":chauffeur" => $user
 
+    ));
+    if($sql){
+        ?>
+        <!-- script for redirection after 1 second to research page -->
+        <script>
+        document.getElementById("felicitation").style.display = "flex";
+        setTimeout(function() { $("#felicitation").hide(); }, 1000);
+        document.getElementById("editTraj").style.display = "none";
+        function redirection() {
+            location.href="mesTrajets.php"               
+                }
+                setTimeout("redirection()", 1000); 
+        </script>             
+        <?php
+           header('Location: ./mesTrajets.php');   
+       ///////////////////////////////
+      }   
+     else {
+             echo 'Error during registration';
+         
+    }
+}
 
+////////////////////////////////////////////delete trajet/////////////////////////////////////////////////////////////
 
+function deleteTrajet(){
 
+    $id = $_GET['id'];
+    $sql = 'DELETE FROM trajet WHERE id_trajet=:id';
+    $res = connect()->prepare($sql);
+    if ($res->execute([':id' => $id])) {
+        ?>
+      <script>
+                document.querySelector(".felicitationcorpsdelete").style.display = "flex";
+                setTimeout(function() { $(".felicitationcorpsdelete").hide(); }, 1000);
+                document.getElementById("deleteTraj").style.display = "none";
+                function redirection() {
+                    location.href="mesTrajets.php"               
+                        }
+                        setTimeout("redirection()", 1000); 
+      </script>
+      <?php
+       
+}}
 
+///////////////////////////////////////////////////cancel reservation//////////////////////////////////////////////////////////////////////
 
+function cancelReservation(){
+
+    $id = $_GET['id'];
+    var_dump($id);
+    $sql = 'DELETE FROM reservation WHERE id_reservation = :id';
+    $res = connect()->prepare($sql);
+    if ($res->execute([':id' => $id])) {
+        ?>
+      <script>
+                document.querySelector(".felicitationcorpsdelete").style.display = "flex";
+                setTimeout(function() { $(".felicitationcorpsdelete").hide(); }, 1000);
+                document.getElementById("deleteTraj").style.display = "none";
+                function redirection() {
+                    location.href="mesReservations.php"               
+                        }
+                        setTimeout("redirection()", 1000); 
+      </script>
+      <?php
+       
+}}
 
 
 
