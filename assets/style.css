@@ -79,6 +79,11 @@ display: none;
     display: none;
 }
 
+#messagerie{
+
+    display: none;
+}
+
 
 
 @media only screen and (max-width: 600px) {
@@ -2209,6 +2214,143 @@ color: #333333;
     justify-content: center;
     align-items: center;
 }
+
+#messagerie{
+
+    display: flex;
+    min-height: 80vh;
+    margin-top: 20px;
+    flex-direction: column;
+
+}
+
+.messagerieContainer{
+
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.headerAcc{
+
+    display: flex;
+    width: 100%;
+    /* align-items: center; */
+}
+
+.headerPhotoAccountMsg{
+
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 4px solid #D41E45;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.headerPhotoProfilMsg{
+  
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+
+}
+.user-nameMsg{
+
+  
+    font-family: 'Bungee';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #D41E45;
+    margin-left: 10px ;
+}
+
+.typeMsg{
+
+    font-family: 'Epilogue';
+    font-style: italic;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 20px;
+    color: #D41E45;
+}
+
+.corpsDemande{
+
+    font-family: 'Epilogue';
+    font-style: italic;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 20px;
+    color: #333333;
+}
+
+.corpsMsg{
+
+    line-height: 0;
+    width: 80%;
+
+
+}
+
+.msgContainer{
+
+    padding-top: 10px;
+}
+
+.textjustify{
+
+   padding-left: 10px;
+}
+
+
+
+.separateur{
+
+    width : 10px;
+  height : 10px;
+  background : #333333;
+  -moz-border-radius : 5px;
+  -webkit-border-radius : 5px;
+  border-radius : 5px;  /* ou 50% */
+  margin-top: 30px;
+  margin-left: 10px;
+}
+
+.separateur::after{
+
+    content: "";
+    display: flex;
+    transform: translate(5px, 4px);
+    width: 92vw;
+    height: 2px;
+    background-color:#333333;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

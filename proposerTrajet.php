@@ -164,6 +164,7 @@ $photo = $res->photo;
                 ?>
          </form>
      </section>
+     <!-- <input class = "time" type="text"> -->
 
      <script src="assets/AjouEtape.js"></script>
      <script src="assets/style.js"></script>

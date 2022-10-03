@@ -4,10 +4,6 @@
  require_once 'fonctions.php';
  
  $nom_utilisateur = $_SESSION['username'];
-  $idTrajet = $_GET['id'];
- 
-
- 
  $req =  "SELECT * FROM utilisateur WHERE username = '$nom_utilisateur' ";
  $rep = connect()->prepare($req);
  $rep->execute();
@@ -23,20 +19,6 @@
  ////////////////////////////////////////// récuperer mes trajet ////////////////////////////////////
  
 
- $req =  "SELECT * FROM trajet WHERE id_trajet = :id";
- $rep = connect()->prepare($req);
- $rep->execute([':id' => $idTrajet ]);
- $res = $rep->fetch(PDO::FETCH_OBJ);  
- $count = $rep->rowCount();
- $id_traj = $res-> id_trajet;
- $pt_depart = $res-> pt_depart ;
- $pt_arrive = $res-> pt_arrive ;
- $date_Trajet = $res-> date_trajet ;
- $type_Trajet = $res-> type_trajet ;
- $date_explosee = explode("-", $date_Trajet);
- $jour = $date_explosee[2];
- $mois = $date_explosee[1];
- $chauff = $res -> chauffeur
  ?>
 
 
@@ -58,7 +40,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script> <!-- link for car icon -->  
     <link rel="stylesheet" href="assets/style.css">
-    <title>Réserver une Place</title>
+    <title>Messagerie</title>
  
 </head>
 <body>
@@ -66,17 +48,6 @@
         <a class="logoHeader" href="index.html"> <img class="logoHeader" src="assets/img/logo.png" alt="logo">  </a>
         <a class="logoProfil" href="#"> <img class="logoProfil" src="assets/img/logoProfil.png" alt="logo">  </a>
      </header>
-     <div id="felicitation">
-        <header class="felicitationheader">
-            <a class="logoHeader" href="index.html"><img  class="logoHeader" src="assets/img/logo.png" alt="logo"></a> 
-            <span class="headConnexion"> confirmation</span>     
-        </header>
-        <div class=" felicitationcorps">
-            <h2> Félicitation <span class="styleusername"></span></h2>
-            <p>Votre message a bien été envoyé!</p>
-        </div>
-
-</div> 
      <div class="compteInfor">
       
       <div class="compteInfo">
@@ -84,7 +55,7 @@
           <div class="accounthead">
           <div class="headerPhotoAccount"> 
                   <img class="headerPhotoProfil" src="assets/img/avatar/<?php echo $photo ?>" alt="photo de profil">
-              </div>
+          </div>
               <div class="bioHeader">
                   <div class="user-name"><?php echo $nom; ?></div>
                   <p class="biographie-user"><?php echo $bio; ?></p>
@@ -107,75 +78,31 @@
        </div>
    </div>
 
-     <section id="mesTrajets">
+     <section id="messagerie">
 
-        <label class="titre"> réserver une Place</label>
+        <label class="titre"> messagerie</label>
 
-        <div class="trajetContainer">
-
-            <div class="trajetDetail">
-                <div class="dateTraj">
-                    <div class="dayTrajet"><?php echo $jour ?> </div>
-                    <div class="monthTrajet"><?php echo changeDate($mois) ?></div>
+        <div class="messagerieContainer">
+            <div class="headerAcc">
+                <div class="headerPhotoAccountMsg"> 
+                        <img class="headerPhotoProfilMsg" src="assets/img/avatar/<?php echo $photo ?>" alt="photo de profil">
                 </div>
-                <div class="places">
-                    <div class="startLocation"><?php echo $pt_depart ?></div>
-                    <div class="finishLocation"><?php echo  $pt_arrive ?></div> 
-                </div>
-                <div class="iconflech">
-                    <img class="fleche" src="assets/img/<?php echo $type_Trajet ?>" alt="image de deux fleches haut et bas">
+               
+                <div class="msgContainer">
+                    <div class="user-nameMsg"><?php echo $nom; ?></div>
+                    <div class="corpsMsg">
+                        <p class="textjustify"><span class="typeMsg">Demande</span>
+                        <span class="corpsDemande"> de réservation pour le trajet <span class="departure"> Dole</span> Lons le Saunier du <span class="dateDeparture"> 05 Septembre 2022</span></span></p>
+                    </div>
                 </div>
             </div>
+            <span class="separateur"></span>
+        
         </div>
-        <div class="corpsParagraph">
-            <p class="bonjour"> Bonjour <span class="bjrUser"><?php echo $chauff ?></span></p></br>
-            <p class="paragrafReserv">Je souhaiterai réserver une place dans ta voiture pour le trajet <span class="ptdep_ptarr"><?php echo $pt_depart ?> - <?php echo $pt_arrive ?></span>.</br></br></br>
-            En te remerciant. </p>
-        </div>
-        <form class="reserveForm" action="" method="POST" >
-        <div class="bouttonEnvoy"><input class= "registerButton" type="submit" id='send' value='envoyer ma demande' name="valider" ></div>
-        </form>
-    </section>
-<?php 
-$date_msg = date('d-m-Y');
-$type_msg = "demande";
-var_dump($idTrajet);
-var_dump($date_msg);
-var_dump($type_msg);
-var_dump($nom_utilisateur);
-var_dump($chauff);
-                    if (ISSET($_POST['valider'])){
 
-                        // $req = connect()->prepare("insert into message(id_trajet,date_msg,type_msg,emetteur,recepteur) values (?,?,?,?,?)");
-                        // $req->execute(array($idTrajet,$date_msg,$type_msg,$nom_utilisateur,$chauff));
 
-                        $sql = "INSERT INTO `message` (id_message, id_trajet, date_msg, type_msg, emetteur, recepteur)
-                        VALUES (NULL, :id_trajet, :date_msg, :type_msg, :emetteur, :recepteur)";
-                    connect()->prepare($sql)->execute([
-                    ":id_trajet" => $idTrajet,
-                    ":date_msg" => $date_msg,
-                    ":type_msg" => $type_msg ,
-                    ":emetteur" => $nom_utilisateur,
-                    ":recepteur" => $chauff
-                ]);
+     </section>
 
-                if ($sql){
-                    ?>
-                    <script>
-                         document.querySelector("#felicitation").style.display = "flex";
-                              setTimeout(function() { $(".felicitation").hide(); }, 1000);
-                              document.getElementById("mesTrajets").style.display = "none";
-                              function redirection() {
-                                  location.href="rechercher.php"               
-                                      }
-                                      setTimeout("redirection()", 1000); 
-                    </script>
-                    <?php
-                    }
-                   
-
-                    }
-?>
 
 
 
@@ -187,17 +114,16 @@ var_dump($chauff);
     let logoProfil = document.querySelector('.logoProfil')
     logoProfil.addEventListener('click', function(){
     document.querySelector('.compteInfo').style.display="flex"
-    document.querySelector('#mesTrajets').style.display ="none"  
+    document.querySelector('#messagerie').style.display ="none"  
  
 })
     let close = document.querySelector('.close')
     close.addEventListener('click', function(){
-    document.querySelector('#mesTrajets').style.display ="flex" 
+    document.querySelector('#messagerie').style.display ="flex" 
     document.querySelector('.compteInfo').style.display="none"
 })
 
-//////////////redirection//////////
-
+//////////////affichage de editer et supprimer trajet //////////
 
 </script>
 

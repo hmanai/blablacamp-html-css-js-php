@@ -159,6 +159,7 @@ $count = $rep->rowCount();
                 <div class="hourTrip">
                     <span class="startHour"><?php echo $heure_trajet ?></span>
                     <span class="finishHour"><?php echo $heure_Arrive ?></span>
+                
                 </div>
                 <div class="liaison">
                     <!-- <img class="cercleLiaison" src="assets/img/deuxCercles.png" alt="deux cercles liés par un trait"> -->
@@ -199,7 +200,6 @@ $count = $rep->rowCount();
         
           ?>
      </section>
-
 <script>
     let logoProfil = document.querySelector('.logoProfil')
     logoProfil.addEventListener('click', function(){

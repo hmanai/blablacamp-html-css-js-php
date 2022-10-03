@@ -46,3 +46,7 @@ for (let i = 0; i < trajetContainerdelete.length; i++){
 
                     }, 5000);
                     }, false)};
+
+
+
+///////////////////////////////////////////redirection pour confirmer l'envoie d'une demande d eréservation pour un trajet////////////////////////////////////////////////////////////
