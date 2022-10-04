@@ -167,12 +167,12 @@ $annee = $date_explosee[0];
     let logoProfil = document.querySelector('.logoProfil')
     logoProfil.addEventListener('click', function(){
     document.querySelector('.compteInfo').style.display="flex"
-    document.querySelector('#messagerie').style.display ="none"  
+    document.querySelector('#validmessagerie').style.display ="none"  
  
 })
     let close = document.querySelector('.close')
     close.addEventListener('click', function(){
-    document.querySelector('#messagerie').style.display ="flex" 
+    document.querySelector('#validmessagerie').style.display ="flex" 
     document.querySelector('.compteInfo').style.display="none"
 })
 

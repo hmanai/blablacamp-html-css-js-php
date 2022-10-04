@@ -84,7 +84,7 @@ $count = $rep->rowCount();
               <a class="accountInformation" href="mesTrajets.php"><img class="iconnavbar" src="assets/img/metrajet.png" alt="icone profile"> Mes trajets</a>
               <a class="accountInformation" href="mesReservations.php"><img class="iconnavbar" src="assets/img/iconreservation.png" alt="icone réservation"> Mes réservations</a>
               <a class="accountInformation" href="editCompte.php?user-name=<?php echo $_SESSION['username']; ?>"><img class="iconnavbar" src="assets/img/metrajet.png" alt="icone profile"> Modifier mes informations</a>
-              <a class="accountInformation" href="#"><img class="iconnavbar" src="assets/img/iconmessagerie.png" alt="icone Messagerie"> Messagerie</a>
+              <a class="accountInformation" href="messagerie.php"><img class="iconnavbar" src="assets/img/iconmessagerie.png" alt="icone Messagerie"> Messagerie</a>
               <a class="accountInformation" href="logout.php"><iconify-icon class="iconnavbarflech" icon="bx:arrow-back"></iconify-icon>Se déconnecter</a>
             </div>
        </div>
@@ -93,6 +93,11 @@ $count = $rep->rowCount();
      <section id="mesTrajets">
         <label class="titre"> mes trajet</label>
         <?php
+         if (empty($res)) 
+         { echo "<p class='errormsgnores'>Pas de Trajets Disponibles!</p>";
+          
+         }
+        else
          foreach($res as $key => $value )
     
          {  $id_traj = $value-> id_trajet;

@@ -470,14 +470,15 @@ function reserve(){
         ":emetteur" => $user,
         ":recepteur" => $chauffeur
     ]);
-        // $req = connect()->prepare("insert into message(id_trajet,date_msg,type_msg,emetteur,recepteur) values (?,?,?,?,?)");
-        //  $req->execute(array($idTrajet,$date_msg,$type_msg,$user,$chauffeur));
+      
     if ($sql){
     ?>
   <script>
             document.querySelector("#felicitation").style.display = "flex";
                 setTimeout(function() { $(".felicitation").hide(); }, 1000);
                 document.getElementById("mesTrajets").style.display = "none";
+                document.querySelector(".logoHeader").style.display = "none";
+                document.querySelector(".logoProfil").style.display = "none";
                 function redirection() {
                     location.href="rechercher.php"               
                         }
@@ -485,11 +486,7 @@ function reserve(){
     </script>
   
 <?php
-           var_dump($idTrajet);
-           var_dump($user);
-           var_dump($type_msg);
-           var_dump($chauffeur);
-           var_dump($date_msg);
+           
 
 
 }}
@@ -499,6 +496,7 @@ function reserve(){
  function reservePlace(){
     $idTrj = $_GET['id'];
     $sender = $_GET['sender'];
+    $idMsg = $_GET['idmsg'];
     var_dump($idTrj);
     ////////////////////////////////////////info trajet ///////////////////////////////////////////////////////
     $req3 =  "SELECT * FROM trajet WHERE id_trajet = $idTrj";
@@ -519,14 +517,23 @@ function reserve(){
     ":id_traj" => $idTrj,
     ":date_msg" => $date_msg,
     ":type_msg" => "Validation",
-    ":emetteur" => $sender,
-    ":recepteur" => $chauffeur
+    ":emetteur" => $chauffeur,
+    ":recepteur" => $sender
     ]);
+
+    // $sql= "UPDATE message SET type_msg = :type_msg WHERE id_message = $idMsg ";
+    // connect()->prepare($sql)->execute(array(":type_msg" => "Validation"));
+ 
+    $sql = 'DELETE FROM message WHERE id_message=:id_msg';
+    $res = connect()->prepare($sql);
+    $res->execute([':id_msg' => $idMsg]);
+
      $nb_Places = $nb_Places -1;
 if ($nb_Places > 0){
     $sql7= "UPDATE trajet SET nb_places = :nb_places WHERE id_Trajet = $idTrj ";
     connect()->prepare($sql7)->execute(array(":nb_places" => $nb_Places));
-} else echo "<p style='color:red'>pas de Place disponibles pour ce Trajet!</p>";
+} else {echo "<p style='color:red'>pas de Place disponibles pour ce Trajet!</p>";
+die;}
 
     if ($sql){
     ?>

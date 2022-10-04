@@ -123,6 +123,7 @@ $rep4= connect()->prepare($req4);
 $rep4->execute();
 $res4 = $rep4->fetch(PDO::FETCH_OBJ); 
 $sender = $res4->emetteur;
+$idMsg = $res4->id_message;
 // var_dump($sender);
                 ///////////////////////photo du sender////////////////////////
 
@@ -148,8 +149,8 @@ $photo2 = $res5->photo;
                         <p class="textjustify"><span class="typeMsg"><?php echo $type ?></span>
                         <?php if ($type=="Demande") {  
 
-?> <a href="validationReservation.php?id=<?php echo $idTraj?>&sender=<?php echo $sender ?>" > <?php echo '<span class="corpsDemande"> de réservation pour le trajet <span class="departure">';  echo $depart; echo ' - </span> '; echo $destination; ' du <span class="dateDeparture">'; echo $jour; echo " "; echo changeMonth($mois2); echo " "; echo $annee;'</span></span></p> '; ?> </a> <?php
-                        }  else { echo '<span class="corpsDemande"> de votre réservation pour le trajet <span class="departure">';  echo $depart; echo ' - </span> '; echo $destination; ' du <span class="dateDeparture">'; echo $jour; echo " "; echo changeMonth($mois2); echo " "; echo $annee;'</span></span></p>';}
+                         ?> <a href="validationReservation.php?id=<?php echo $idTraj?>&sender=<?php echo $sender ?>&idmsg=<?php echo $idMsg ?>" > <?php echo '<span class="corpsDemande"> de réservation pour le trajet <span class="departure">';  echo $depart; echo ' - </span> '; echo $destination;''; echo ' du '; '<span class="dateDeparture">'; echo $jour; echo " "; echo changeMonth($mois2); echo " "; echo $annee;'</span></span></p> '; ?> </a> <?php
+                        }  else { echo '<span class="corpsDemande"> de votre réservation pour le trajet <span class="departure">';  echo $depart; echo ' - </span> '; echo $destination; ' '; echo 'du';'<span class="dateDeparture">'; echo $jour; echo " "; echo changeMonth($mois2); echo " "; echo $annee;'</span></span></p>';}
                             ?>
                    
                         </div>
