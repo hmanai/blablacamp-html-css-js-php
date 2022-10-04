@@ -2,7 +2,8 @@
 <?php
  
  require_once 'fonctions.php';
- 
+  ////////////////////////////////////////// récuperer info utilisateur ////////////////////////////////////
+
  $nom_utilisateur = $_SESSION['username'];
  $req =  "SELECT * FROM utilisateur WHERE username = '$nom_utilisateur' ";
  $rep = connect()->prepare($req);
@@ -15,13 +16,26 @@
  $bio = $res->bio;
  $photo = $res->photo;
  
- 
- ////////////////////////////////////////// récuperer mes trajet ////////////////////////////////////
- 
+
+ ////////////////////////////////////////// récuperer les info du demandeur de place et du trajet ////////////////////////////////////
+//  $req2 =  "SELECT * FROM utilisateur, message WHERE utilisateur.username = message.recepteur  ";
+// $rep2= connect()->prepare($req2);
+// $rep2->execute();
+// $res2 = $rep2->fetch(PDO::FETCH_OBJ); 
+// $emetteur= $res->recepteur;
+// var_dump($emetteur);
+
+//  $req3 =  "SELECT * FROM trajet, message WHERE id_trajet = message.id_traj";
+// $rep3= connect()->prepare($req3);
+// $rep3->execute();
+// $res3 = $rep3->fetch(PDO::FETCH_OBJ); 
+// $emetteur= $res->photo
+$req =  "SELECT * FROM message WHERE recepteur = '$nom_utilisateur' ";
+ $rep = connect()->prepare($req);
+ $rep->execute();
+ $res = $rep->fetchAll(PDO::FETCH_OBJ);  
 
  ?>
-
-
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -81,32 +95,87 @@
      <section id="messagerie">
 
         <label class="titre"> messagerie</label>
+        <?php
+        if (empty($res)) 
+         { echo "<p class='errormsgnores'>Messagerie Vide!</p>";
+          
+         }
+        else
+        foreach($res as $key => $value )
+        { 
+        $type = $value-> type_msg;
+        $idTraj = $value-> id_traj;
+//////////////////////////info trajet///////////////////////////////////////////////////////////
+        $req3 =  "SELECT * FROM trajet WHERE id_trajet = $idTraj";
+        $rep3= connect()->prepare($req3);
+        $rep3->execute();
+        $res3 = $rep3->fetch(PDO::FETCH_OBJ); 
+        $depart = $res3->pt_depart;
+        $destination = $res3->pt_arrive;
+        $date = $res3->date_trajet;
+        $date_explosee = explode("-", $date);
+        $jour = $date_explosee[2];
+        $mois2 = $date_explosee[1];
+        $annee = $date_explosee[0];
+////////////////////////////////info emetteur////////////////////////////////////////////////////
+$req4 =  "SELECT * FROM  message WHERE id_traj = $idTraj";
+$rep4= connect()->prepare($req4);
+$rep4->execute();
+$res4 = $rep4->fetch(PDO::FETCH_OBJ); 
+$sender = $res4->emetteur;
+// var_dump($sender);
+                ///////////////////////photo du sender////////////////////////
 
+$req5 =  "SELECT * FROM  utilisateur WHERE username = '$sender'";
+$rep5= connect()->prepare($req5);
+$rep5->execute();
+$res5 = $rep5->fetch(PDO::FETCH_OBJ); 
+$photo2 = $res5->photo;
+// var_dump($res5);
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+
+?>
         <div class="messagerieContainer">
+    <?php if ($type=="Demande") { displayDemande(); } else { displayValidation (); } ?>
             <div class="headerAcc">
                 <div class="headerPhotoAccountMsg"> 
-                        <img class="headerPhotoProfilMsg" src="assets/img/avatar/<?php echo $photo ?>" alt="photo de profil">
+                        <img class="headerPhotoProfilMsg" src="assets/img/avatar/<?php echo $photo2; ?>" alt="photo de profil">
                 </div>
                
                 <div class="msgContainer">
-                    <div class="user-nameMsg"><?php echo $nom; ?></div>
+                    <div class="user-nameMsg"><?php echo $sender; ?></div>
                     <div class="corpsMsg">
-                        <p class="textjustify"><span class="typeMsg">Demande</span>
-                        <span class="corpsDemande"> de réservation pour le trajet <span class="departure"> Dole</span> Lons le Saunier du <span class="dateDeparture"> 05 Septembre 2022</span></span></p>
+                        <p class="textjustify"><span class="typeMsg"><?php echo $type ?></span>
+                        <span class="corpsDemande"> de réservation pour le trajet <span class="departure"> <?php echo $depart ?> - </span>  <?php echo $destination ?> du <span class="dateDeparture"> <?php echo $jour; echo " "; echo changeMonth($mois2); echo " "; echo $annee; ?></span></span></p>
                     </div>
                 </div>
-            </div>
+            </div> 
+                <!-- ---------------------------------------------------- -->
+
+                <div class="headerAccValidate">
+                <div class="headerPhotoAccountMsg"> 
+                        <img class="headerPhotoProfilMsg" src="assets/img/avatar/<?php echo $photo2; ?>" alt="photo de profil">
+                </div>
+               
+                <div class="msgContainer">
+                    <div class="user-nameMsg"><?php echo $sender; ?></div>
+                    <div class="corpsMsg">
+                        <p class="textjustify"><span class="typeMsg"><?php echo $type ?></span>
+                        <span class="corpsDemande"> de réservation pour le trajet <span class="departure"> <?php echo $depart ?> - </span>  <?php echo $destination ?> du <span class="dateDeparture"> <?php echo $jour; echo " "; echo changeMonth($mois2); echo " "; echo $annee; ?></span></span></p>
+                    </div>
+                </div>
+               </div> 
+
+
+                <!-- ---------------------------------------------------- -->
+
+            
             <span class="separateur"></span>
-        
         </div>
 
-
+        <?php } ?>
      </section>
-
-
-
-
-
 <script>
 
 /////////////affichage de boite des information d'un compte/////////
@@ -126,6 +195,14 @@
 //////////////affichage de editer et supprimer trajet //////////
 
 </script>
+<?php function displayDemande() {
+    
+                ?> 
+                <script> document.querySelector('.headerAcc').style.display="flex"</script> <?php 
+                }
+
+                
+        function displayValidation () {?> <script> document.querySelector('.headerAccValidate').style.display="flex"</script> <?php }?>
 
 </body>
 </html>

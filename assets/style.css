@@ -2231,10 +2231,11 @@ color: #333333;
     flex-direction: column;
 }
 
-.headerAcc{
+.headerAcc, .headerAccValidate{
 
-    display: flex;
+    display: none;
     width: 100%;
+    /* flex-direction: column; */
     /* align-items: center; */
 }
 

@@ -450,9 +450,51 @@ function cancelReservation(){
 }}
 ///////////////////////////////////////function to reserve a place///////////////////////////////////////////////////////////////////////////
 
+function reserve(){
+    $idTrajet = $_GET['id'];
+    $user = $_SESSION["username"];
+    $date_msg = date('y-m-d');
+    $type_msg = "Demande";
+    $req2 =  "SELECT * FROM trajet WHERE id_trajet = $idTrajet  ";
+    $rep2= connect()->prepare($req2);
+    $rep2->execute();
+    $res2 = $rep2->fetch(PDO::FETCH_OBJ); 
+    $chauffeur = $res2->chauffeur;
+   
+    $sql = "INSERT INTO `message` (id_message, id_traj, date_msg, type_msg, emetteur, recepteur)
+            VALUES (NULL, :id_traj, :date_msg, :type_msg, :emetteur, :recepteur)";
+        connect()->prepare($sql)->execute([
+        ":id_traj" => $idTrajet,
+        ":date_msg" => $date_msg,
+        ":type_msg" => $type_msg,
+        ":emetteur" => $user,
+        ":recepteur" => $chauffeur
+    ]);
+        // $req = connect()->prepare("insert into message(id_trajet,date_msg,type_msg,emetteur,recepteur) values (?,?,?,?,?)");
+        //  $req->execute(array($idTrajet,$date_msg,$type_msg,$user,$chauffeur));
+    if ($sql){
+    ?>
+  <script>
+            document.querySelector("#felicitation").style.display = "flex";
+                setTimeout(function() { $(".felicitation").hide(); }, 1000);
+                document.getElementById("mesTrajets").style.display = "none";
+                function redirection() {
+                    location.href="rechercher.php"               
+                        }
+                        setTimeout("redirection()", 1000); 
+    </script>
+  
+<?php
+           var_dump($idTrajet);
+           var_dump($user);
+           var_dump($type_msg);
+           var_dump($chauffeur);
+           var_dump($date_msg);
 
 
+}}
 
+/////////////////////////////////////////////////////////////////////////////////
 
 
 
