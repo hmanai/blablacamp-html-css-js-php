@@ -448,7 +448,7 @@ function cancelReservation(){
       <?php
        
 }}
-///////////////////////////////////////function to reserve a place///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////function asking to reserve a place///////////////////////////////////////////////////////////////////////////
 
 function reserve(){
     $idTrajet = $_GET['id'];
@@ -494,10 +494,58 @@ function reserve(){
 
 }}
 
-/////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////// fonction validation réserver une place///////////////////////////////////////////////
+
+ function reservePlace(){
+    $idTrj = $_GET['id'];
+    $sender = $_GET['sender'];
+    var_dump($idTrj);
+    ////////////////////////////////////////info trajet ///////////////////////////////////////////////////////
+    $req3 =  "SELECT * FROM trajet WHERE id_trajet = $idTrj";
+    $rep3= connect()->prepare($req3);
+    $rep3->execute();
+    $res3 = $rep3->fetch(PDO::FETCH_OBJ); 
+    $depart = $res3->pt_depart;
+    $destination = $res3->pt_arrive;
+    $date = $res3->date_trajet;
+    $date_msg = date('y-m-d');
+    $nb_Places= $res3->nb_places; 
+
+    $chauffeur = $res3->chauffeur;
+
+    $sql = "INSERT INTO `message` (id_message, id_traj, date_msg, type_msg, emetteur, recepteur)
+    VALUES (NULL, :id_traj, :date_msg, :type_msg, :emetteur, :recepteur)";
+    connect()->prepare($sql)->execute([
+    ":id_traj" => $idTrj,
+    ":date_msg" => $date_msg,
+    ":type_msg" => "Validation",
+    ":emetteur" => $sender,
+    ":recepteur" => $chauffeur
+    ]);
+     $nb_Places = $nb_Places -1;
+if ($nb_Places > 0){
+    $sql7= "UPDATE trajet SET nb_places = :nb_places WHERE id_Trajet = $idTrj ";
+    connect()->prepare($sql7)->execute(array(":nb_places" => $nb_Places));
+} else echo "<p style='color:red'>pas de Place disponibles pour ce Trajet!</p>";
+
+    if ($sql){
+    ?>
+    <script>
+        document.querySelector("#felicitation").style.display = "flex";
+            setTimeout(function() { $(".felicitation").hide(); }, 1000);
+            document.getElementById("validmessagerie").style.display = "none";
+            function redirection() {
+                location.href="rechercher.php"               
+                    }
+                    setTimeout("redirection()", 1000); 
+    </script>
+
+
+<?php
+}}
 
 
 
 
-?>
+
 

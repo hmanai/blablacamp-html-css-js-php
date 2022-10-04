@@ -2,6 +2,8 @@
 <?php
  
  require_once 'fonctions.php';
+ $idTrajet = $_GET['id'];
+
   ////////////////////////////////////////// récuperer info utilisateur ////////////////////////////////////
 
  $nom_utilisateur = $_SESSION['username'];
@@ -18,18 +20,6 @@
  
 
  ////////////////////////////////////////// récuperer les info du demandeur de place et du trajet ////////////////////////////////////
-//  $req2 =  "SELECT * FROM utilisateur, message WHERE utilisateur.username = message.recepteur  ";
-// $rep2= connect()->prepare($req2);
-// $rep2->execute();
-// $res2 = $rep2->fetch(PDO::FETCH_OBJ); 
-// $emetteur= $res->recepteur;
-// var_dump($emetteur);
-
-//  $req3 =  "SELECT * FROM trajet, message WHERE id_trajet = message.id_traj";
-// $rep3= connect()->prepare($req3);
-// $rep3->execute();
-// $res3 = $rep3->fetch(PDO::FETCH_OBJ); 
-// $emetteur= $res->photo
 $req =  "SELECT * FROM message WHERE recepteur = '$nom_utilisateur' ";
  $rep = connect()->prepare($req);
  $rep->execute();
@@ -54,7 +44,7 @@ $req =  "SELECT * FROM message WHERE recepteur = '$nom_utilisateur' ";
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script> <!-- link for car icon -->  
     <link rel="stylesheet" href="assets/style.css">
-    <title>Messagerie</title>
+    <title>validation de la réservation</title>
  
 </head>
 <body>
@@ -62,6 +52,14 @@ $req =  "SELECT * FROM message WHERE recepteur = '$nom_utilisateur' ";
         <a class="logoHeader" href="index.html"> <img class="logoHeader" src="assets/img/logo.png" alt="logo">  </a>
         <a class="logoProfil" href="#"> <img class="logoProfil" src="assets/img/logoProfil.png" alt="logo">  </a>
      </header>
+     <div id="felicitation">
+     
+        <div class=" felicitationcorps">
+            <h2> Félicitation <span class="styleusername"></span></h2>
+            <p>Votre message a bien été envoyé!</p>
+        </div>
+
+     </div> 
      <div class="compteInfor">
       
       <div class="compteInfo">
@@ -86,39 +84,18 @@ $req =  "SELECT * FROM message WHERE recepteur = '$nom_utilisateur' ";
               <a class="accountInformation" href="mesTrajets.php"><img class="iconnavbar" src="assets/img/metrajet.png" alt="icone profile"> Mes trajets</a>
               <a class="accountInformation" href="mesReservations.php"><img class="iconnavbar" src="assets/img/iconreservation.png" alt="icone réservation"> Mes réservations</a>
               <a class="accountInformation" href="editCompte.php?user-name=<?php echo $_SESSION['username']; ?>"><img class="iconnavbar" src="assets/img/metrajet.png" alt="icone profile"> Modifier mes informations</a>
-              <a class="accountInformation" href="#"><img class="iconnavbar" src="assets/img/iconmessagerie.png" alt="icone Messagerie"> Messagerie</a>
+              <a class="accountInformation" href="messagerie.php"><img class="iconnavbar" src="assets/img/iconmessagerie.png" alt="icone Messagerie"> Messagerie</a>
               <a class="accountInformation" href="logout.php"><iconify-icon class="iconnavbarflech" icon="bx:arrow-back"></iconify-icon>Se déconnecter</a>
             </div>
        </div>
    </div>
 
-     <section id="messagerie">
+     <section id="validmessagerie">
 
-        <label class="titre"> messagerie</label>
-        <?php
-        if (empty($res)) 
-         { echo "<p class='errormsgnores'>Messagerie Vide!</p>";
-          
-         }
-        else
-        foreach($res as $key => $value )
-        { 
-        $type = $value-> type_msg;
-        $idTraj = $value-> id_traj;
-//////////////////////////info trajet///////////////////////////////////////////////////////////
-        $req3 =  "SELECT * FROM trajet WHERE id_trajet = $idTraj";
-        $rep3= connect()->prepare($req3);
-        $rep3->execute();
-        $res3 = $rep3->fetch(PDO::FETCH_OBJ); 
-        $depart = $res3->pt_depart;
-        $destination = $res3->pt_arrive;
-        $date = $res3->date_trajet;
-        $date_explosee = explode("-", $date);
-        $jour = $date_explosee[2];
-        $mois2 = $date_explosee[1];
-        $annee = $date_explosee[0];
+        <label class="titre"> Validation de la réservation</label>
+       <?php
 ////////////////////////////////info emetteur////////////////////////////////////////////////////
-$req4 =  "SELECT * FROM  message WHERE id_traj = $idTraj";
+$req4 =  "SELECT * FROM  message WHERE id_traj =  $idTrajet";
 $rep4= connect()->prepare($req4);
 $rep4->execute();
 $res4 = $rep4->fetch(PDO::FETCH_OBJ); 
@@ -132,7 +109,19 @@ $rep5->execute();
 $res5 = $rep5->fetch(PDO::FETCH_OBJ); 
 $photo2 = $res5->photo;
 // var_dump($res5);
-///////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////info trajet ///////////////////////////////////////////////////////
+$req3 =  "SELECT * FROM trajet WHERE id_trajet = $idTrajet";
+$rep3= connect()->prepare($req3);
+$rep3->execute();
+$res3 = $rep3->fetch(PDO::FETCH_OBJ); 
+$depart = $res3->pt_depart;
+$destination = $res3->pt_arrive;
+$date = $res3->date_trajet;
+$date_explosee = explode("-", $date);
+$jour = $date_explosee[2];
+$mois2 = $date_explosee[1];
+$annee = $date_explosee[0];
+
 
 
 ?>
@@ -145,27 +134,31 @@ $photo2 = $res5->photo;
                 <div class="msgContainer">
                     <div class="user-nameMsg"><?php echo $sender; ?></div>
                     <div class="corpsMsg">
-                        <p class="textjustify"><span class="typeMsg"><?php echo $type ?></span>
-                        <?php if ($type=="Demande") {  
+                        <p class="textjustify"><span class="corpsDemande"><?php echo "Demande" ?></span>
+                       
 
-?> <a href="validationReservation.php?id=<?php echo $idTraj?>&sender=<?php echo $sender ?>" > <?php echo '<span class="corpsDemande"> de réservation pour le trajet <span class="departure">';  echo $depart; echo ' - </span> '; echo $destination; ' du <span class="dateDeparture">'; echo $jour; echo " "; echo changeMonth($mois2); echo " "; echo $annee;'</span></span></p> '; ?> </a> <?php
-                        }  else { echo '<span class="corpsDemande"> de votre réservation pour le trajet <span class="departure">';  echo $depart; echo ' - </span> '; echo $destination; ' du <span class="dateDeparture">'; echo $jour; echo " "; echo changeMonth($mois2); echo " "; echo $annee;'</span></span></p>';}
+                      <?php echo '<span class="corpsDemande"> de réservation pour le trajet <span class="departure">';  echo $depart; echo ' - </span> '; echo $destination; echo ' du ';'<span class="dateDeparture">'; echo $jour; echo " "; echo changeMonth($mois2); echo " "; echo $annee;'</span></span></p> '; 
                             ?>
-                   
                         </div>
                 </div>
             </div> 
                 <!-- ---------------------------------------------------- -->
 
-            
-
-                <!-- ---------------------------------------------------- -->
-
-            
-            <span class="separateur"></span>
+                <div class="corpsParagraph">
+            <p class="bonjour"> Bonjour <span class="bjrUser"><?php echo $sender ?></span></p></br>
+            <p class="paragrafReserv">je t’informe qu’une place t’attend dans ma voiture pour le trajet. <span class="ptdep_ptarr"><?php echo $depart ?> - <?php echo $destination ?></span>.</br></br></br>
+            A tout bientot. </p>
         </div>
-
-        <?php } ?>
+        </div>
+        <form class="reserveForm" action="" method="POST" >
+            <div class="bouttonEnvoy"><input class= "registerButton" type="submit" id='send' value='valider la réservation' name="valider" ></div>
+        <?php
+            if (ISSET($_POST['valider'])){
+                reservePlace();
+            }
+        ?>
+        </form>
+    
      </section>
 <script>
 
