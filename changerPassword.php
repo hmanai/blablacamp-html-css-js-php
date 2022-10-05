@@ -32,10 +32,13 @@
         <P class="pass"> Vous ne vous souvez plus de votre mot de passe et ne parvenez plus à vous connecter. Entrez votre email et réinitialisez le. </P>
         <div id="containerForm">
             <form id="connexionForm" action="" method="post">
-                <input class="confirmEmail" type="text" placeholder="Email" name="username" >
+                <input class="confirmEmail" type="text" placeholder="Email" name="email" >
                 <button class="changePass" type="submit" id='submit' value='' name="confirm"> réinitialiser le </br> mot de passe</button>
                 <a class="canceLogin" href="index.php"> Annuler</a>
+<?php
+                if(isset($_POST["email"]) && (!empty($_POST["email"]))){}
 
+?>
             </form>
 
         </div>

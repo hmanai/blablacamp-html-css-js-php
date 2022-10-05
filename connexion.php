@@ -63,7 +63,7 @@ require_once 'fonctions.php';
                 <input class="loginInput" type="text" placeholder="Nom d’utilisateur" name="username" >
                 <input class="loginInput" type="password" placeholder=" Mot de passe" name="password" >
                 <input class= "loginButton" type="submit" id='submit' value='se connecter' name="login" >
-                <a class="canceLogin" href="#"> mot de passe oublier</a>
+                <a class="canceLogin" href="changerPassword.php"> mot de passe oublier</a>
                 <?php
 if(ISSET($_POST['login'])){
     login();

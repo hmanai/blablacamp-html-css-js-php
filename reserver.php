@@ -76,7 +76,7 @@
             <p>Votre message a bien été envoyé!</p>
         </div>
 
-</div> 
+     </div> 
      <div class="compteInfor">
       
       <div class="compteInfo">
@@ -138,43 +138,7 @@
 
 
 if (ISSET($_POST['valider'])){reserve();}
-                //     $date_msg = date('d-m-Y');
-                //     $type_msg = "demande";
-                //     var_dump($idTrajet);
-                //     var_dump($date_msg);
-                //     var_dump($type_msg);
-                //     var_dump($nom_utilisateur);
-                //     var_dump($chauff);
-                //     if (ISSET($_POST['valider'])){
-
-                //         // $req = connect()->prepare("insert into message(id_trajet,date_msg,type_msg,emetteur,recepteur) values (?,?,?,?,?)");
-                //         // $req->execute(array($idTrajet,$date_msg,$type_msg,$nom_utilisateur,$chauff));
-
-                //         $sql = "INSERT INTO `message` (id_message, id_trajet, date_msg, type_msg, emetteur, recepteur)
-                //         VALUES (NULL, :id_trajet, :date_msg, :type_msg, :emetteur, :recepteur)";
-                //     connect()->prepare($sql)->execute([
-                //     ":id_trajet" => $idTrajet,
-                //     ":date_msg" => $date_msg,
-                //     ":type_msg" => $type_msg ,
-                //     ":emetteur" => $nom_utilisateur,
-                //     ":recepteur" => $chauff
-                // ]);
-                // if ($sql){
-                //     ?>
-                    <script>
-                //          document.querySelector("#felicitation").style.display = "flex";
-                //               setTimeout(function() { $(".felicitation").hide(); }, 1000);
-                //               document.getElementById("mesTrajets").style.display = "none";
-                //               function redirection() {
-                //                   location.href="rechercher.php"               
-                //                       }
-                //                       setTimeout("redirection()", 1000); 
-                //     </script>
-                    <?php
-                //     }}
-
-
-                 
+                           
 ?>
     </form>
         
