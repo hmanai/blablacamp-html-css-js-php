@@ -147,7 +147,64 @@ $count = $rep->rowCount();
             $tabType=explode("/", $etapes);
             //var_dump($tabType);
      
-        
+        if ($nb_places==0){ 
+/////////////////////////////////////////trajet avec nb places == 0/////////////////////////////////////////////////////////////////
+?>
+<div class="detailsTrajet">
+            <div class="nbrslttrj">
+                <?php echo "<p class='errrrrror' style='color:red'>pas de Place disponibles pour ce Trajet!</p>"; ?>
+                            <p class="nbplace">places disponibles:<span class="nomnrePlace"><?php echo $nb_places  ?></span></p>
+                        </div>
+                        <div class="details">
+                
+                            <div class="hourTrip">
+                                <span class="startHour"><?php echo $heure_trajet ?></span>
+                                <span class="finishHour"><?php echo $heure_Arrive ?></span>
+                            
+                            </div>
+                            <div class="liaison">
+                                <!-- <img class="cercleLiaison" src="assets/img/deuxCercles.png" alt="deux cercles liés par un trait"> -->
+                            
+                                <span class="cercleHaut" > </span>
+                                <span class="cercleBas"></span>
+                            
+                            </div>
+                            <div class="citiestrip">
+                                <div class="cityStart"><?php echo $pt_depart ?> </div>
+                                <div class="cityFinish"><?php echo $pt_arrive ?></div>
+                            </div>
+
+                        </div>
+                        <div class="accountdetails">
+                        <?php ////////////////////////// récuperer photo et bio du chauffeur //////////////////////////////////////
+                                    $req =  "SELECT * FROM utilisateur WHERE username = '$chauffeur' ";
+                                    $rep = connect()->prepare($req);
+                                    $rep->execute();
+                                    $res = $rep->fetch(PDO::FETCH_OBJ);  
+                                    $nomChauf = $res->nom;
+                                    $bioChauf = $res->bio;
+                                    $photoChauf = $res->photo;
+                                ?>
+                            <div class="photoAccount"> 
+                                <img class="photoProfil" src="assets/img/avatar/<?php echo $photoChauf ?>" alt="">
+                            </div>
+                            <div class="bio">
+                                <div class="nomUtilisateur"><?php echo $nomChauf ?></div>
+                                <p class="biographie"><?php echo $bioChauf ?></p>
+                            </div>
+
+                        </div>
+                        
+                    </div>
+
+
+
+<?php
+
+        }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+        else{
         ?>
      
         <a href="reserver.php?id=<?php echo $id ?>" class="linkreservePlace"><div class="detailsTrajet">
@@ -196,7 +253,7 @@ $count = $rep->rowCount();
             
         </div></a>
         <?php
-          }}
+          }}}
         
           ?>
      </section>

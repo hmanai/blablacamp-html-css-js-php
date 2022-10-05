@@ -36,7 +36,13 @@
                 <button class="changePass" type="submit" id='submit' value='' name="confirm"> réinitialiser le </br> mot de passe</button>
                 <a class="canceLogin" href="index.php"> Annuler</a>
 <?php
-                if(isset($_POST["email"]) && (!empty($_POST["email"]))){}
+                if(isset($_POST["email"]) && (!empty($_POST["email"]))){
+
+
+
+
+                    
+                }
 
 ?>
             </form>

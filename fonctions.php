@@ -509,7 +509,9 @@ function reserve(){
     $date_msg = date('y-m-d');
     $nb_Places= $res3->nb_places; 
     $chauffeur = $res3->chauffeur;
+// if ($nb_Places ==0){
 
+// }
     $sql = "INSERT INTO `message` (id_message, id_traj, date_msg, type_msg, emetteur, recepteur)
     VALUES (NULL, :id_traj, :date_msg, :type_msg, :emetteur, :recepteur)";
     connect()->prepare($sql)->execute([
@@ -539,10 +541,10 @@ connect()->prepare($sql)->execute([
     $res = connect()->prepare($sql);
     $res->execute([':id_msg' => $idMsg]);
 
-     $nb_Places = $nb_Places -1;
+    //  $nb_Places = $nb_Places -1;
 if ($nb_Places > 0){
     $sql7= "UPDATE trajet SET nb_places = :nb_places WHERE id_Trajet = $idTrj ";
-    connect()->prepare($sql7)->execute(array(":nb_places" => $nb_Places));
+    connect()->prepare($sql7)->execute(array(":nb_places" => $nb_Places -1));
 } else {echo "<p style='color:red'>pas de Place disponibles pour ce Trajet!</p>";}
 
     if ($sql){

@@ -2240,6 +2240,12 @@ color: #333333;
     /* align-items: center; */
 }
 
+.errrrrror{
+
+    font-size: 10px;
+    transform: translateX(-20p) !important;
+}
+
 .headerPhotoAccountMsg{
 
     width: 40px;
