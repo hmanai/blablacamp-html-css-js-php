@@ -431,7 +431,7 @@ function deleteTrajet(){
 function cancelReservation(){
 
     $id = $_GET['id'];
-    var_dump($id);
+    // var_dump($id);
     $sql = 'DELETE FROM reservation WHERE id_reservation = :id';
     $res = connect()->prepare($sql);
     if ($res->execute([':id' => $id])) {
@@ -508,7 +508,6 @@ function reserve(){
     $date = $res3->date_trajet;
     $date_msg = date('y-m-d');
     $nb_Places= $res3->nb_places; 
-
     $chauffeur = $res3->chauffeur;
 
     $sql = "INSERT INTO `message` (id_message, id_traj, date_msg, type_msg, emetteur, recepteur)
@@ -520,6 +519,18 @@ function reserve(){
     ":emetteur" => $chauffeur,
     ":recepteur" => $sender
     ]);
+////////////////////////////////////////ajouter dans table reservation////////////////////
+
+$sql = "INSERT INTO `reservation` (id_reservation, date_reservation, id_trajet, utilisateur, chauffeur)
+VALUES (NULL, :date_reservation, :id_trajet, :passager, :chauffeur)";
+connect()->prepare($sql)->execute([
+":date_reservation" => $date_msg,
+":id_trajet" => $idTrj,
+":utilisateur" => $sender,
+":chauffeur" => $chauffeur
+]);
+
+////////////////////////////////////////////////////////////////////////////////
 
     // $sql= "UPDATE message SET type_msg = :type_msg WHERE id_message = $idMsg ";
     // connect()->prepare($sql)->execute(array(":type_msg" => "Validation"));
@@ -532,8 +543,7 @@ function reserve(){
 if ($nb_Places > 0){
     $sql7= "UPDATE trajet SET nb_places = :nb_places WHERE id_Trajet = $idTrj ";
     connect()->prepare($sql7)->execute(array(":nb_places" => $nb_Places));
-} else {echo "<p style='color:red'>pas de Place disponibles pour ce Trajet!</p>";
-die;}
+} else {echo "<p style='color:red'>pas de Place disponibles pour ce Trajet!</p>";}
 
     if ($sql){
     ?>
