@@ -61,7 +61,7 @@ $nb = sizeof($tabType);
   
 <div id="felicitation">
         <header class="felicitationheader">
-            <a class="logoHeader" href="index.html"><img  class="logoHeader" src="assets/img/logo.png" alt="logo"></a> 
+            <a class="logoHeader" href="index.php"><img  class="logoHeader" src="assets/img/logo.png" alt="logo"></a> 
             <span class="headConnexion"> confirmation</span>     
         </header>
         <div class=" felicitationcorps">
@@ -72,7 +72,7 @@ $nb = sizeof($tabType);
 </div> 
 <section id="editTraj">
     <header>
-        <a class="logoHeader" href="index.html"> <img class="logoHeader" src="assets/img/logo.png" alt="logo">  </a>
+        <a class="logoHeader" href="index.php"> <img class="logoHeader" src="assets/img/logo.png" alt="logo">  </a>
         <a class="logoProfil" href="#"> <img class="logoProfil" src="assets/img/logoProfil.png" alt="logo">  </a>
      </header>
          <div class="compteInfor">

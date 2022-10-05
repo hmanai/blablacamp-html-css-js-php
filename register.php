@@ -29,7 +29,7 @@ require_once 'fonctions.php';
 <body>
  <div id="felicitation">
         <header class="felicitationheader">
-            <a class="logoHeader" href="index.html"><img  class="logoHeader" src="assets/img/logo.png" alt="logo"></a> 
+            <a class="logoHeader" href="index.php"><img  class="logoHeader" src="assets/img/logo.png" alt="logo"></a> 
             <span class="headConnexion"> confirmation</span>     
         </header>
         <div class=" felicitationcorps">
@@ -40,7 +40,7 @@ require_once 'fonctions.php';
 </div> 
     <section id="register">
         <header>
-           <a class="logoHeader" href="index.html"><img  class="logoHeader" src="assets/img/logo.png" alt="logo"></a> 
+           <a class="logoHeader" href="index.php"><img  class="logoHeader" src="assets/img/logo.png" alt="logo"></a> 
             <p class="headConnexion"> Creer un compte</p>     
         </header>
 

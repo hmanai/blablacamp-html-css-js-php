@@ -43,7 +43,7 @@ $photo = $res->photo;
 </head>
 <body>
     <header>
-        <a class="logoHeader" href="index.html"> <img class="logoHeader" src="assets/img/logo.png" alt="logo">  </a>
+        <a class="logoHeader" href="index.php"> <img class="logoHeader" src="assets/img/logo.png" alt="logo">  </a>
         <a class="logoProfil" href="#"> <img class="logoProfil" src="assets/img/logoProfil.png" alt="logo">  </a>
      </header>
          <div class="compteInfor">
@@ -76,6 +76,7 @@ $photo = $res->photo;
 
 
          </div>
+
      <section id="searchTrajet">
         <div class="enregistrementForm">
             <form class="registerForm" action="" method="post" enctype="multipart/form-data">
