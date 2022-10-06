@@ -77,7 +77,7 @@ require_once 'fonctions.php';
 
                 <?php
                     if (ISSET($_POST['register'])){
-                        if((!empty($_POST['nom'])) && (!empty($_POST['username'])) && (!empty($_POST['password'])) && (!empty($_POST['email'])) && (!empty($_POST['bio'])) && (!empty($_FILES['photo']))
+                        if((!empty($_POST['nom'])) && (!empty($_POST['username'])) && (!empty($_POST['password'])) && (!empty($_POST['email'])) && (!empty($_POST['bio'])) 
                         ){
                             $_SESSION['username'] = $_POST['username'];
                             

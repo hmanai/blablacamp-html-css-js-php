@@ -248,13 +248,13 @@ display: none;
         width: 60px;
         height: 60px;
         margin-left: 7%;
-        margin-top: 7%;
+        /* margin-top: 3%; */
     }
 
     .headConnexion{
 
         margin-right: 7%;
-        margin-top: 64px;
+        /* margin-top: 64px; */
         font-family: 'Work Sans';
         font-weight: 500;
         font-size: 0.8rem;
@@ -1788,7 +1788,7 @@ color: #333333;
     justify-content: space-between;
     align-items: center;
     align-items: center;
-    padding-left: 5%;
+    padding-left: 15%;
     font-family: 'Epilogue';
     font-size: 18px;
     margin-top: 5%;
