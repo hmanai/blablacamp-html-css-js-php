@@ -36,14 +36,23 @@
                 <button class="changePass" type="submit" id='submit' value='' name="confirm"> réinitialiser le </br> mot de passe</button>
                 <a class="canceLogin" href="index.php"> Annuler</a>
 <?php
-                if(isset($_POST["email"]) && (!empty($_POST["email"]))){
+                if(isset($_POST["email"]) && (!empty($_POST["email"])) && isset($_POST["confirm"])){
 
+           $password = uniqid();
+           $hashedPassword = password_hash($password, PASSWORD_DEFAULT).
+           $message = "Bonjour, voici votre nouveau mot de passe : $password";
+           $headers = 'Content-Type: text/plain; charset="utf-8"'."";
+           if (mail($_POST['email'], 'Mot de passe oublié', $message, $headers))
+           {
+            $sql = "UPDATE utilisateur SET password = ? where email= ?";
+            $stmt = connect()->prepare($sql);
+            $stmt->execute([$hashedPassword, $_POST['email']]);
+            echo "Mail envoyé";
+           }    
+           else{
+            echo "<p style='color:red'>Erreur!!, veuillez réessayer ultérieurement!</p>";
 
-
-
-                    
-                }
-
+           }}   
 ?>
             </form>
 
