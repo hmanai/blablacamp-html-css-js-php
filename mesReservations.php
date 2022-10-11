@@ -1,6 +1,7 @@
 
 <?php
 require_once 'fonctions.php';
+include 'displayPc.php';
 
 /////////////////////////////////////////////////////////afficher information utilisateur dans l'entete ///////////////////////////////////////////////////////////////////////////////////
 
@@ -26,27 +27,10 @@ $res2 = $rep2->fetchAll(PDO::FETCH_OBJ);
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
-    <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script> <!-- link for car icon -->  
-    <link rel="stylesheet" href="assets/style.css">
-    <title>Mes Réservations</title>
- 
-</head>
 <body>
-<header>
-        <a class="logoHeader" href="index.php"> <img class="logoHeader" src="assets/img/logo.png" alt="logo">  </a>
+   <section id="mesResBloc">
+     <header>
+        <a class="logoHeader" href="rechercher.php"> <img class="logoHeader" src="assets/img/logo.png" alt="logo">  </a>
         <a class="logoProfil" href="#"> <img class="logoProfil" src="assets/img/logoProfil.png" alt="logo">  </a>
      </header>
          <div class="compteInfor">
@@ -121,6 +105,7 @@ $res2 = $rep2->fetchAll(PDO::FETCH_OBJ);
         </div>
 <?php }?>
      </section>
+   </section>
 <script>
 
 /////////////affichage de boite des information d'un compte/////////
@@ -140,7 +125,20 @@ $res2 = $rep2->fetchAll(PDO::FETCH_OBJ);
 //////////////affichage de editer et supprimer trajet //////////
 
 </script>
+<script>
+        let mesResBloc = document.querySelector('#mesResBloc')
+        let displayPC6 = document.querySelector('.cadreDisplay')
+
+        if (window.matchMedia("(min-width: 600px)").matches) {
+            displayPC6.appendChild(mesResBloc)
+        }else{    displayPC6.removeChild(mesResBloc);
+}
+
+     </script>
+
 <script src="assets/trajet.js"> </script>
+<!-- <script src="assets/pcDisplay.js"></script> -->
+
 
 </body>
 </html>

@@ -1,29 +1,13 @@
+<?php 
+include 'displayPc.php';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mot de passe Perdu</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="assets/style.css"> 
-</head>
-
 <body>
-
+   <section id="changePassBloc">
     <header>
-        <a class="logoHeader" href="index.php"> <img class="logoHeader" src="assets/img/logo.png" alt="logo"> </a>
+        <a class="logoHeader" href="rechercher.php"> <img class="logoHeader" src="assets/img/logo.png" alt="logo"> </a>
         <p class="headConnexion"> Mot de passe perdu</p>
     </header>
 
@@ -58,6 +42,18 @@
 
         </div>
     </section>
+   </section>
+   <script>
+        let changePassBloc = document.querySelector('#changePassBloc')
+        let displayPC2 = document.querySelector('.cadreDisplay')
+
+        if (window.matchMedia("(min-width: 600px)").matches) {
+            displayPC2.appendChild(changePassBloc)
+        }else{    displayPC2.removeChild(changePassBloc);
+}
+
+     </script>
+   <!-- <script src="assets/pcDisplay.js"></script> -->
 
 </body>
 

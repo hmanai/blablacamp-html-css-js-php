@@ -1,6 +1,6 @@
 
 <?php
- 
+ include 'displayPc.php';
  require_once 'fonctions.php';
   ////////////////////////////////////////// récuperer info utilisateur ////////////////////////////////////
 
@@ -39,27 +39,11 @@ $req =  "SELECT * FROM message WHERE recepteur = '$nom_utilisateur' ";
 
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
-    <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script> <!-- link for car icon -->  
-    <link rel="stylesheet" href="assets/style.css">
-    <title>Messagerie</title>
- 
-</head>
+
 <body>
-<header>
-        <a class="logoHeader" href="index.php"> <img class="logoHeader" src="assets/img/logo.png" alt="logo">  </a>
+  <section id="messagerieBloc">
+     <header>
+        <a class="logoHeader" href="rechercher.php"> <img class="logoHeader" src="assets/img/logo.png" alt="logo">  </a>
         <a class="logoProfil" href="#"> <img class="logoProfil" src="assets/img/logoProfil.png" alt="logo">  </a>
      </header>
      <div class="compteInfor">
@@ -150,7 +134,7 @@ $photo2 = $res5->photo;
                         <?php if ($type=="Demande") {  
 
                          ?> <a href="validationReservation.php?id=<?php echo $idTraj?>&sender=<?php echo $sender ?>&idmsg=<?php echo $idMsg ?>" > <?php echo '<span class="corpsDemande"> de réservation pour le trajet <span class="departure">';  echo $depart; echo ' - </span> '; echo $destination;''; echo ' du '; '<span class="dateDeparture">'; echo $jour; echo " "; echo changeMonth($mois2); echo " "; echo $annee;'</span></span></p> '; ?> </a> <?php
-                        }  else { echo '<span class="corpsDemande"> de votre réservation pour le trajet <span class="departure">';  echo $depart; echo ' - </span> '; echo $destination; ' '; echo 'du';'<span class="dateDeparture">'; echo $jour; echo " "; echo changeMonth($mois2); echo " "; echo $annee;'</span></span></p>';}
+                        }  else { echo '<span class="corpsDemande"> de votre réservation pour le trajet <span class="departure">';  echo $depart; echo ' - </span> '; echo $destination; ' '; echo '&nbsp du &nbsp';'<span class="dateDeparture">'; echo $jour; '&nbsp'; echo " "; echo changeMonth($mois2); echo " "; echo $annee;'</span></span></p>';}
                             ?>
                    
                         </div>
@@ -168,6 +152,7 @@ $photo2 = $res5->photo;
 
         <?php } ?>
      </section>
+  </section>
 <script>
 
 /////////////affichage de boite des information d'un compte/////////
@@ -187,6 +172,18 @@ $photo2 = $res5->photo;
 //////////////affichage de editer et supprimer trajet //////////
 
 </script>
+<script>
+        let messagerieBloc = document.querySelector('#messagerieBloc')
+        let displayPC7 = document.querySelector('.cadreDisplay')
+
+        if (window.matchMedia("(min-width: 600px)").matches) {
+            displayPC7.appendChild(messagerieBloc)
+        }else{    displayPC7.removeChild(messagerieBloc);
+}
+
+     </script>
+<!-- <script src="assets/pcDisplay.js"></script> -->
+
 
 </body>
 </html>

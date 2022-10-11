@@ -2,6 +2,7 @@
 
 <?php
 require_once 'fonctions.php';
+include 'displayPc.php';
 
 
 $nom_utilisateur = $_SESSION['username'];
@@ -40,28 +41,12 @@ $nb = sizeof($tabType);
 
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editer un trajet</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/573723cbf2.js" crossorigin="anonymous"></script>
-    <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script> <!-- link for car icon -->   
-    <link rel="stylesheet" href="assets/style.css">
-</head>
+
 <body>
-  
-<div id="felicitation">
+  <section id="editTrajBloc">
+   <div id="felicitation">
         <header class="felicitationheader">
-            <a class="logoHeader" href="index.php"><img  class="logoHeader" src="assets/img/logo.png" alt="logo"></a> 
+            <a class="logoHeader" href="rechercher.php"><img  class="logoHeader" src="assets/img/logo.png" alt="logo"></a> 
             <span class="headConnexion"> confirmation</span>     
         </header>
         <div class=" felicitationcorps">
@@ -77,31 +62,31 @@ $nb = sizeof($tabType);
      </header>
          <div class="compteInfor">
       
-         <div class="compteInfo">
-          <iconify-icon class="close" icon="clarity:close-line"></iconify-icon>
-          <div class="accounthead">
-          <div class="headerPhotoAccount"> 
-                  <img class="headerPhotoProfil" src="assets/img/avatar/<?php echo $photo ?>" alt="photo de profil">
-              </div>
-              <div class="bioHeader">
-                  <div class="user-name"><?php echo $nom; ?></div>
-                  <p class="biographie-user"><?php echo $bio; ?></p>
-              </div>
-          </div>
-          <div class="bouttonrechercherTrajet">
-             <a href="proposerTrajet.php"> <button class= "searchTrajetButton" type="submit" id='submit' value='proposer un trajet' > 
-                  <img class="iconplus" src="assets/img/searchtrajet.png" alt="icone de recherche trajet">
-                  <span> PROPOSER UN TRAJET</span>
-              </button></a>
-          </div> 
-          <div class="navbar">
-              <a class="accountInformation" href="mesTrajets.php"><img class="iconnavbar" src="assets/img/metrajet.png" alt="icone profile"> Mes trajets</a>
-              <a class="accountInformation" href="mesReservations.php"><img class="iconnavbar" src="assets/img/iconreservation.png" alt="icone réservation"> Mes réservations</a>
-              <a class="accountInformation" href="editCompte.php?user-name=<?php echo $_SESSION['username']; ?>"><img class="iconnavbar" src="assets/img/metrajet.png" alt="icone profile"> Modifier mes informations</a>
-              <a class="accountInformation" href="messagerie.php"><img class="iconnavbar" src="assets/img/iconmessagerie.png" alt="icone Messagerie"> Messagerie</a>
-              <a class="accountInformation" href="logout.php"><iconify-icon class="iconnavbarflech" icon="bx:arrow-back"></iconify-icon>Se déconnecter</a>
-            </div>
-       </div>
+                <div class="compteInfo">
+                <iconify-icon class="close" icon="clarity:close-line"></iconify-icon>
+                <div class="accounthead">
+                <div class="headerPhotoAccount"> 
+                        <img class="headerPhotoProfil" src="assets/img/avatar/<?php echo $photo ?>" alt="photo de profil">
+                    </div>
+                    <div class="bioHeader">
+                        <div class="user-name"><?php echo $nom; ?></div>
+                        <p class="biographie-user"><?php echo $bio; ?></p>
+                    </div>
+                </div>
+                <div class="bouttonrechercherTrajet">
+                    <a href="proposerTrajet.php"> <button class= "searchTrajetButton" type="submit" id='submit' value='proposer un trajet' > 
+                        <img class="iconplus" src="assets/img/searchtrajet.png" alt="icone de recherche trajet">
+                        <span> PROPOSER UN TRAJET</span>
+                    </button></a>
+                </div> 
+                <div class="navbar">
+                    <a class="accountInformation" href="mesTrajets.php"><img class="iconnavbar" src="assets/img/metrajet.png" alt="icone profile"> Mes trajets</a>
+                    <a class="accountInformation" href="mesReservations.php"><img class="iconnavbar" src="assets/img/iconreservation.png" alt="icone réservation"> Mes réservations</a>
+                    <a class="accountInformation" href="editCompte.php?user-name=<?php echo $_SESSION['username']; ?>"><img class="iconnavbar" src="assets/img/metrajet.png" alt="icone profile"> Modifier mes informations</a>
+                    <a class="accountInformation" href="messagerie.php"><img class="iconnavbar" src="assets/img/iconmessagerie.png" alt="icone Messagerie"> Messagerie</a>
+                    <a class="accountInformation" href="logout.php"><iconify-icon class="iconnavbarflech" icon="bx:arrow-back"></iconify-icon>Se déconnecter</a>
+                    </div>
+                </div>
 
 
          </div>
@@ -210,7 +195,7 @@ $nb = sizeof($tabType);
                 ?>
          </form>
      </section>
-
+</section>
                 </section>
 
 
@@ -316,5 +301,17 @@ else if ((($tabType[0]) !== "")&&(($tabType[1]) !== "")&&(($tabType[2]) !== "")&
                     editDepartPoint.value="<?php echo $pt_depart ?>"
                     
      </script>
+<!-- <script src="assets/pcDisplay.js"></script> -->
+<script>
+        let editTrajBloc = document.querySelector('#editTrajBloc')
+        let displayPC5 = document.querySelector('.cadreDisplay')
+
+        if (window.matchMedia("(min-width: 600px)").matches) {
+            displayPC5.appendChild(editTrajBloc)
+        }else{    displayPC5.removeChild(editTrajBloc);
+}
+
+     </script>
+
 </body>
 </html>

@@ -1,5 +1,6 @@
 <?php
 require_once 'fonctions.php';
+include 'displayPc.php';
 
 if ((ISSET($_GET['search'])) && ((empty($_GET['departPointValue'])) || (empty($_GET['destinationAdress'])) || (empty($_GET['date']))  )) {
 
@@ -56,27 +57,11 @@ $count = $rep->rowCount();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
-    <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script> <!-- link for car icon -->   
-    <title>Trajets Disponibles</title>
- 
-</head>
+
 <body>
+  <section id="resultatRechBloc">
     <header>
-        <a class="logoHeader" href="index.php"> <img class="logoHeader" src="assets/img/logo.png" alt="logo">  </a>
+        <a class="logoHeader" href="rechercher.php"> <img class="logoHeader" src="assets/img/logo.png" alt="logo">  </a>
         <a class="logoProfil" href="#"> <img class="logoProfil" src="assets/img/logoProfil.png" alt="logo">  </a>
      </header>
      <div class="compteInfo">
@@ -257,6 +242,7 @@ $count = $rep->rowCount();
         
           ?>
      </section>
+  </section>
 <script>
     let logoProfil = document.querySelector('.logoProfil')
     logoProfil.addEventListener('click', function(){
@@ -270,6 +256,15 @@ $count = $rep->rowCount();
     document.querySelector('.compteInfo').style.display="none"
 })
 </script>
+<script>
+        let resultatRechBloc = document.querySelector('#resultatRechBloc')
+        let displayPC10 = document.querySelector('.cadreDisplay')
 
+        if (window.matchMedia("(min-width: 600px)").matches) {
+            displayPC10.appendChild(resultatRechBloc)
+        }else{    displayPC10.removeChild(resultatRechBloc);
+}
+
+     </script>
 </body>
 </html>

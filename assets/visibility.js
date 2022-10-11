@@ -21,4 +21,3 @@ close.addEventListener('click', function(){
   document.querySelector('.compteInfo').style.display="none"
 })
 
-//////////////////// affichage page compte info / page editcompte///////////////////////////////

@@ -1,33 +1,12 @@
 
 <?php
 require_once 'fonctions.php';
+include 'displayPc.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creer un compte</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Epilogue:wght@500&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
-    <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script> <!-- link for car icon -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> <!-- CDN jquery -->
-
-    <link rel="stylesheet" href="assets/style.css">
-    <script src="assets/style.js" async ></script>
-</head>
 <body>
- <div id="felicitation">
+    <section id="registerBloc">
+       <div id="felicitation">
         <header class="felicitationheader">
             <a class="logoHeader" href="index.php"><img  class="logoHeader" src="assets/img/logo.png" alt="logo"></a> 
             <span class="headConnexion"> confirmation</span>     
@@ -37,10 +16,10 @@ require_once 'fonctions.php';
             <p>Votre compte à bien été créé!</p>
         </div>
 
-</div> 
+        </div> 
     <section id="register">
-        <header>
-           <a class="logoHeader" href="index.php"><img  class="logoHeader" src="assets/img/logo.png" alt="logo"></a> 
+        <header >
+           <a class="logoHeader" href="rechercher.php"><img  class="logoHeader" src="assets/img/logo.png" alt="logo"></a> 
             <p class="headConnexion"> Creer un compte</p>     
         </header>
 
@@ -59,7 +38,7 @@ require_once 'fonctions.php';
                 <label class="labelRegister"> Entrez votre mot de passe</label>
                 <input class="inputRegister" type="password" placeholder="Mot de passe" name="password">
                 <label class="labelRegister"> Entrez votre email</label>
-                <input class="inputRegister" type="text" placeholder="Email" name="email">
+                <input class="inputRegister" type="email" placeholder="Email" name="email">
                     <p>Ajoutez votre adresse e-mail pour recevoir des notifications sur votre activité sur Foundation. Cela ne sera pas affiché sur votre profil.</p>
                 <label class="labelRegister"> Entrez votre biographie</label>
                 <textarea class="textareaRegister" type="text" placeholder="Entrez votre bio ici" aria-placeholder="" name="bio"></textarea>  
@@ -72,7 +51,7 @@ require_once 'fonctions.php';
                 </label>
                 <div class="centerButton">
                     <input class= "registerButton" type="submit" id='submit' value='Créer mon compte' name="register" >
-                    <a class="cancelRegister" href="connexion.html">Annuler</a>
+                    <a class="cancelRegister" href="connexion.php">Annuler</a>
                 </div>
 
                 <?php
@@ -96,6 +75,7 @@ require_once 'fonctions.php';
            </form>
         </div>
     </section>
-    
+            </section>
+            <script src="assets/pcDisplay.js"></script>
 </body>
 </html>

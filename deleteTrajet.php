@@ -1,5 +1,5 @@
 <?php
- 
+ include 'displayPc.php';
 require_once 'fonctions.php';
 $nom_utilisateur = $_SESSION['username'];
 
@@ -18,26 +18,11 @@ $photo = $res->photo;
 
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BlaBla Compus</title>
-    <link rel="stylesheet" href="assets/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
-    <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script> <!-- link for car icon -->   
 
-</head>
 <body>
-<header>
-        <a class="logoHeader" href="index.php"> <img class="logoHeader" src="assets/img/logo.png" alt="logo">  </a>
+   <section id="deleteTrajBloc">
+     <header>
+        <a class="logoHeader" href="rechercher.php"> <img class="logoHeader" src="assets/img/logo.png" alt="logo">  </a>
         <a class="logoProfil" href="#"> <img class="logoProfil" src="assets/img/logoProfil.png" alt="logo">  </a>
      </header>
      <div class=" felicitationcorpsdelete">
@@ -86,6 +71,7 @@ $photo = $res->photo;
         </div>
     </form>
     </section>
+   </section>
 <?php 
     if (ISSET($_POST['delete'])){
         deleteTrajet();
@@ -112,5 +98,17 @@ $photo = $res->photo;
 
 
 </script>
+<script>
+        let deleteTrajBloc = document.querySelector('#deleteTrajBloc')
+        let displayPC3 = document.querySelector('.cadreDisplay')
+
+        if (window.matchMedia("(min-width: 600px)").matches) {
+            displayPC3.appendChild(deleteTrajBloc)
+        }else{    displayPC3.removeChild(deleteTrajBloc);
+}
+
+     </script>
+<!-- <script src="assets/pcDisplay.js"></script> -->
+
 </body>
 </html>
