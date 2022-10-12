@@ -41,7 +41,7 @@ require_once 'fonctions.php';
             Crée toi un compte ou connecte toi pour soit proposer un covoiturage, soit pour voir toutes les offes disponibles.
             <span class="smallRedWord">blabla Campus </span> est un service gratuit, il n’est en aucun cas question de mettre en place une monétisation des trajets.
             Bon voyage à toutes et à tous!</p>
-            <div class="droit"><a class="mentionLegal" href="">Mentions légale</a></div>
+            <div class="droit"><a class="mentionLegal" href="">Mentions légales</a></div>
 
         </div>
 
@@ -94,7 +94,7 @@ require_once 'fonctions.php';
                 <input class="loginInput" type="text" placeholder="Nom d’utilisateur" name="username" >
                 <input class="loginInput" type="password" placeholder=" Mot de passe" name="password" >
                 <input class= "loginButton" type="submit" id='submit' value='se connecter' name="login" >
-                <a class="canceLogin" href="changerPassword.php"> mot de passe oublier</a>
+                <a class="canceLogin" href="changerPassword.php"> mot de passe oublié</a>
                 <?php
 if(ISSET($_POST['login'])){
     login();
