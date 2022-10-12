@@ -2,7 +2,6 @@
 
 <?php
 require_once 'fonctions.php';
-include 'displayPc.php';
 
 
 $nom_utilisateur = $_SESSION['username'];
@@ -38,10 +37,13 @@ $nb = sizeof($tabType);
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="fr">
 
+<?php
+include 'displayPc.php';
+
+?>
 <body>
   <section id="editTrajBloc">
    <div id="felicitation">
@@ -57,7 +59,7 @@ $nb = sizeof($tabType);
 </div> 
 <section id="editTraj">
     <header>
-        <a class="logoHeader" href="index.php"> <img class="logoHeader" src="assets/img/logo.png" alt="logo">  </a>
+        <a class="logoHeader" href="rechercher.php"> <img class="logoHeader" src="assets/img/logo.png" alt="logo">  </a>
         <a class="logoProfil" href="#"> <img class="logoProfil" src="assets/img/logoProfil.png" alt="logo">  </a>
      </header>
          <div class="compteInfor">

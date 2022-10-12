@@ -1,7 +1,6 @@
 
 <?php
 require_once 'fonctions.php';
-include 'displayPc.php';
 
 /////////////////////////////////////////////////////////afficher information utilisateur dans l'entete ///////////////////////////////////////////////////////////////////////////////////
 
@@ -27,6 +26,10 @@ $res2 = $rep2->fetchAll(PDO::FETCH_OBJ);
 
 <!DOCTYPE html>
 <html lang="en">
+<?php
+include 'displayPc.php';
+
+?>
 <body>
    <section id="mesResBloc">
      <header>
@@ -67,7 +70,7 @@ $res2 = $rep2->fetchAll(PDO::FETCH_OBJ);
 
         <?php
         if (empty($res2)) 
-         { echo "<p class='errormsgnores'>Pas de réservation encours!</p>";
+         { echo "<p class='errormsgnores'>Pas de réservation en-cours!</p>";
           
          }
         else

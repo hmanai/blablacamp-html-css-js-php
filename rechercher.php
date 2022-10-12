@@ -1,6 +1,5 @@
 <?php
 require_once 'fonctions.php';
-include 'displayPc.php';
 
 
 
@@ -15,9 +14,13 @@ $nom = $res->nom;
 $bio = $res->bio;
 $photo = $res->photo;
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
+<?php
+include 'displayPc.php';
 
+?>
 <body>
   <section id="rechercherBloc">
     <header>
@@ -37,7 +40,7 @@ $photo = $res->photo;
                     </div>
                 </div>
                 <div class="bouttonrechercherTrajet">
-                    <a href="proposerTrajet">
+                    <a href="proposerTrajet.php">
                         <button class= "searchTrajetButton" type="submit" id='submit' value='proposer un trajet' > 
                         <img class="iconplus" src="assets/img/searchtrajet.png" alt="icone de recherche trajet">
                         <span> PROPOSER UN TRAJET</span>
@@ -54,10 +57,11 @@ $photo = $res->photo;
              </div>
          </div>
      <section id="searchTrajet">
+     <label class="labelRegister">Rechercher un trajet</label>
+
          <form class="searchForm" method="GET" id="searchelement" action="resultRecherch.php">
             
             <p class="erreurRecherch">Veuillez remplir tous les champs !</p>
-            <label class="labelRegister">Rechercher un trajet</label>
                 <div class="alignerInput">
                     <div id="startPoint">
                         <iconify-icon icon="akar-icons:location" class="positionIcon"></iconify-icon>

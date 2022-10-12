@@ -108,7 +108,7 @@
                     <div class="finishLocation"><?php echo  $pt_arrive ?></div> 
                 </div>
                 <div class="iconflech">
-                    <img class="fleche" src="assets/img/<?php echo $type_Trajet ?>" alt="image de deux fleches haut et bas">
+                    <img class="fleche" src="assets/img/<?php echo $type_Trajet ?>.png" alt="image de deux fleches haut et bas">
                 </div>
             </div>
         </div>

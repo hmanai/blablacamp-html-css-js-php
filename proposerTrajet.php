@@ -2,7 +2,6 @@
 
 <?php
 require_once 'fonctions.php';
-include 'displayPc.php';
 
 
 $nom_utilisateur = $_SESSION['username'];
@@ -20,7 +19,10 @@ $photo = $res->photo;
 
 <!DOCTYPE html>
 <html lang="fr">
+<?php
+include 'displayPc.php';
 
+?>
 <body>
   <section id="propTrajBloc">
     <header>

@@ -52,13 +52,26 @@ function login(){
                 // header("location: rechercher.php");
                 echo "Bienvenue ".$_SESSION['username'];
                     } else{
-                        header("location: connexion.php?erreur=1");  
-                        echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
+                        // header("location: connexion.php?erreur=1");  
+                        echo "<p style='color:red'; class='msgErreur'>Utilisateur ou mot de passe incorrect</p>";
+                        ?>
+                        <script> 
+                             document.querySelector('.msgErreur').style.display="flex";
+    
+                        </script>
+                        <?php
                       }
                     }
          else
          {
-             header("location: connexion.php?erreur=2");  
+            //  header("location: connexion.php?erreur=2");  
+            echo "<p style='color:red'; class='msgErreur'>Veuillez entrer un login et un mot de passe!</p>";
+            ?>
+            <script> 
+                 document.querySelector('.msgErreur').style.display="flex";
+
+            </script>
+            <?php
     
          }}
          
@@ -68,12 +81,14 @@ function login(){
 // verifier si le nom d'utilisateur existe déja
 
         $login=$_POST['username'];
-        $erreur=0;
         $stmt = connect()->prepare("SELECT * FROM utilisateur WHERE username=?");
         $stmt->execute([$login]); 
         $user = $stmt->fetch();
-        if ($user) {
-            $erreur=1;
+        $nbr=$stmt->rowCount();
+        if ($nbr!==0) {
+              ?>
+               <script>document.querySelector('.erreur2').style.visibility="visible";</script>
+              <?php
         } else {
        
 
@@ -498,6 +513,10 @@ function reserve(){
     $sender = $_GET['sender'];
     $idMsg = $_GET['idmsg'];
     var_dump($idTrj);
+    var_dump($sender);
+    var_dump($idTrj);
+
+
     ////////////////////////////////////////info trajet ///////////////////////////////////////////////////////
     $req3 =  "SELECT * FROM trajet WHERE id_trajet = $idTrj";
     $rep3= connect()->prepare($req3);
@@ -524,7 +543,7 @@ function reserve(){
 ////////////////////////////////////////ajouter dans table reservation////////////////////
 
 $sql = "INSERT INTO `reservation` (id_reservation, date_reservation, id_trajet, utilisateur, chauffeur)
-VALUES (NULL, :date_reservation, :id_trajet, :passager, :chauffeur)";
+VALUES (NULL, :date_reservation, :id_trajet, :utilisateur, :chauffeur)";
 connect()->prepare($sql)->execute([
 ":date_reservation" => $date_msg,
 ":id_trajet" => $idTrj,
@@ -550,8 +569,8 @@ if ($nb_Places > 0){
     if ($sql){
     ?>
     <script>
-        document.querySelector("#felicitation").style.display = "flex";
-            setTimeout(function() { $(".felicitation").hide(); }, 1000);
+        document.querySelector("#felicitationPlace").style.display = "flex";
+            setTimeout(function() { $(".felicitationPlace").hide(); }, 1000);
             document.getElementById("validmessagerie").style.display = "none";
             function redirection() {
                 location.href="rechercher.php"               

@@ -1,6 +1,5 @@
 <?php
 require_once 'fonctions.php';
-include 'displayPc.php';
 
 if ((ISSET($_GET['search'])) && ((empty($_GET['departPointValue'])) || (empty($_GET['destinationAdress'])) || (empty($_GET['date']))  )) {
 
@@ -57,7 +56,9 @@ $count = $rep->rowCount();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
-
+<?php
+include 'displayPc.php';
+?>
 <body>
   <section id="resultatRechBloc">
     <header>
@@ -105,7 +106,7 @@ $count = $rep->rowCount();
                 <div class="finishLocation"><?php echo $destination ?></div> 
             </div>
             <div class="iconflech">
-                <img class="fleche" src="assets/img/<?php echo $type_traj ?>" alt="image de deux fleches haut et bas">
+                <img class="fleche" src="assets/img/<?php echo $type_traj ?>.png" alt="image de deux fleches haut et bas">
            
             </div>
         </div>
@@ -181,9 +182,60 @@ $count = $rep->rowCount();
                         </div>
                         
                     </div>
+<?php
 
+        }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+else if ($nom_utilisateur == $chauffeur) {
 
+    ?>
+<div class="detailsTrajet">
+            <div class="nbrslttrj">
+                            <p class="nbplace">places disponibles:<span class="nomnrePlace"><?php echo $nb_places  ?></span></p>
+                        </div>
+                        <div class="details">
+                
+                            <div class="hourTrip">
+                                <span class="startHour"><?php echo $heure_trajet ?></span>
+                                <span class="finishHour"><?php echo $heure_Arrive ?></span>
+                            
+                            </div>
+                            <div class="liaison">
+                                <!-- <img class="cercleLiaison" src="assets/img/deuxCercles.png" alt="deux cercles liés par un trait"> -->
+                            
+                                <span class="cercleHaut" > </span>
+                                <span class="cercleBas"></span>
+                            
+                            </div>
+                            <div class="citiestrip">
+                                <div class="cityStart"><?php echo $pt_depart ?> </div>
+                                <div class="cityFinish"><?php echo $pt_arrive ?></div>
+                            </div>
 
+                        </div>
+                        <div class="accountdetails">
+                        <?php ////////////////////////// récuperer photo et bio du chauffeur //////////////////////////////////////
+                                    $req =  "SELECT * FROM utilisateur WHERE username = '$chauffeur' ";
+                                    $rep = connect()->prepare($req);
+                                    $rep->execute();
+                                    $res = $rep->fetch(PDO::FETCH_OBJ);  
+                                    $nomChauf = $res->nom;
+                                    $bioChauf = $res->bio;
+                                    $photoChauf = $res->photo;
+                                ?>
+                            <div class="photoAccount"> 
+                                <img class="photoProfil" src="assets/img/avatar/<?php echo $photoChauf ?>" alt="">
+                            </div>
+                            <div class="bio">
+                                <div class="nomUtilisateur"><?php echo $nomChauf ?></div>
+                                <p class="biographie"><?php echo $bioChauf ?></p>
+                                <?php echo "<p class='errrrrror' style='color:red'>Vous ête le chauffeur pour ce Trajet! Vous ne pouvez pas le choisir</p>"; ?>
+
+                            </div>
+
+                        </div>
+                        
+                    </div>
 <?php
 
         }

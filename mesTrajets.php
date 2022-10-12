@@ -1,7 +1,6 @@
 <?php
-  include 'displayPc.php';
-require_once 'fonctions.php';
-
+  require_once 'fonctions.php';
+// session_start();
 $nom_utilisateur = $_SESSION['username'];
 
 $req =  "SELECT * FROM utilisateur WHERE username = '$nom_utilisateur' ";
@@ -36,7 +35,10 @@ $count = $rep->rowCount();
 
 <!DOCTYPE html>
 <html lang="en">
+<?php
+  include 'displayPc.php';
 
+?>
 <body>
   <section id="mesTrajBloc">
     <header>
@@ -115,7 +117,7 @@ $count = $rep->rowCount();
                     <div class="finishLocation"><?php echo  $pt_arrive ?></div> 
                 </div>
                 <div class="iconflech">
-                    <img class="fleche" src="assets/img/<?php echo $type_Trajet ?>" alt="image de deux fleches haut et bas">
+                    <img class="fleche" src="assets/img/<?php echo $type_Trajet ?>.png" alt="image de deux fleches haut et bas">
                 </div>
             </div>
         </div>

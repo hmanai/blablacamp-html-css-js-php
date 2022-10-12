@@ -24,7 +24,8 @@
 
     #registerBloc{
         width: 90%;
-        top: 1%;
+        /* top: 1%; */
+        top: 1px;
         display: flex;
         flex-direction: column;
         position: absolute;
@@ -507,6 +508,8 @@ a {
         width: 60px;
         height: 60px;
         margin-left: 7%;
+        margin-top: 2%;
+        
     }
 
     .headConnexion{
@@ -719,13 +722,14 @@ a {
         color: #D41E45;
         text-decoration: none;
         margin-top: 40px;
+        margin-bottom: 40px;
         font-size: 0.75em;
 
     }
 
     /* Page register */
 
-    .enregistrementForm .erreur{
+    .enregistrementForm .erreur, .enregistrementForm .erreur2 {
 
         color: red;
         visibility: hidden;
@@ -964,14 +968,50 @@ a {
     display: flex;
     justify-content: space-between;
 } 
-#felicitation, #felicitationLogin{
+ #felicitationLogin{
  
     width: 100%;
     display: none;
     flex-direction: column;
     position: absolute;
     margin-left: 10px;
-    top: -300px;
+    top: 50px;
+
+}
+#felicitation{
+ 
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    margin-left: 10px;
+    top: 0;
+
+}
+
+#felicitationPlace{
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    margin-left: 10px;
+    top: 100px;
+
+}
+
+#felicitationPlace p{
+    font-family: 'Epilogue';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 20px;
+    color: #888888;
+    margin-left: 15px;
+    margin-top: 13px;
+
+}
+#felicitationPlace h2{
+    font-size: 1.2rem;
 
 }
 
@@ -1009,7 +1049,8 @@ a {
 
     display: flex;
     position: relative;
-    justify-content: center;
+    /* align-items: center; */
+    flex-direction: column;
     min-height: 80vh;
     width: 100%;
 }
@@ -1076,6 +1117,7 @@ a {
 .searchForm{
 
     width: 100%;
+    
  
 }
 
@@ -1152,7 +1194,7 @@ a {
     position: absolute;
     z-index: 3;
     padding-left: 30px;
-    padding-top: 31px;
+    padding-top: 28px;
     font-size: 1.5rem;
     color: #333333;
 
@@ -1603,7 +1645,7 @@ a {
     width: 4px;
     height: 19px;
     background-color: #000;
-    transform: translate(4px,14px);
+    transform: translate(5px,14px);
 
 }
 
@@ -2420,7 +2462,9 @@ color: #333333;
 }
 
 .errrrrror{
-
+    font-family: 'Epilogue';
+    font-style: normal;
+    font-weight: 700;
     font-size: 10px;
     transform: translateX(-20p) !important;
 }

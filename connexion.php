@@ -71,7 +71,7 @@ require_once 'fonctions.php';
         </div> 
     <section id="login">
     <header>
-       <a class="logoHeader" href="#"> <img class="logoHeader" src="assets/img/logo.png" alt="logo">  </a>
+       <a class="logoHeader" href="index.php"> <img class="logoHeader" src="assets/img/logo.png" alt="logo">  </a>
         <p class="headConnexion"> se connecter</p>     
     </header>
         <p class="informations"> entrez vos informations</p>

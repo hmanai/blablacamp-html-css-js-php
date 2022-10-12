@@ -19,19 +19,14 @@ include 'displayPc.php';
         </div> 
     <section id="register">
         <header >
-           <a class="logoHeader" href="rechercher.php"><img  class="logoHeader" src="assets/img/logo.png" alt="logo"></a> 
+           <a class="logoHeader" href="index.php"><img  class="logoHeader" src="assets/img/logo.png" alt="logo"></a> 
             <p class="headConnexion"> Creer un compte</p>     
         </header>
 
         <div class="enregistrementForm">
             <form class="registerForm" action="" method="post" enctype="multipart/form-data">
                 <p class="erreur"> Veuillez remplir tous les champs !</p>
-                <?php 
-                if (($erreur=1) && (ISSET($_POST['register'])) && (!empty($_POST['username']))){
-                    echo "<p style='color:red'>le Nom d'utilisateur existe déjà, veuillez choisir un autre!</p>";
-
-                }
-                ?>
+                <p class="erreur2">le Nom d'utilisateur existe déjà, veuillez choisir un autre!</p>
                 <label class="labelRegister"> Entrez vos coordonnées</label>
                 <input class="inputRegister" type="text" placeholder="Nom" name="nom">
                 <input class="inputRegister" type="text" placeholder="Nom d'utilisateur" name="username">
@@ -76,6 +71,15 @@ include 'displayPc.php';
         </div>
     </section>
             </section>
-            <script src="assets/pcDisplay.js"></script>
-</body>
+            <script>
+
+            let registerBloc = document.querySelector('#registerBloc')
+            let displayPC19 = document.querySelector('.cadreDisplay')
+
+            if (window.matchMedia("(min-width: 600px)").matches) {
+                displayPC19.appendChild(registerBloc)
+            }else{    displayPC19.removeChild(registerBloc);
+    }
+  </script>
+ </body>
 </html>

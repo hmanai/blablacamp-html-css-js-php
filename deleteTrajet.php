@@ -1,5 +1,4 @@
 <?php
- include 'displayPc.php';
 require_once 'fonctions.php';
 $nom_utilisateur = $_SESSION['username'];
 
@@ -18,7 +17,10 @@ $photo = $res->photo;
 
 <!DOCTYPE html>
 <html lang="fr">
+<?php 
+ include 'displayPc.php';
 
+?>
 <body>
    <section id="deleteTrajBloc">
      <header>

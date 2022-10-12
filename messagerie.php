@@ -1,6 +1,5 @@
 
 <?php
- include 'displayPc.php';
  require_once 'fonctions.php';
   ////////////////////////////////////////// récuperer info utilisateur ////////////////////////////////////
 
@@ -16,20 +15,8 @@
  $bio = $res->bio;
  $photo = $res->photo;
  
-
  ////////////////////////////////////////// récuperer les info du demandeur de place et du trajet ////////////////////////////////////
-//  $req2 =  "SELECT * FROM utilisateur, message WHERE utilisateur.username = message.recepteur  ";
-// $rep2= connect()->prepare($req2);
-// $rep2->execute();
-// $res2 = $rep2->fetch(PDO::FETCH_OBJ); 
-// $emetteur= $res->recepteur;
-// var_dump($emetteur);
 
-//  $req3 =  "SELECT * FROM trajet, message WHERE id_trajet = message.id_traj";
-// $rep3= connect()->prepare($req3);
-// $rep3->execute();
-// $res3 = $rep3->fetch(PDO::FETCH_OBJ); 
-// $emetteur= $res->photo
 $req =  "SELECT * FROM message WHERE recepteur = '$nom_utilisateur' ";
  $rep = connect()->prepare($req);
  $rep->execute();
@@ -39,7 +26,10 @@ $req =  "SELECT * FROM message WHERE recepteur = '$nom_utilisateur' ";
 
 <!DOCTYPE html>
 <html lang="fr">
+<?php
+include 'displayPc.php';
 
+?>
 <body>
   <section id="messagerieBloc">
      <header>
@@ -140,13 +130,6 @@ $photo2 = $res5->photo;
                         </div>
                 </div>
             </div> 
-                <!-- ---------------------------------------------------- -->
-
-            
-
-                <!-- ---------------------------------------------------- -->
-
-            
             <span class="separateur"></span>
         </div>
 

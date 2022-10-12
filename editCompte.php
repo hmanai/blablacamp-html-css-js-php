@@ -2,7 +2,6 @@
 <?php
  
 require_once 'fonctions.php';
-include 'displayPc.php';
 
 
 $nom_utilisateur = $_SESSION['username'];
@@ -24,7 +23,10 @@ $photo = $res->photo;
 
 <!DOCTYPE html>
 <html lang="fr">
+<?php
+include 'displayPc.php';
 
+?>
 <body>
   <section id="editCompteBloc">  
     <header>
@@ -45,10 +47,11 @@ $photo = $res->photo;
                     </div>
                 </div>
                 <div class="bouttonrechercherTrajet">
-                    <button class= "searchTrajetButton" type="submit" id='submit' value='proposer un trajet' > 
+                    <a href="proposerTrajet.php"><button class= "searchTrajetButton" type="submit" id='submit' value='proposer un trajet' > 
                         <img class="iconplus" src="assets/img/searchtrajet.png" alt="icone de recherche trajet">
                         <span> PROPOSER UN TRAJET</span>
-                    </button>
+                        </button>
+                    </a>
                 </div> 
                 <div class="navbar">
                     <a class="accountInformation" href="mesTrajets.php"><img class="iconnavbar" src="assets/img/metrajet.png" alt="icone profile"> Mes trajets</a>

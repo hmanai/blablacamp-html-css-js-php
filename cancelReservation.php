@@ -1,7 +1,6 @@
 <?php
  
 require_once 'fonctions.php';
-include 'displayPc.php';
 $nom_utilisateur = $_SESSION['username'];
 
 $req =  "SELECT * FROM utilisateur WHERE username = '$nom_utilisateur' ";
@@ -19,6 +18,10 @@ $photo = $res->photo;
 
 <!DOCTYPE html>
 <html lang="fr">
+<?php
+include 'displayPc.php';
+
+?>
 <body>
     <section id="cancelResBloc">
      <header>

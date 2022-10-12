@@ -2,7 +2,6 @@
 <?php
  
  require_once 'fonctions.php';
- include 'displayPc.php';
 
  $idTrajet = $_GET['id'];
 
@@ -31,14 +30,16 @@ $req =  "SELECT * FROM message WHERE recepteur = '$nom_utilisateur' ";
 
 <!DOCTYPE html>
 <html lang="fr">
-
+    <?php
+include 'displayPc.php';
+?>
 <body>
   <section id="validReserBloc">
     <header>
         <a class="logoHeader" href="rechercher.php"> <img class="logoHeader" src="assets/img/logo.png" alt="logo">  </a>
         <a class="logoProfil" href="#"> <img class="logoProfil" src="assets/img/logoProfil.png" alt="logo">  </a>
      </header>
-     <div id="felicitation">
+     <div id="felicitationPlace">
      
         <div class=" felicitationcorps">
             <h2> Félicitation <span class="styleusername"></span></h2>
@@ -141,6 +142,7 @@ $annee = $date_explosee[0];
         <?php
             if (ISSET($_POST['valider'])){
                 reservePlace();
+                
             }
         ?>
         </form>

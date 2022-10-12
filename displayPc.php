@@ -15,6 +15,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script> <!-- link for car icon -->
+    <script src="https://kit.fontawesome.com/573723cbf2.js" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
