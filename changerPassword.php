@@ -26,9 +26,9 @@ include 'displayPc.php';
                     $password = uniqid();
                     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
                     // var_dump($hashedPassword);
-                    $message = "Bonjour, voici votre nouveau mot de passe : $password";
+                    $message = "Bonjour, voici votre nouveau mot de passe pour le site de Blabla Campus : $password";
                     $headers = 'Content-Type: text/plain; charset="utf-8"'."";
-                    if (mail($_POST['email'], 'Mot de passe oublié', $message, $headers))
+                    if (mail($_POST['email'], 'Mot de passe oublié pour le site Blabla Campus', $message, $headers))
                     {
                      $sql = "UPDATE utilisateur SET password = :passwd where email= :mail";
                      $stmt = connect()->prepare($sql);

@@ -77,7 +77,10 @@ include 'displayPc.php';
                 <input class="inputRegister" type="email" placeholder="Email" name="email" value="<?php echo $email?>">
                     <p>Ajoutez votre adresse e-mail pour recevoir des notifications sur votre activité sur Foundation. Cela ne sera pas affiché sur votre profil.</p>
                 <label class="labelRegister"> Modifier votre biographie</label>
-                <textarea class="textareaRegister" type="text" placeholder="<?php echo $bio?>" aria-placeholder="" name="bio" ></textarea>  
+                <!--  -->
+               
+                <!--  -->
+                <textarea class="textareaRegister" type="text" placeholder="" aria-placeholder="" name="bio" ><?php echo $bio?></textarea>  
                 <label class="labelRegister">Modifier votre image de profil </label>
                 <label class="fileRegister" > 
                     <label class="inputFile" name="inputFile" value=""> <img class="PhotoProfil" src="assets/img/avatar/<?php echo $photo ?>"></label>

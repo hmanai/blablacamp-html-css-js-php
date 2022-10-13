@@ -1,0 +1,22 @@
+{
+  "short_name": "PWA-Blabla Campus",
+  "name": "blablacampus pwa",
+  "icons": [
+    {
+      "src": "../assets/img/voitureicon.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "../assets/img/iconpwa.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "index.php",
+  "background_color": "#000000",
+  "display": "fullscreen",
+  "theme_color": "#D41E45",
+  "orientation": "portrait"
+}
